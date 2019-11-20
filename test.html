@@ -9,24 +9,50 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <style>
-   head,body,footer{
-       font-family :Mali;
-       background-color: deepskyblue;
-   }
-  /* Note: Try to remove the following lines to see the effect of CSS positioning */
+  head,body{
+    background-image: linear-gradient(to bottom right,white,lightblue,deepskyblue, cornflowerblue,grey);
+    font-family :Mali;
+  }
+  body {
+    position: relative;
+  }
+  footer {
+    background-color: #555;
+    color: white;
+    padding: 15px;
+  }
+  .navbar {
+    margin-bottom: 0;
+    border-radius: 0;
+  }
+  .row.content {height: 450px}
+  .sidenav {
+    padding-top: 20px;
+    background-color: #f1f1f1;
+    height: 100%;
+  }
+  @media screen and (max-width: 767px) {
+    .sidenav {
+      height: auto;
+      padding: 15px;
+    }
+    .row.content {height:auto;} 
+    #sharenote, #shareevent, #reviewsubject, #reviewtutor,#reviewbook, #faqboard  {
+      margin-top: 0px;
+    }
+  }
   .affix {
     top: 0;
     width: 100%;
     z-index: 9999 !important;
   }
   .block{
-    position:absolute;
-    width:95%;
-    height:570px;
-    left:20px;
-    /* top:29px; */
+    position:auto;
+    width:auto;
+    height:auto;
     background-color: rgba(255,255,255,0.65);
     border-radius: 3px;
+    padding: 20px;
   }
   .blockbig{
     position: absolute;
@@ -45,54 +71,44 @@
   }
   </style>
 </head>
-<body>
+<body data-spy="scroll" data-target="#myScrollspy" data-offset="10">
+  
 <!-- navbar -->
-<nav class="navbar navbar-inverse" data-spy="affix">
-  <ul class="nav navbar-nav">
-    <li style="font-family: Fredericka the Great; font-size: 30px; left: 20px;"><a href="#">ShareEd</a></li>
-    <li style="left:880px;"><a href="#">Page 1</a></li>
-    <li style="left:890px;"><a href="#">Page 2</a></li>
-    <li style="left:900px;">
-      <a class="dropdown-toggle" type="button" data-toggle="dropdown">Page3
-      <span class="caret"></span></a>
-      <ul class="dropdown-menu">
-        <li ><a href="#">HTML</a></li>
-        <li ><a href="#">CSS</a></li>
-        <li class="divider"></li>
-        <li ><a href="#">Log Out</a></li>
-      </ul>
-    </li>
-  </ul>
-  <form class="navbar-form" action="#">
-    <div class="input-group">
-      <input type="text" class="form-control" placeholder="Search" name="search" style="width: 400px;">
-      <div class="input-group-btn">
-        <button class="btn btn-default" type="submit">
-          <i class="glyphicon glyphicon-search"></i>
-        </button>
-      </div>
-    </div>
-  </form>
-</nav>
-<!-- menu right -->
-<nav class="col-sm-3" id="myScrollspy">
-    <ul class="nav nav-pills nav-stacked">
-      <li class="active"><a href="#section1">Section 1</a></li>
-      <li><a href="#section2">Section 2</a></li>
-      <li><a href="#section3">Section 3</a></li>
-      <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Section 4 <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="#section41">Section 4-1</a></li>
-          <li><a href="#section42">Section 4-2</a></li>                     
-        </ul>
-      </li>
-    </ul>
-  </nav>
+    <nav class="navbar navbar-inverse" data-spy="affix">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#" style="font-family: Fredericka the Great; font-size: 35px;">ShareEd</a>
+          </div>
+          <div class="collapse navbar-collapse">
+            <form class="nav navbar-nav navbar-form" action="#">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Search" name="search">
+                  <div class="input-group-btn">
+                    <button class="btn btn-default" type="submit">
+                      <i class="glyphicon glyphicon-search"></i>
+                    </button>
+                  </div>
+                </div>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="#"><span class="glyphicon glyphicon-menu-hamburger"></span> Menu</a></li>
+              <li><a href="#"><span class="glyphicon glyphicon-bell"></span> Notification</a></li>
+              <li>
+                <a class="dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Profile<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li ><a href="#">HTML</a></li>
+                      <li ><a href="#">CSS</a></li>
+                      <li class="divider"></li>
+                      <li ><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+              </li>
+            </ul>
+          
+          </div>
+        </div>
+      </nav>
 
-
-<!-- content up -->
-<div class="container-fluid" style="background-color:#F44336; margin-top: 40px; height:250px;">
+<!-- content up
+<div class="container-fluid text-left" style="background-color:#F44336; margin-top: 40px; height:250px;">
     <div class="row">
         <div class="col-sm-2"></div>
         <div class="col-sm-8">   
@@ -102,39 +118,132 @@
         </div>
         <div class="col-sm-2"></div>
       </div>
+</div> -->
+
+<div class="container-fluid" data-spy="affix" style="padding-top: 80px;">
+    <div class="row">
+      <nav class="col-sm-2" id="myScrollspy">
+        <ul class="nav nav-pills nav-stacked">
+          <li class="active"><a href="#sharenote">Share Note</a></li>
+          <li><a href="#shareevent">Share Event</a></li>
+          <li><a href="#reviewsubject">Review Subject</a></li>
+          <li><a href="#reviewtutor">Review Tutor</a></li>
+          <li><a href="#reviewbook">Review Book</a></li>
+          <li><a href="#faqboard">FAQ board</a></li>
+        </ul>
+      </nav>
+    </div>
 </div>
 
 
-<div class="container">
+
+<div class="container-fluid" style="padding: 20px;">
     <div class="row">
-      <nav class="col-sm-1"></nav>
+      <nav class="col-sm-2"></nav>
       <!-- content -->
-      <div class="col-sm-10">
-        <div class="row" style="height:570px; margin: 10px;">
-          <div class="block">
-              <p style="font-family: Fredericka the Great; font-size: 45px; padding: 25px;">ShareNote</p>
+      <div class="col-sm-8" >
+        <div class="row"></div>
+        <div class="row" style="height:630px; background-color: darkgoldenrod;" id="sharenote">
+          <div class="block media" style="padding-top: 100px; margin-top: 10px;">
+            <div class="media-left media-top">
+              <img src="icon/ShareNote.png" class="media-object" style="width:80px">
+            </div>
+            <div class="media-body" style="padding-left: 10px;">
+              <h4 class="media-heading" style="font-family: Fredericka the Great; font-size: 60px;">  SHARE NOTE</h4>
+              <p>Lorem ipsum...</p>
+              <div class="well">
+                <p>ADS</p>
+            </div>
+            </div>
           </div>
         </div> 
-        <div class="row" style="height:570px; margin: 10px;">
-          <div class="block">
-              <p style="font-family: Fredericka the Great; font-size: 45px; padding: 25px;">ShareEvent</p>
+        <div class="row" style="height:630px; background-color: darkorchid;" id="shareevent">
+          <div class="block media" style="padding-top: 100px; margin-top: 10px;">
+            <div class="media-left media-top">
+              <img src="icon/ShareEvent.png" class="media-object" style="width:80px">
+            </div>
+            <div class="media-body" style="padding-left: 10px;">
+              <h4 class="media-heading" style="font-family: Fredericka the Great; font-size: 60px;">  SHARE EVENT</h4>
+              <p>Lorem ipsum...</p>
+              <div class="well">
+                <p>ADS</p>
+            </div>
+            </div>
           </div>
         </div> 
+        <div class="row" style="height:630px;" id="reviewsubject">
+          <div class="block media" style="padding-top: 100px; margin-top: 10px;">
+            <div class="media-left media-top">
+              <img src="icon/ReviewSubject.png" class="media-object" style="width:80px">
+            </div>
+            <div class="media-body" style="padding-left: 10px;">
+              <h4 class="media-heading" style="font-family: Fredericka the Great; font-size: 60px;">  REVIEW SUBJECT</h4>
+              <p>Lorem ipsum...</p>
+              <div class="well">
+                <p>ADS</p>
+            </div>
+            </div>
+          </div>
+        </div> 
+        <div class="row" style="height:630px;" id="reviewtutor">
+          <div class="block media" style="padding-top: 100px; margin-top: 10px;">
+            <div class="media-left media-top">
+              <img src="icon/ReviewTutor.png" class="media-object" style="width:80px">
+            </div>
+            <div class="media-body" style="padding-left: 10px;">
+              <h4 class="media-heading" style="font-family: Fredericka the Great; font-size: 60px;">  REVIEW TUTOR</h4>
+              <p>Lorem ipsum...</p>
+              <div class="well">
+                <p>ADS</p>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="row" style="height:630px; margin: 5px;" id="reviewbook">
+          <div class="block media" style="padding-top: 100px; margin-top: 10px;">
+            <div class="media-left media-top">
+              <img src="icon/ReviewBook.png" class="media-object" style="width:80px">
+            </div>
+            <div class="media-body" style="padding-left: 10px;">
+              <h4 class="media-heading" style="font-family: Fredericka the Great; font-size: 60px;">  REVIEW BOOK</h4>
+              <p>Lorem ipsum...</p>
+              <div class="well">
+                <p>ADS</p>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="row" style="height:630px; margin: 5px;" id="faqboard">
+          <div class="block media" style="padding-top: 100px; margin-top: 10px;">
+            <div class="media-left media-top">
+              <img src="icon/FAQ.png" class="media-object" style="width:80px">
+            </div>
+            <div class="media-body" style="padding-left: 10px;">
+              <h4 class="media-heading" style="font-family: Fredericka the Great; font-size: 60px;">  FAQ BOARD</h4>
+              <p>Lorem ipsum...</p>
+              <div class="well">
+                <p>ADS</p>
+            </div>
+            </div>
+          </div>
+        </div>  
       </div>
       <!-- search tag right -->
-      <nav class="col-sm-1">
-        <ul class="nav nav-pills nav-stacked">
-          <li class="active"><a href="#section1">Section 1</a></li>
-          <li><a href="#section2">Section 2</a></li>
-          <li><a href="#section3">Section 3</a></li>
-          <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Section 4 <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a href="#section41">Section 4-1</a></li>
-              <li><a href="#section42">Section 4-2</a></li>                     
-            </ul>
-          </li>
-        </ul>
+      <nav class="col-sm-2">
+        <div class="container-fluid" style="margin-top: 60px;">
+            <ul class="nav nav-pills nav-stacked">
+                <li class="active"><a href="#section1">Section 1</a></li>
+                <li><a href="#section2">Section 2</a></li>
+                <li><a href="#section3">Section 3</a></li>
+                <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">Section 4 <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#section41">Section 4-1</a></li>
+                    <li><a href="#section42">Section 4-2</a></li>                     
+                  </ul>
+                </li>
+              </ul>
+        </div>
       </nav>
     </div>
 </div>
@@ -145,3 +254,4 @@
 </body>
 
 </html>
+
