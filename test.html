@@ -7,7 +7,8 @@
   <link href="https://fonts.googleapis.com/css?family=Mali|Fredericka the Great" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <style>
   head,body{
     background-image: linear-gradient(to bottom right,white,lightblue,deepskyblue, cornflowerblue,grey);
@@ -41,11 +42,6 @@
       margin-top: 0px;
     }
   }
-  .affix {
-    top: 0;
-    width: 100%;
-    z-index: 9999 !important;
-  }
   .block{
     position:auto;
     width:auto;
@@ -54,58 +50,75 @@
     border-radius: 3px;
     padding: 20px;
   }
-  .blockbig{
-    position: absolute;
-    width: 402px;
-    height: 402px;
-    left: 318px;
-    top: 163px;
-  }
-  .blocksmall{
-    position: absolute;
-    width: 364px;
-    height: 120px;
-    left: 788px;
-    /* top1: 163px;
-    top2: 339px; */
-  }
+  .sidenav {
+  /* width: 130px; */
+  position: fixed;
+  z-index: 1;
+  top: 20px;
+  left: 10px;
+  background: #eee;
+  overflow-x: hidden;
+  padding: 8px 0;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 18px;
+  color: #2196F3;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #064579;
+}
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 16px;}
+}
   </style>
 </head>
 <body data-spy="scroll" data-target="#myScrollspy" data-offset="10">
   
 <!-- navbar -->
-    <nav class="navbar navbar-inverse" data-spy="affix">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="#" style="font-family: Fredericka the Great; font-size: 35px;">ShareEd</a>
-          </div>
-          <div class="collapse navbar-collapse">
+<nav class="navbar navbar-fixed-top" data-spy="affix" >
+    <div class="container-fluid" style="background-color: whitesmoke;">
+      <a class="navbar-brand" href="#" style="font-family: Fredericka the Great; font-size: 35px;">ShareEd</a>
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li><!-- search -->
             <form class="nav navbar-nav navbar-form" action="#">
                 <div class="input-group">
                   <input type="text" class="form-control" placeholder="Search" name="search">
                   <div class="input-group-btn">
-                    <button class="btn btn-default" type="submit">
-                      <i class="glyphicon glyphicon-search"></i>
-                    </button>
+                    <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
                   </div>
                 </div>
             </form>
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="#"><span class="glyphicon glyphicon-menu-hamburger"></span> Menu</a></li>
-              <li><a href="#"><span class="glyphicon glyphicon-bell"></span> Notification</a></li>
-              <li>
-                <a class="dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Profile<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                      <li ><a href="#">HTML</a></li>
-                      <li ><a href="#">CSS</a></li>
-                      <li class="divider"></li>
-                      <li ><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-              </li>
+          </li>
+          <li><a href="#"><span class="glyphicon glyphicon-menu-hamburger"></span> Menu</a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-bell"></span> Notification</a></li>
+          <li><a class="dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-user">
+            </span> Profile<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li ><a href="#">My Profile</a></li>
+              <li ><a href="#">My Post</a></li>
+              <li ><a href="#">My Favorite</a></li>
+              <li class="divider"></li>
+              <li ><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
             </ul>
-          </div>
-        </div>
-      </nav>
+          </li>
+        </ul>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+      </div>
+      
+    </div>
+  </nav>
 
+  
+      
       
 <!-- content up
 <div class="container-fluid text-left" style="background-color:#F44336; margin-top: 40px; height:250px;">
@@ -120,26 +133,27 @@
       </div>
 </div> -->
 
-<div class="container-fluid" data-spy="affix" style="padding-top: 80px;">
-    <div class="row">
-      <nav class="col-sm-2" id="myScrollspy">
-        <ul class="nav nav-pills nav-stacked">
-          <li class="active"><a href="#sharenote">Share Note</a></li>
-          <li><a href="#shareevent">Share Event</a></li>
-          <li><a href="#reviewsubject">Review Subject</a></li>
-          <li><a href="#reviewtutor">Review Tutor</a></li>
-          <li><a href="#reviewbook">Review Book</a></li>
-          <li><a href="#faqboard">FAQ board</a></li>
-        </ul>
-      </nav>
-    </div>
-</div>
 
 
 
 <div class="container-fluid" style="padding: 20px;">
     <div class="row">
-      <nav class="col-sm-2"></nav>
+      <nav class="col-sm-2 " style="padding-top: 80px;">
+          <div class="col-sm-2 " >
+              <nav class="" id="myScrollspy">
+                <ul class="nav nav-pills nav-stacked">
+                  <li class="active"><a href="#sharenote">Share Note</a></li>
+                  <li><a href="#shareevent">Share Event</a></li>
+                  <li><a href="#reviewsubject">Review Subject</a></li>
+                  <li><a href="#reviewtutor">Review Tutor</a></li>
+                  <li><a href="#reviewbook">Review Book</a></li>
+                  <li><a href="#faqboard">FAQ board</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+
+      </nav>
       <!-- content -->
       <div class="col-sm-8" >
         <div class="row"></div>
@@ -228,23 +242,7 @@
           </div>
         </div>  
       </div>
-      <!-- search tag right -->
-      <nav class="col-sm-2">
-        <div class="container-fluid" style="margin-top: 60px;">
-            <ul class="nav nav-pills nav-stacked">
-                <li class="active"><a href="#section1">Section 1</a></li>
-                <li><a href="#section2">Section 2</a></li>
-                <li><a href="#section3">Section 3</a></li>
-                <li class="dropdown">
-                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">Section 4 <span class="caret"></span></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="#section41">Section 4-1</a></li>
-                    <li><a href="#section42">Section 4-2</a></li>                     
-                  </ul>
-                </li>
-              </ul>
-        </div>
-      </nav>
+      <nav class="col-sm-2"></nav>
     </div>
 </div>
 
