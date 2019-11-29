@@ -26,7 +26,7 @@
         .right {
             position: absolute;
             right: 0px;
-    
+
         }
 
 
@@ -209,7 +209,8 @@
             </div>
         </div>
     </nav>
-    <div class="center" style="background-color: rgba(255, 255, 255, 0.37);margin-top: 50px;width: 864px;height: 294px;">
+    <div class="center"
+        style="background-color: rgba(255, 255, 255, 0.37);margin-top: 50px;width: 864px;height: 294px;">
         Insert Picture
     </div>
     <div class="row">
@@ -226,39 +227,45 @@
 
     <div class="container">
         <div class="box" style="margin-top:10px">
-            Title : <input type="text" name="title" style="border: none; background-color:rgba(255, 255, 255, 0.37);"><br>
-            <hr>
-            Subject Name: <input type="text" name="subjectName" style="border: none; background-color:rgba(255, 255, 255, 0.37); "><br>
-            <hr>
-            Section : <input type="text" name="section" style="border: none; background-color:rgba(255, 255, 255, 0.37);"><br>
-            <hr>
-            Instruction Name : <input type="text" name="instructionName" style="border: none; background-color:rgba(255, 255, 255, 0.37);"><br>
-            <hr>
-            Semeter : <input type="text" name="semeter" style="border: none; background-color:rgba(255, 255, 255, 0.37);">
-            <hr>
-            Tag : <input type="text" name="tag"
-            style="border: none; background-color:rgba(255, 255, 255, 0.37);">
-            <hr>
-            Description : 
-            <br>
-            <br>
-            <div>
-                <textarea name="subject" cols="90" rows="20"
-                    style="border: none; background-color:rgba(255, 255, 255, 0.37);margin-left:50px;">
+            <form name="edit-share-note" id="edit-share-note">
+                Title : <input type="text" name="title"
+                    style="border: none; background-color:rgba(255, 255, 255, 0.37);"><br>
+                <hr>
+                Subject Name: <input type="text" name="subjectName"
+                    style="border: none; background-color:rgba(255, 255, 255, 0.37); "><br>
+                <hr>
+                Section : <input type="text" name="section"
+                    style="border: none; background-color:rgba(255, 255, 255, 0.37);"><br>
+                <hr>
+                Instruction Name : <input type="text" name="instructionName"
+                    style="border: none; background-color:rgba(255, 255, 255, 0.37);"><br>
+                <hr>
+                Semeter : <input type="text" name="semeter"
+                    style="border: none; background-color:rgba(255, 255, 255, 0.37);">
+                <hr>
+                Tag : <input type="text" name="tag" style="border: none; background-color:rgba(255, 255, 255, 0.37);">
+                <hr>
+                Description :
+                <br>
+                <br>
+                <div>
+                    <textarea name="subject" cols="90" rows="20"
+                        style="border: none; background-color:rgba(255, 255, 255, 0.37);margin-left:50px;">
             </textarea>
-                insert picture <input type="image" name="description" multiple><hr>
-            </div>
-            <div class="row">
-                    <div class="col-sm-1">
-                            <button type="button" class="btn btn-danger btn-lg" style="font-size:20px;border: none;margin-left: 620px;">Cancel</button>
-                        </div>
-                <div class="col-sm-1">
-                   <input type="submit" value="Save" class="btn btn-primary btn-lg " style="font-size:20px;border: none;margin-left: 670px;">  
+                    insert picture <input type="image" name="description" multiple>
+                    <hr>
                 </div>
-                
-            </div>
-           
-
+                <div class="row">
+                    <div class="col-sm-1">
+                        <button type="button" class="btn btn-danger btn-lg"
+                            style="font-size:20px;border: none;margin-left: 620px;">Cancel</button>
+                    </div>
+                    <div class="col-sm-1">
+                        <input type="submit" value="Save" class="btn btn-primary btn-lg "
+                            style="font-size:20px;border: none;margin-left: 670px;">
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
     <footer>
