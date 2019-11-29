@@ -1,224 +1,286 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>ShareEd</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://fonts.googleapis.com/css?family=Mali|Fredericka the Great" rel="stylesheet">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-  <style>
-  body {
-    background-image: linear-gradient(to bottom right,white,lightblue,deepskyblue, cornflowerblue,grey);
-    font-family :Mali;
-    position: relative; 
-  }
-  .block{
-    position:auto;
-    width:auto;
-    height:580px;
-    background-color: rgba(255, 255, 255, 0.37);
-    border-radius: 3px;
-    padding: 30px;
-    margin: 10px;
-  }
-  .bg-block{
-    position:auto;
-    width:auto;
-    height:420px;
-    background-color: whitesmoke;
-    border-radius: 3px;
-    padding: 15px;
-    margin: 5px;
-  }
-  .sm-block{
-    position:auto;
-    width:auto;
-    height:160px;
-    background-color: whitesmoke;
-    border-radius: 3px;
-    padding: 15px;
-    margin: 5px;
-  }
-  .pagination {
-  display: inline-block;
-    }
+    <title>ShareEd</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Mali|Fredericka the Great" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            background-image: linear-gradient(to bottom right, white, lightblue, deepskyblue, cornflowerblue, grey);
+            font-family: Mali;
+            position: relative;
+        }
 
-    .pagination a {
-    color: black;
-    float: left;
-    padding: 5px 15px;
-    text-decoration: none;
-    }
+        .block {
+            position: auto;
+            width: auto;
+            height: 580px;
+            background-color: rgba(255, 255, 255, 0.37);
+            border-radius: 3px;
+            padding: 30px;
+            margin: 10px;
+        }
 
-    .pagination a.active {
-    background-color: rgb(100, 100, 100);
-    color: white;
-    border-radius: 10px;
-    }
+        .bg-block {
+            position: auto;
+            width: auto;
+            height: 420px;
+            background-color: whitesmoke;
+            border-radius: 3px;
+            padding: 15px;
+            margin: 5px;
+        }
 
-    .pagination a:hover:not(.active) {
-    background-color: #ddd;
-    border-radius: 10px;
-    }
-  #sharenote {padding-top:50px;height:650px;color: black;}
-  #shareevent{padding-top:50px;height:650px;color: black;}
-  #reviewsubject {padding-top:50px;height:650px;color: black;}
-  #reviewtutor {padding-top:50px;height:650px;color: black; }
-  #reviewbook {padding-top:50px;height:650px;color: black; }
-  #boardfaq {padding-top:50px;height:650px;color: black; }
-  </style>
+        .sm-block {
+            position: auto;
+            width: auto;
+            height: 160px;
+            background-color: whitesmoke;
+            border-radius: 3px;
+            padding: 15px;
+            margin: 5px;
+        }
+
+        .pagination {
+            display: inline-block;
+        }
+
+        .pagination a {
+            color: black;
+            float: left;
+            padding: 5px 15px;
+            text-decoration: none;
+        }
+
+        .pagination a.active {
+            background-color: rgb(100, 100, 100);
+            color: white;
+            border-radius: 10px;
+        }
+
+        .pagination a:hover:not(.active) {
+            background-color: #ddd;
+            border-radius: 10px;
+        }
+
+        #sharenote {
+            padding-top: 50px;
+            height: 650px;
+            color: black;
+        }
+
+        #shareevent {
+            padding-top: 50px;
+            height: 650px;
+            color: black;
+        }
+
+        #reviewsubject {
+            padding-top: 50px;
+            height: 650px;
+            color: black;
+        }
+
+        #reviewtutor {
+            padding-top: 50px;
+            height: 650px;
+            color: black;
+        }
+
+        #reviewbook {
+            padding-top: 50px;
+            height: 650px;
+            color: black;
+        }
+
+        #boardfaq {
+            padding-top: 50px;
+            height: 650px;
+            color: black;
+        }
+    </style>
 </head>
+
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
 
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>                        
-        </button>
-        <a class="navbar-brand" href="http://127.0.0.1:5500/UserHomepage.html" style="font-family: Fredericka the Great; font-size: 35px;">ShareEd</a>
-        </div>
-        <div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav navbar-right">
-                <li><!-- search -->
-                    <form class="nav navbar-nav navbar-form" action="#">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search" name="search">
-                            <div class="input-group-btn">
-                                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                            </div>
-                        </div>
-                    </form>
-                </li>
-                <li  class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-menu-hamburger">
-                </span> Menu<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li ><a href="http://127.0.0.1:5500/ShareNote.html">Share Note</a></li>
-                        <li ><a href="http://127.0.0.1:5500/ShareEvent.html">Share Event</a></li>
-                        <li ><a href="http://127.0.0.1:5500/ReviewSubject.html">Review Subject</a></li>
-                        <li ><a href="http://127.0.0.1:5500/ReviewBook.html">Review Book</a></li>
-                        <li ><a href="http://127.0.0.1:5500/ReviewTutor.html">Review Tutor</a></li>
-                        <li ><a href="http://127.0.0.1:5500/BoardFAQ.html">Board FAQ</a></li>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://127.0.0.1:5500/UserHomepage.html"
+                    style="font-family: Fredericka the Great; font-size: 35px;">ShareEd</a>
+            </div>
+            <div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <!-- search -->
+                            <form class="nav navbar-nav navbar-form" action="#">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search" name="search">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-default" type="submit"><i
+                                                class="glyphicon glyphicon-search"></i></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </li>
+                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span
+                                    class="glyphicon glyphicon-menu-hamburger">
+                                </span> Menu<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="http://127.0.0.1:5500/ShareNote.html">Share Note</a></li>
+                                <li><a href="http://127.0.0.1:5500/ShareEvent.html">Share Event</a></li>
+                                <li><a href="http://127.0.0.1:5500/ReviewSubject.html">Review Subject</a></li>
+                                <li><a href="http://127.0.0.1:5500/ReviewBook.html">Review Book</a></li>
+                                <li><a href="http://127.0.0.1:5500/ReviewTutor.html">Review Tutor</a></li>
+                                <li><a href="http://127.0.0.1:5500/BoardFAQ.html">Board FAQ</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" onclick="alert('Cannot use function Notification.')"><span
+                                    class="glyphicon glyphicon-bell"></span> Notification</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
+                                    class="glyphicon glyphicon-user">
+                                </span> Profile<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" onclick="alert('Cannot use function Profile.')">My Profile</a></li>
+                                <li><a href="#" onclick="alert('Cannot use function My Post.')">My Post</a></li>
+                                <li><a href="#" onclick="alert('Cannot use function My Favorite.')">My Favorite</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#" onclick="alert('Cannot use function Log out.')"><span
+                                            class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                            </ul>
+                        </li>
                     </ul>
-                </li>
-                <li><a href="#" onclick="alert('Cannot use function Notification.')"><span class="glyphicon glyphicon-bell"></span> Notification</a></li>
-                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" ><span class="glyphicon glyphicon-user">
-                </span> Profile<span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                <li ><a href="#" onclick="alert('Cannot use function Profile.')" >My Profile</a></li>
-                <li ><a href="#" onclick="alert('Cannot use function My Post.')" >My Post</a></li>
-                <li ><a href="#" onclick="alert('Cannot use function My Favorite.')" >My Favorite</a></li>
-                <li class="divider"></li>
-                <li ><a href="#" onclick="alert('Cannot use function Log out.')" ><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-                </ul>
-            </li>
-            </ul>
+                </div>
+            </div>
         </div>
-        </div>
-    </div>
-</nav>     
+    </nav>
 
-<div class="row">
-    <div class="block" style="background: url('https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/HeaderEvent.png'); background-size:100%; background-repeat: no-repeat;">
-        <h1 style="font-family: Fredericka the Great; font-size:100px; margin-top: 150px; margin-left:50px; padding: 20px;">Share Event</h1>
-    </div>
-    <div class="col-sm-2"></div>
-    <div class="col-sm-5">
-        <div id="shareNote" class="container-fluid">
-            <div style="margin-top: 15px;">
-                <div class="row">
-                    <a href="#" role="button">
-                        <div class="sm-block" style="height:150px; padding: 5px;">
-                            <div class="row">
-                                <div class="col-sm-3" >
-                                    <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/4_new.png"  width="120" height="140">
+    <div class="row">
+        <div class="block"
+            style="background: url('https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/HeaderEvent.png'); background-size:100%; background-repeat: no-repeat;">
+            <h1
+                style="font-family: Fredericka the Great; font-size:100px; margin-top: 150px; margin-left:50px; padding: 20px;">
+                Share Event</h1>
+        </div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-5">
+            <div id="shareNote" class="container-fluid">
+                <div style="margin-top: 15px;">
+                    <div class="row">
+                        <a href="#" role="button">
+                            <div class="sm-block" style="height:150px; padding: 5px;">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/4_new.png"
+                                            width="120" height="140">
+                                    </div>
+                                    <div class="col-sm-9"
+                                        style="background-color: whitesmoke; width:390px;height: 140px; padding: 15px;">
+                                        <p style="color: red;">Share Event</p>
+                                        <p>Dummy</p>
+                                        <p>Day : By: </p>
+                                    </div>
                                 </div>
-                                <div class="col-sm-9" style="background-color: whitesmoke; width:390px;height: 140px; padding: 15px;">
-                                    <p style="color: red;">Share Event</p>
-                                    <p>Dummy</p>
-                                    <p>Day : By: </p>
-                                </div>
-                            </div> 
-                        </div>
-                    </a>
-                    <div class="sm-block" style="height:150px; margin-top: 10px;"> 12115631 </div>
-                    <div class="sm-block" style="height:150px; margin-top: 10px;"> 78823313 </div>
-                    <div class="sm-block" style="height:150px; margin-top: 10px;"> 89215631 </div>
-                    <div class="row" style="margin-top: 25px;">
-                        <div class="col-sm-2"></div>
-                        <div class="col-sm-8"> 
-                            <div class="pagination ">
-                                <a href="#">&laquo;</a>
-                                <a href="#"class="active">1</a>
-                                <!-- <a href="#">2</a>
+                            </div>
+                        </a>
+                        <div class="sm-block" style="height:150px; margin-top: 10px;"> 12115631 </div>
+                        <div class="sm-block" style="height:150px; margin-top: 10px;"> 78823313 </div>
+                        <div class="sm-block" style="height:150px; margin-top: 10px;"> 89215631 </div>
+                        <div class="row" style="margin-top: 25px;">
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-8">
+                                <div class="pagination ">
+                                    <a href="#">&laquo;</a>
+                                    <a href="#" class="active">1</a>
+                                    <!-- <a href="#">2</a>
                                 <a href="#">3</a>
                                 <a href="#">4</a>
                                 <a href="#">5</a>
                                 <a href="#">6</a>
                                 <a href="#">7</a> -->
-                                <a href="#">&raquo;</a>
+                                    <a href="#">&raquo;</a>
+                                </div>
                             </div>
+                            <div class="col-sm-2"></div>
                         </div>
-                        <div class="col-sm-2"></div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="col-sm-3 block" style="margin-top: 20px; height: 630px; width: min-content;">
-        <a href="http://127.0.0.1:5500/CreatedShareEvent.html" class="btn btn-primary btn-outline-secondary  btn-lg" role="button" style="background-color:rgba(119, 117, 117, 0.664); width: 100%;">Create New Event</a>
-        <div class="row" style="margin-top: 20px;">
-            <p>Search</p>
-            <form class="nav navbar-nav navbar-form" action="#">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search" name="search">
-                    <div class="input-group-btn">
-                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+        <div class="col-sm-3 block" style="margin-top: 20px; height: 630px; width: min-content;">
+            <a href="http://127.0.0.1:5500/CreatedShareEvent.html" class="btn btn-primary btn-outline-secondary  btn-lg"
+                role="button" style="background-color:rgba(119, 117, 117, 0.664); width: 100%;">Create New Event</a>
+            <div class="row" style="margin-top: 20px;">
+                <p>Search</p>
+                <form class="nav navbar-nav navbar-form" action="#">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="search">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit"><i
+                                    class="glyphicon glyphicon-search"></i></button>
+                        </div>
                     </div>
+                </form>
+            </div>
+            <div class="row" style="margin-top: 20px;">
+                <p>Tag</p>
+                <a href="#" class="btn btn-info btn-sm" role="button">CPE</a>
+                <a href="#" class="btn btn-info btn-sm" role="button">Algorithm</a>
+                <a href="#" class="btn btn-info btn-sm" role="button">Engineer</a>
+                <a href="#" class="btn btn-info btn-sm" role="button">CPE212</a>
+                <a href="#" class="btn btn-info btn-sm" role="button">Algorithm</a>
+            </div>
+            <div class="row" style="margin-top: 20px;">
+                <p>Popular</p>
+                <div class="sm-block" style="height:80px;"> 17574 </div>
+                <div class="sm-block" style="height:80px; margin-top: 10px;"> 759228 </div>
+                <div class="sm-block" style="height:80px; margin-top: 10px;"> 282882 </div>
+            </div>
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
+
+    <footer>
+
+        <div class="jumbotron" style="margin-bottom:0;">
+            <div class="row">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-6">
+                    <p style="font-size: 16px; margin-left: 35px;"><strong>ShareEd</strong></p>
+                    <p style="font-size: 14px;"> “ ShareEd website is community of student in King Mongkut’s University
+                        of Technology Thonburi for share their story about education in many features.
+                        ShareEd made by KMUTT students called T3M team."</p>
                 </div>
-            </form>
+                <div class="col-sm-3">
+                    <p style="font-size: 16px; margin-left: 35px;"><strong>Contact Info</strong></p>
+                    <p style="font-size: 14px;"><span class="glyphicon glyphicon-earphone"></span> +66 86 3175 820</p>
+                    <p style="font-size: 14px;"><span class="glyphicon glyphicon-envelope"></span>
+                        shareed@gmail.co.th</a></p>
+                    <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/youtube.png"
+                        width="auto" height="auto">
+                    <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/twitter.png"
+                        width="auto" height="auto">
+                    <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/instragram.png"
+                        width="auto" height="auto">
+                    <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/facebook.png"
+                        width="auto" height="auto">
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
         </div>
-        <div class="row" style="margin-top: 20px;">
-            <p>Tag</p>
-            <a href="#" class="btn btn-info btn-sm" role="button">CPE</a>
-            <a href="#" class="btn btn-info btn-sm" role="button">Algorithm</a>
-            <a href="#" class="btn btn-info btn-sm" role="button">Engineer</a>
-            <a href="#" class="btn btn-info btn-sm" role="button">CPE212</a>
-            <a href="#" class="btn btn-info btn-sm" role="button">Algorithm</a>
-        </div>
-        <div class="row" style="margin-top: 20px;">
-            <p>Popular</p>
-            <div class="sm-block" style="height:80px;"> 17574 </div>
-            <div class="sm-block" style="height:80px; margin-top: 10px;"> 759228 </div>
-            <div class="sm-block" style="height:80px; margin-top: 10px;"> 282882 </div>
-        </div>
-    </div>
-    <div class="col-sm-2"></div>
-</div>
 
-<footer>
-
-<div class="jumbotron" style="margin-bottom:0;">
-    <div class="row">
-        <div class="col-sm-1"></div>
-        <div class="col-sm-7">
-            <p style="font-size: 16px; margin-left: 35px;"><strong>ShareEd</strong></p>
-            <p style="font-size: 14px;">  fghjjhgfs</p>
-        </div>
-        <div class="col-sm-3">
-            <p style="font-size: 16px; margin-left: 35px;"><strong>Contact Info</strong></p>
-            <p style="font-size: 14px;"><span class="glyphicon glyphicon-earphone"></span> +66 86 3175 820</p>
-            <p style="font-size: 14px;"><span class="glyphicon glyphicon-envelope"></span> shareed@gmail.co.th</a></p>
-        </div>
-        <div class="col-sm-1"></div>
-    </div>
-</div>
-      
-</footer>
+    </footer>
 </body>
+
 </html>
