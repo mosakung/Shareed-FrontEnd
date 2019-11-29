@@ -5,9 +5,9 @@ const urlParams = new URLSearchParams(window.location.search);
 
 const getUrl = removeParam("page", window.location.href);
 
-httpGET('http://localhost:3000/shareed/review-book', urlParams.get("page"), (state, json) => {
+httpGET('http://localhost:3000/shareed/share-note', urlParams.get("page"), (state, json) => {
     json.data.forEach(function (data) {
-        $('.fetch-all-review-book').append(fourmCard(data));
+        $('.fetch-all-share-note').append(fourmCard(data));
     });
     
     let patternPage = [``]
@@ -24,7 +24,7 @@ httpGET('http://localhost:3000/shareed/review-book', urlParams.get("page"), (sta
 
     patternPage = patternPage + '<a href="'+ getUrl + 'page=' + (i-1) + '">&raquo;</a>'
 
-    $('.fetch-page-review-book').append(patternPage);
+    $('.fetch-page-share-note').append(patternPage);
 
     let patternTag = [``];
 
@@ -36,7 +36,7 @@ httpGET('http://localhost:3000/shareed/review-book', urlParams.get("page"), (sta
        })
    })
 
-    $('.fetch-tag-review-book').append(patternTag);
+    $('.fetch-tag-share-note').append(patternTag);
 })
 
 function fourmCard(data) {
@@ -49,7 +49,7 @@ function fourmCard(data) {
             <div class="col-sm-9" style="background-color: whitesmoke; width:390px;height: 140px; padding: 15px;">
                 <p style="color: red;">Share Note</p>
                 <p>${data.Title}</p>
-                <p>Day: ${(data.Date_Time).substring(0,10)} By: ${data.UserName}</p>
+                <p>Day: ${(data.Date_Time).substring(0,10)} & By: ${data.UserName}</p>
             </div>
         </div> 
     </div>

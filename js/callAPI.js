@@ -1,4 +1,4 @@
-function httpGET(url, page, callback) {
+export function httpGET(url, page, callback) {
     const Http = new XMLHttpRequest();
     url = url.concat('/' + page);
     Http.open("GET", url, true);
@@ -12,7 +12,7 @@ function httpGET(url, page, callback) {
     }
 }
 
-function httpGET(url, postId, userId, callback) {
+export function httpIdGET(url, postId, userId, callback) {
     const Http = new XMLHttpRequest();
     url = url.concat('/' + postId + '/' + userId);
     Http.open("GET", url, true);
@@ -25,7 +25,7 @@ function httpGET(url, postId, userId, callback) {
     }
 }
 
-function httpPOST(url, userId, body, callback) {
+export function httpPOST(url, userId, body, callback) {
     const Http = new XMLHttpRequest();
     url = url.concat('/' + userId);
     Http.open("POST", url, true);
@@ -38,9 +38,9 @@ function httpPOST(url, userId, body, callback) {
             callback(true, Http.responseText);
         }
     }
-}
+} 
 
-function httpPUT(url, postId, userId, body, callback) {
+export function httpPUT(url, postId, userId, body, callback) {
     const Http = new XMLHttpRequest();
     url = url.concat('/' + postId + '/' + userId);
     Http.open("PUT", url, true);
@@ -55,7 +55,7 @@ function httpPUT(url, postId, userId, body, callback) {
     }
 }
 
-function httpDELETE(url, postId, userId, callback) {
+export function httpDELETE(url, postId, userId, callback) {
     const Http = new XMLHttpRequest();
     url = url.concat('/' + postId + '/' + userId);
     Http.open("DELETE", url, true);
@@ -68,5 +68,3 @@ function httpDELETE(url, postId, userId, callback) {
         }
     }
 }
-
-export default { httpGET, httpPOST, httpPUT, httpDELETE };

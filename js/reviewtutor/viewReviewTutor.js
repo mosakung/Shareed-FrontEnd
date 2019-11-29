@@ -5,9 +5,9 @@ const urlParams = new URLSearchParams(window.location.search);
 
 const getUrl = removeParam("page", window.location.href);
 
-httpGET('http://localhost:3000/shareed/review-book', urlParams.get("page"), (state, json) => {
+httpGET('http://localhost:3000/shareed/review-tutor', urlParams.get("page"), (state, json) => {
     json.data.forEach(function (data) {
-        $('.fetch-all-review-book').append(fourmCard(data));
+        $('.fetch-all-review-tutor').append(fourmCard(data));
     });
     
     let patternPage = [``]
@@ -24,7 +24,7 @@ httpGET('http://localhost:3000/shareed/review-book', urlParams.get("page"), (sta
 
     patternPage = patternPage + '<a href="'+ getUrl + 'page=' + (i-1) + '">&raquo;</a>'
 
-    $('.fetch-page-review-book').append(patternPage);
+    $('.fetch-page-review-tutor').append(patternPage);
 
     let patternTag = [``];
 
@@ -36,7 +36,7 @@ httpGET('http://localhost:3000/shareed/review-book', urlParams.get("page"), (sta
        })
    })
 
-    $('.fetch-tag-review-book').append(patternTag);
+    $('.fetch-tag-review-tutor').append(patternTag);
 })
 
 function fourmCard(data) {
