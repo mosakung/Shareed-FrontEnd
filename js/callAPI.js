@@ -68,3 +68,5 @@ export function httpDELETE(url, postId, userId, callback) {
         }
     }
 }
+
+export let userId = '100000001';

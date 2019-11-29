@@ -57,7 +57,7 @@ function httpPUT(url, postId, userId, body, callback) {
 
 function httpDELETE(url, postId, userId, callback) {
     const Http = new XMLHttpRequest();
-    url =url.concat('/' + postId + '/' + userId);
+    url = url.concat('/' + postId + '/' + userId);
     Http.open("DELETE", url, true);
     Http.send();
 
@@ -68,8 +68,6 @@ function httpDELETE(url, postId, userId, callback) {
         }
     }
 }
-
-export default httpDELETE;
 
 /* httpDELETE('http://localhost:3000/shareed/review-book', 'a1000000001', '100000001', (json) => {
     console.log(json);
@@ -96,7 +94,7 @@ export default httpDELETE;
             "Picture": "onePic.jpg"
         }
     ]
-    };
+};
 
 httpPUT('http://localhost:3000/shareed/review-book', 'a1000000001', '100000001', bodyPut, (json) => {
     console.log(json);
@@ -125,33 +123,36 @@ function renderCardReviewBook(data, index) {
     );
 } */
 
-/* const body = {
-    "Cover": "covernote.jpg",
-    "Subject_Name": "notetes",
-    "Section": "1",
-    "Instructor_Name": "t2",
-    "Semeter": "1",
-    "Title": "s22",
-    "tag": [{
-        "TagDetail": "oe"
-    },
-    {
-        "TagDetail": "t"
-    },
-    {
-        "TagDetail": "t"
-    }
-    ],
-    "content": [
-        {
-            "Picture": "i.jpg"
+/* const nee =
+    `{
+        "Cover": "covernote.jpg",
+        "Subject_Name": "notetes",
+        "Section": "1",
+        "Instructor_Name": "t2",
+        "Semeter": "1",
+        "Title": "s22",
+        "tag": [{
+            "TagDetail": "oe"
         },
         {
-            "Picture": "ic.jpg"
+            "TagDetail": "t"
+        },
+        {
+            "TagDetail": "t"
         }
-    ]
-};
+        ],
+        "content": [
+            {
+                "Picture": "i.jpg"
+            },
+            {
+                "Picture": "ic.jpg"
+            }
+        ]
+    }`;
 
-httpPost('http://localhost:3000/shareed/share-note', 100000001, body, (json) => {
+const body = JSON.parse(nee);
+
+httpPOST('http://localhost:3000/shareed/share-note', 100000001, body, (json) => {
     console.log(json);
 }) */
