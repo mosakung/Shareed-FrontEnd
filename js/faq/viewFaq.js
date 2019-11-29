@@ -5,7 +5,7 @@ const urlParams = new URLSearchParams(window.location.search);
 
 const getUrl = removeParam("page", window.location.href);
 
-httpGET('http://localhost:3000/shareed/review-book', urlParams.get("page"), (state, json) => {
+httpGET('http://localhost:3000/shareed/faq', urlParams.get("page"), (state, json) => {
     json.data.forEach(function (data) {
         $('.fetch-all-review-book').append(fourmCard(data));
     });
@@ -45,7 +45,7 @@ function fourmCard(data) {
         <div class="sm-block" style="height:150px; padding: 5px;">
             <div class="row">
                 <div class="col-sm-3">
-                    <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/${data.Cover}" width="140" height="140">
+                    <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/faqFarme.png" width="140" height="140">
                 </div>
                 <div class="col-sm-9" style="background-color: whitesmoke; width:390px;height: 140px; padding: 15px;">
                     <p style="color: red;">Share Note</p>
