@@ -41,6 +41,59 @@
     padding: 15px;
     margin: 5px;
   }
+  .card-sml{
+    position:auto;
+    width:auto;
+    height:160px;
+    background-color: whitesmoke;
+  }
+  .card-smw{
+    position:auto;
+    width:auto;
+    height:160px;
+    background-color: whitesmoke;
+    padding: 10px;
+    padding-left: 40px;
+  }
+  .flip-card {
+  background-color: whitesmoke;
+  width: auto;
+  height: 360px;
+  perspective: 1000px;
+  margin-top:5px;
+  margin-left: 10px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  background-color: whitesmoke;
+  color: black;
+}
+
+.flip-card-back {
+  background-color:whitesmoke;
+  color: black;
+  transform: rotateY(180deg);
+}
   #sharenote {padding-top:50px;height:650px;color: black;}
   #shareevent{padding-top:50px;height:650px;color: black;}
   #reviewsubject {padding-top:50px;height:650px;color: black;}
@@ -122,22 +175,40 @@
         <div id="sharenote" class="container-fluid">
             <div class="block">
                 <div class="row" style="padding: 10px;">
-                    <div class="col-sm-2"><img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/icon/ShareNote.png" width="90" height="69"></div>
+                    <div class="col-sm-2"><img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/icon/ShareNote.png" width=90 height=69></div>
                     <h1 style="font-family: Fredericka the Great;">Share Note</h1>
                     <div class="row">
                         <div class="col-sm-6" style="margin-top: 15px;">
-                            <a href="#" role="button">
-                                <div class="bg-block" style="padding: 5px; background: url('https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/PRE380_new.png'); background-size:90%; background-repeat: no-repeat;">
-                                    <div class="row" style="background-color: whitesmoke; width:390px;height: 140px; margin-top:250px; padding: 15px;">
-                                        <p style="color: red;">Share Note</p>
-                                        <p>สรุปเนื้อหาบทที่ 1 วิชา Economics</p>
-                                        <p>Day : By: </p>
+                            <a href="#" role="button"> 
+                                <div class="flip-card">
+                                    <div class="flip-card-inner">
+                                        <div class="flip-card-front">
+                                            <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/PRE380_new.png"  style="zoom: 120%;margin: 10px;">
+                                        </div>
+                                        <div class="flip-card-back">
+                                            <h4 style="color: red;">Share Note</h4>
+                                            <p class="card-text">Date: By: </p> 
+                                            <h2>สรุปเนื้อหาบทที่ 1 วิชา Economics</h2> 
+                                        </div>
                                     </div>
                                 </div>
                             </a>
                         </div>
                         <div class="col-sm-6" style="margin-top: 15px;">
-                            <div class="sm-block"> 4616835 </div>
+                            <div class="sm-block"> 
+                                <a href="#" role="button">
+                                    <div class="card-sml row">
+                                        <div class="col-sm-5" style="margin: 0px; padding: 0px;"> 
+                                            <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/1_new.png" style="zoom: 53%;">
+                                        </div>
+                                        <div class="col-sm-7" style="color: black;"> 
+                                            <p style="color: red;">Share Note</p>
+                                            <p>Dummy</p> 
+                                            <p class="card-text">Date: By: </p> 
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
                             <div class="sm-block" style="margin-top: 25px;"> 131656 </div>
                             <div class="row" style="margin-top: 25px;">
                                 <div class="col-sm-3"></div>
@@ -158,10 +229,36 @@
                     <h1 style="font-family: Fredericka the Great;">Share Event</h1>
                     <div class="row">
                         <div class="col-sm-6" style="margin-top: 15px;">
-                            <div class="bg-block"> 1323523 </div>
+                            <a href="#">
+                                <div class="flip-card">
+                                    <div class="flip-card-inner">
+                                        <div class="flip-card-front">
+                                            <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/4_new.png"  style="zoom: 120%; margin: 10px;">
+                                        </div>
+                                        <div class="flip-card-back">
+                                            <h4 style="color: red;">Share Event</h4>
+                                            <p class="card-text">Date: By: </p> 
+                                            <h2>Dummy</h2> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
                         <div class="col-sm-6" style="margin-top: 15px;">
-                            <div class="sm-block"> 613131313 </div>
+                            <div class="sm-block">
+                                <a href="#" role="button">
+                                    <div class="card-sml row">
+                                        <div class="col-sm-5" style="margin: 0px; padding: 0px;"> 
+                                            <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/4_new.png" style="zoom: 53%;">
+                                        </div>
+                                        <div class="col-sm-7" style="color: black;"> 
+                                            <p style="color: red;">Share Event</p>
+                                            <p>Dummy</p> 
+                                            <p class="card-text">Date: By: </p> 
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
                             <div class="sm-block" style="margin-top: 25px;"> 136895 </div>
                             <div class="row" style="margin-top: 25px;">
                                 <div class="col-sm-3"></div>
@@ -180,7 +277,14 @@
                 <div class="row container-fluid" style="padding: 10px;">
                     <div class="col-sm-2"><img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/icon/ReviewSubject.png" width="90" height="69"></div>
                     <h1 style="font-family: Fredericka the Great;">Review Subject</h1>
-                    <div class="sm-block" style="margin-top: 25px;"> 12323313 </div>
+                    <div class="sm-block" style="margin-top: 25px;">
+                        <div class="card-smw row">
+                            <p style="color: red;">Review Subject</p>
+                            <p style="font-size: 25px;">CPE 332</p>
+                            <p>Dummy</p>
+                            <p>Day : By: </p>
+                        </div>
+                    </div>
                     <div class="sm-block" style="margin-top: 25px;"> 12115631 </div>
                     <div class="row" style="margin-top: 25px;">
                         <div class="col-sm-4"></div>
@@ -199,12 +303,40 @@
                     <h1 style="font-family: Fredericka the Great;">Review Book</h1>
                     <div class="row">
                         <div class="col-sm-6" style="margin-top: 15px;">
-                            <div class="bg-block"> 136131655 </div>
+                            <a href="#">
+                                <div class="flip-card">
+                                    <div class="flip-card-inner">
+                                        <div class="flip-card-front">
+                                            <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/coverbook.png"  style="zoom: 120%; margin: 10px;">
+                                        </div>
+                                        <div class="flip-card-back">
+                                            <h4 style="color: red;">Review Book</h4>
+                                            <p class="card-text">Date: By: </p> 
+                                            <h2>Dummy</h2> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
                         <div class="col-sm-6" style="margin-top: 15px;">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <div class="sm-block"> 15431 </div>
+                                    <div class="sm-block" style="padding-top: 0px; padding-left: 0px;">
+                                        <a href="#">
+                                            <div class="flip-card" style="height: 130px;">
+                                                <div class="flip-card-inner">
+                                                    <div class="flip-card-front">
+                                                        <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/coverbook.png"  style="zoom: 55%;">
+                                                    </div>
+                                                    <div class="flip-card-back" style="font-size: 12px;">
+                                                        <p style="color: red;">Review Book</p>
+                                                        <p class="card-text">Date: By: </p> 
+                                                        <h4>Dummy</h4> 
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
                                     <div class="sm-block" style="margin-top: 25px;"> 1316131 </div>
                                 </div>
                                 <div class="col-sm-6">
@@ -231,7 +363,18 @@
                     <h1 style="font-family: Fredericka the Great;">Review Tutor</h1>
                     <div class="row">
                         <div class="col-sm-4" style="margin-top: 15px;">
-                            <div class="bg-block" style="height:350px;"> 47865312 </div>
+                            <a href="#" role="button">
+                                <div class="bg-block" style="height:350px;">
+                                    <div class="card row">
+                                        <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/covertutor.png" alt="John" style="width:100%">
+                                        <div class="row" style="padding: 15px;">
+                                            <p style="color: red;">Review Tutor</p>
+                                            <h4>Dummy</h4> 
+                                            <p>Date: By: </p> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
                         <div class="col-sm-4" style="margin-top: 15px;">
                             <div class="bg-block" style="height:350px;"> 97864521 </div>
@@ -260,7 +403,7 @@
                             <div class="bg-block" style="margin: 30px;height: 300px;"> 5623265 </div>
                         </div>
                         <div class="col-sm-4" style="margin-top: 15px;">
-                            <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/icon/ReviewTutor.png" width="90" height="69">
+                            <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/ask.png" style="zoom: 100%;">
                         </div>
                     </div> 
                     <div class="row" style="margin-top: 25px;">
