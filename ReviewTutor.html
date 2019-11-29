@@ -2,108 +2,74 @@
 <html>
 
 <head>
-    <title>ShareEd</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/css?family=Mali|Fredericka the Great" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <style>
-        body {
-            background-image: linear-gradient(to bottom right, white, lightblue, deepskyblue, cornflowerblue, grey);
-            font-family: Mali;
-            position: relative;
-        }
+  <title>ShareEd</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Mali|Fredericka the Great" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <style>
+  body {
+    background-image: linear-gradient(to bottom right,white,lightblue,deepskyblue, cornflowerblue,grey);
+    font-family :Mali;
+    position: relative; 
+  }
+  .block{
+    position:auto;
+    width:auto;
+    height:580px;
+    background-color: rgba(255, 255, 255, 0.37);
+    border-radius: 3px;
+    padding: 30px;
+    margin: 10px;
+  }
+  .bg-block{
+    position:auto;
+    width:auto;
+    height:420px;
+    background-color: whitesmoke;
+    border-radius: 3px;
+    padding: 15px;
+    margin: 5px;
+  }
+  .sm-block{
+    position:auto;
+    width:auto;
+    height:160px;
+    background-color: whitesmoke;
+    border-radius: 3px;
+    padding: 15px;
+    margin: 5px;
+  }
+  .pagination {
+  display: inline-block;
+    }
 
-        .block {
-            position: auto;
-            width: auto;
-            height: 580px;
-            background-color: rgba(255, 255, 255, 0.37);
-            border-radius: 3px;
-            padding: 30px;
-            margin: 10px;
-        }
+    .pagination a {
+    color: black;
+    float: left;
+    padding: 5px 15px;
+    text-decoration: none;
+    }
 
-        .bg-block {
-            position: auto;
-            width: auto;
-            height: 420px;
-            background-color: rgba(255, 255, 255, 0.37);
-            border-radius: 3px;
-            padding: 15px;
-            margin: 5px;
-        }
+    .pagination a.active {
+    background-color: rgb(100, 100, 100);
+    color: white;
+    border-radius: 10px;
+    }
 
-        .sm-block {
-            position: auto;
-            width: auto;
-            height: 160px;
-            background-color: rgba(255, 255, 255, 0.37);
-            border-radius: 3px;
-            padding: 15px;
-            margin: 5px;
-        }
-
-        .pagination {
-            display: inline-block;
-        }
-
-        .pagination a {
-            color: black;
-            float: left;
-            padding: 5px 15px;
-            text-decoration: none;
-        }
-
-        .pagination a.active {
-            background-color: rgb(100, 100, 100);
-            color: white;
-            border-radius: 10px;
-        }
-
-        .pagination a:hover:not(.active) {
-            background-color: #ddd;
-            border-radius: 10px;
-        }
-
-        #sharenote {
-            padding-top: 50px;
-            height: 650px;
-            color: black;
-        }
-
-        #shareevent {
-            padding-top: 50px;
-            height: 650px;
-            color: black;
-        }
-
-        #reviewsubject {
-            padding-top: 50px;
-            height: 650px;
-            color: black;
-        }
-
-        #reviewtutor {
-            padding-top: 50px;
-            height: 650px;
-            color: black;
-        }
-
-        #reviewbook {
-            padding-top: 50px;
-            height: 650px;
-            color: black;
-        }
-
-        #boardfaq {
-            padding-top: 50px;
-            height: 650px;
-            color: black;
-        }
-    </style>
+    .pagination a:hover:not(.active) {
+    background-color: #ddd;
+    border-radius: 10px;
+    }
+  #sharenote {padding-top:50px;height:650px;color: black;}
+  #shareevent{padding-top:50px;height:650px;color: black;}
+  #reviewsubject {padding-top:50px;height:650px;color: black;}
+  #reviewtutor {padding-top:50px;height:650px;color: black; }
+  #reviewbook {padding-top:50px;height:650px;color: black; }
+  #boardfaq {padding-top:50px;height:650px;color: black; }
+  </style>
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
