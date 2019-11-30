@@ -206,6 +206,18 @@
             border-radius: 50%;
             background: #ccc;
         }
+
+        img#blah {
+            top: 0%;
+            z-index: -1;
+        }
+
+        img#remove-picture {
+            width: 5%;
+            height: 5%;
+            left: 94.8%;
+            /* right: 10%; */
+        }
     </style>
     <script>
         $('#add_more').click(function () {
@@ -290,7 +302,7 @@
         function preview_images() {
             var total_file = document.getElementById("images").files.length;
             for (var i = 0; i < total_file; i++) {
-                $('#image_preview').append("<div class='col-sm-2'><img class='img-responsive' src='" + URL.createObjectURL(event.target.files[i]) + "'></div>");
+                $('#image_preview').append("<div class='card col-sm-12 center'><a href='#'><img id='remove-picture' src='https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/remove.png' style='position:relative;'></a><center> <img class='img-responsive' src='" + URL.createObjectURL(event.target.files[i]) + "'></div>");
             }
         }
     </script>
@@ -372,11 +384,17 @@
     </nav>
     <div class="center"
         style="background-color: rgba(255, 255, 255, 0.37);margin-top: 50px;width: 864px;height: 294px;">
-        <img id="blah" src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/UploadPicture.png"
-            alt="your image" class="center" />
-        <input type="file" onchange="readURL(this);" class="center" />
+        <div class="center card">
+            <a href="#"><img id="remove-picture"
+                    src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/remove.png"
+                    style="position: relative;"></a>
+            <img id="blah"
+                src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/UploadPicture.png"
+                alt="your image" class="center card-img-top" style="position: absolute;">
+        </div>
     </div>
-    <div class="row" style="margin-top: 30px;">
+    <input type="file" onchange="readURL(this);" class="center">
+    <div class="row" style="margin-top: 0px;">
         <div class="box" style="height:50px; margin-top: 10px;">
             <div class="col-sm-4">
                 Owner :
@@ -410,28 +428,31 @@
                 placeholder="e.g. #CPExxx #Calculus">
             <hr>
             Description :
-            <br>
-            <br>
-            <div>
-                <textarea name="subject" cols="90" rows="20"
-                    style="border: none; background-color:rgba(255, 255, 255, 0.37);margin-left:50px;">
-            </textarea>
-            </div>
-            <div class="row center">
-                <div class="col-sm-1" style="margin-top: 10px;"></div>
-                <div class="col-sm-6" id="image_preview"></div>
-            </div>
-            <div class="row">
-                <div class="col-sm-6" style="margin-top: 10px;"></div>
-                <div class="col-sm-3">
-                    <input type="file" class="form-control" id="images" name="images[]" onchange="preview_images();"
-                        multiple />
+            <div class="center"
+                style="background-color: rgba(255, 255, 255, 0.37);margin-bottom: 10px;width: 664px;height:auto;">
+                <div class="center">
+                    <textarea cols="78" rows="5" placeholder="Write your description"
+                        style="border: none; background-color:transparent; margin-top: 5px;">
+                    </textarea>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-6" id="image_preview"></div>
+                    <div class="col-sm-3"></div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-8" style="margin-top: 10px;"></div>
+                    <div class="col-sm-4">
+                        <input type="file" class="form-control" id="images" name="images[]" onchange="preview_images();"
+                            multiple />
+                    </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-1">
-                    <a href="http://127.0.0.1:5500/ReviewTutor.html" type="button" class="btn btn-danger btn-lg"
-                        style="font-size:20px;border: none;margin-left: 620px;">Cancel</a>
+                    <button type="button" class="btn btn-danger btn-lg"
+                        style="font-size:20px;border: none;margin-left: 620px;">Cancel</button>
                 </div>
                 <div class="col-sm-1">
                     <input type="submit" value="Post" class="btn btn-primary btn-lg "
