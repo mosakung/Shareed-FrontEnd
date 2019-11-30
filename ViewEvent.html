@@ -163,7 +163,9 @@
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-sm-11"><p class="panel-title"><span class="glyphicon glyphicon-comment"></span>  Comments</p></div>
-                                <div class="col-sm-1"><span class="label label-info"><textbox id="numComment">17</textbox></span></div>
+                                <div class="col-sm-1"><span class="label label-info">
+                                    <textbox id="numComment">17</textbox></span>
+                                </div>
                             </div>
                         </div>
                         <div class="panel-body">
@@ -214,6 +216,18 @@
                                                     &nbsp&nbsp&nbsp Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
                                                 euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim
                                                 </textbox>
+                                                <div  style="display: none;">
+                                                    <textarea name="comment" id="comment" class="responsive" style="border-color:black; background-color:white;">
+                                                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim
+                                                    </textarea>
+                                                    <div class="row">
+                                                        <div class="col-sm-9"></div>
+                                                        <div class="col-sm-3">
+                                                            <a href="#" class="btn btn-danger btn-xs" title="Cancel">Cancel</a>
+                                                            <a href="#" class="btn btn-success btn-xs" title="Submit">Submit</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <br>
                                             <div class="row">
@@ -237,7 +251,7 @@
                                                     <div class="col-sm-2">
                                                         <!-- <a href="#" class="btn btn-primary btn-xs" title="Edited"><span class="glyphicon glyphicon-pencil"></span></a>
                                                         <a href="#" class="btn btn-danger btn-xs" title="Deleted"><span class="glyphicon glyphicon-trash"></span></a> -->
-                                                        <a href="#" class="btn btn-info btn-outline-secondary btn-xs" title="Report" style="background-color:rgba(119, 117, 117, 0.664);">Report</a>
+                                                        <a href="#" onclick="alert('Cannot use function Profile.')" class="btn btn-info btn-outline-secondary btn-xs" title="Report" style="background-color:rgba(119, 117, 117, 0.664);">Report</a>
                                                     </div>
                                             </div>
                                             <br>
