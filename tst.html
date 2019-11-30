@@ -205,6 +205,18 @@
             border-radius: 50%;
             background: #ccc;
         }
+
+        img#blah {
+            top: 0%;
+            z-index: -1;
+        }
+
+        img#remove-picture {
+            width: 5%;
+            height: 5%;
+            left: 94.8%;
+            /* right: 10%; */
+        }
     </style>
     <script>
         $('#add_more').click(function () {
@@ -372,11 +384,14 @@
     <div class="center"
         style="background-color: rgba(255, 255, 255, 0.37);margin-top: 50px;width: 864px;height: 294px;">
         <div class="card">
-                <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/remove.png" class="card-img-top">
-            <img id="blah" src="Photo/UploadPicture.png" alt="your image" class="center card-img-top" />
+            <a href="#"><img id="remove-picture"
+                src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/remove.png"
+                style="position: relative;"></a>
+            <img id="blah" src="Photo/UploadPicture.png" alt="your image" class="center card-img-top"
+                style="position: absolute;">
         </div>
-        <input type="file" onchange="readURL(this);" class="center" />
     </div>
+    <input type="file" onchange="readURL(this);" class="center" />
     <div class="row">
         <div class="box" style="height:50px; margin-top: 40px;">
             <div class="col-sm-4">
