@@ -9,7 +9,6 @@ window.onload = function () {
         let instructionName = document.getElementById("instruction-name-share-note-create").value;
         let semeter = document.getElementById("semeter-share-note-create").value;
         let tag = document.getElementById('tag-share-note-create').value;
-        let description = document.getElementById('description-share-note-create').value;
         let pictureArray = document.getElementById('picture-array-share-note-create').value;
 
         let tagArray = tag.split(/[#]/g).filter(n => n);
