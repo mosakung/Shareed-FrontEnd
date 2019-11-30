@@ -29,8 +29,6 @@
     height:420px;
     background-color: whitesmoke;
     border-radius: 3px;
-    padding: 15px;
-    margin: 5px;
   }
   .sm-block{
     position:auto;
@@ -38,8 +36,6 @@
     height:160px;
     background-color: whitesmoke;
     border-radius: 3px;
-    padding: 15px;
-    margin: 5px;
   }
   .card-sml{
     position:auto;
@@ -52,16 +48,15 @@
     width:auto;
     height:160px;
     background-color: whitesmoke;
-    padding: 10px;
-    padding-left: 40px;
   }
   .flip-card {
-  background-color: whitesmoke;
-  width: auto;
-  height: 360px;
-  perspective: 1000px;
-  margin-top:5px;
-  margin-left: 10px;
+    position:auto;
+    background-color: whitesmoke;
+    width: auto;
+    height: 380px;
+    perspective: 1000px;
+    margin-top:0px;
+    margin-left: 0px;
 }
 
 .flip-card-inner {
@@ -93,6 +88,10 @@
   background-color:whitesmoke;
   color: black;
   transform: rotateY(180deg);
+}
+.responsive {
+  width: 100%;
+  height: auto;
 }
   #sharenote {padding-top:50px;height:650px;color: black;}
   #shareevent{padding-top:50px;height:650px;color: black;}
@@ -179,11 +178,11 @@
                     <h1 style="font-family: Fredericka the Great;">Share Note</h1>
                     <div class="row">
                         <div class="col-sm-6" style="margin-top: 15px;">
-                            <a href="#" role="button"> 
+                            <a href="http://127.0.0.1:5500/comment.html?page=1" role="button"> 
                                 <div class="flip-card">
                                     <div class="flip-card-inner">
                                         <div class="flip-card-front">
-                                            <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/PRE380_new.png"  style="zoom: 120%;margin: 10px;">
+                                            <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/PRE380_new.png"  class="responsive">
                                         </div>
                                         <div class="flip-card-back">
                                             <h4 style="color: red;">Share Note</h4>
@@ -195,17 +194,15 @@
                             </a>
                         </div>
                         <div class="col-sm-6" style="margin-top: 15px;">
-                            <div class="sm-block"> 
-                                <a href="#" role="button">
-                                    <div class="card-sml row">
-                                        <div class="col-sm-5" style="margin: 0px; padding: 0px;"> 
-                                            <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/1_new.png" style="zoom: 53%;">
-                                        </div>
-                                        <div class="col-sm-7" style="color: black;"> 
-                                            <p style="color: red;">Share Note</p>
-                                            <p>Dummy</p> 
-                                            <p class="card-text">Date: By: </p> 
-                                        </div>
+                            <div class="sm-block">
+                                <a href="#" class="card-sml">
+                                    <div class="col-sm-5" style="margin: 0px; padding: 0px;"> 
+                                        <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/1_new.png"  class="responsive">
+                                    </div>
+                                    <div class="col-sm-7" style="color: black; padding-left: 25px; padding-top: 10px;"> 
+                                        <p style="color: red; font-size: 10px; ">Share Note</p>
+                                        <p>Dummy</p> 
+                                        <p style="font-size: 10px; ">Date: By: </p> 
                                     </div>
                                 </a>
                             </div>
@@ -213,7 +210,7 @@
                             <div class="row" style="margin-top: 25px;">
                                 <div class="col-sm-3"></div>
                                 <div class="col-sm-6"> 
-                                    <a href="http://127.0.0.1:5500/ShareNote.html" class="btn btn-primary btn-outline-secondary" role="button" style="background-color:rgba(119, 117, 117, 0.664); width: 100%;">View All</a>  
+                                    <a href="http://127.0.0.1:5500/ShareNote.html?page=1" class="btn btn-primary btn-outline-secondary" role="button" style="background-color:rgba(119, 117, 117, 0.664); width: 100%;">View All</a>  
                                 </div>
                                 <div class="col-sm-3"></div>
                             </div>
@@ -233,7 +230,7 @@
                                 <div class="flip-card">
                                     <div class="flip-card-inner">
                                         <div class="flip-card-front">
-                                            <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/4_new.png"  style="zoom: 120%; margin: 10px;">
+                                            <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/4_new.png"  class="responsive">
                                         </div>
                                         <div class="flip-card-back">
                                             <h4 style="color: red;">Share Event</h4>
@@ -246,16 +243,14 @@
                         </div>
                         <div class="col-sm-6" style="margin-top: 15px;">
                             <div class="sm-block">
-                                <a href="#" role="button">
-                                    <div class="card-sml row">
-                                        <div class="col-sm-5" style="margin: 0px; padding: 0px;"> 
-                                            <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/4_new.png" style="zoom: 53%;">
-                                        </div>
-                                        <div class="col-sm-7" style="color: black;"> 
-                                            <p style="color: red;">Share Event</p>
-                                            <p>Dummy</p> 
-                                            <p class="card-text">Date: By: </p> 
-                                        </div>
+                                <a href="#" class="card-sml">
+                                    <div class="col-sm-5" style="margin: 0px; padding: 0px;"> 
+                                        <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/4_new.png" class="responsive">
+                                    </div>
+                                    <div class="col-sm-7" style="color: black; padding-left: 25px; padding-top: 10px;"> 
+                                        <p style="color: red; font-size: 10px; ">Share Event</p>
+                                        <p>Dummy</p> 
+                                        <p style="font-size: 10px; ">Date: By: </p> 
                                     </div>
                                 </a>
                             </div>
@@ -263,7 +258,7 @@
                             <div class="row" style="margin-top: 25px;">
                                 <div class="col-sm-3"></div>
                                 <div class="col-sm-6"> 
-                                    <a href="http://127.0.0.1:5500/ShareEvent.html" class="btn btn-primary btn-outline-secondary" role="button" style="background-color:rgba(119, 117, 117, 0.664); width: 100%;">View All</a>  
+                                    <a href="http://127.0.0.1:5500/ShareEvent.html?page=1" class="btn btn-primary btn-outline-secondary" role="button" style="background-color:rgba(119, 117, 117, 0.664); width: 100%;">View All</a>  
                                 </div>
                                 <div class="col-sm-3"></div>
                             </div>
@@ -274,22 +269,24 @@
         </div>
         <div id="reviewsubject" class="container-fluid">
             <div class="block">
-                <div class="row container-fluid" style="padding: 10px;">
+                <div class="row" style="padding: 10px;">
                     <div class="col-sm-2"><img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/icon/ReviewSubject.png" width="90" height="69"></div>
                     <h1 style="font-family: Fredericka the Great;">Review Subject</h1>
                     <div class="sm-block" style="margin-top: 25px;">
-                        <div class="card-smw row">
-                            <p style="color: red;">Review Subject</p>
-                            <p style="font-size: 25px;">CPE 332</p>
-                            <p>Dummy</p>
-                            <p>Day : By: </p>
-                        </div>
+                        <a href="#" class="card-sml">
+                            <div class="col-sm-12" style="color: black; padding-left: 25px; padding-top: 20px;"> 
+                                <p style="color: red; font-size: 10px; ">Review Subject</p>
+                                <p style="font-size: 25px;">CPE 332</p>
+                                <p>&nbsp&nbsp&nbsp Dummy</p> 
+                                <p style="font-size: 10px; ">Date: By: </p> 
+                            </div>
+                        </a>
                     </div>
                     <div class="sm-block" style="margin-top: 25px;"> 12115631 </div>
                     <div class="row" style="margin-top: 25px;">
                         <div class="col-sm-4"></div>
                         <div class="col-sm-4"> 
-                            <a href="http://127.0.0.1:5500/ReviewSubject.html" class="btn btn-primary btn-outline-secondary" role="button" style="background-color:rgba(119, 117, 117, 0.664); width: 100%;">View All</a>  
+                            <a href="http://127.0.0.1:5500/ReviewSubject.html?page=1" class="btn btn-primary btn-outline-secondary" role="button" style="background-color:rgba(119, 117, 117, 0.664); width: 100%;">View All</a>  
                         </div>
                         <div class="col-sm-4"></div>
                     </div>
@@ -307,7 +304,7 @@
                                 <div class="flip-card">
                                     <div class="flip-card-inner">
                                         <div class="flip-card-front">
-                                            <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/coverbook.png"  style="zoom: 120%; margin: 10px;">
+                                            <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/coverbook.png"  class="responsive">
                                         </div>
                                         <div class="flip-card-back">
                                             <h4 style="color: red;">Review Book</h4>
@@ -323,10 +320,10 @@
                                 <div class="col-sm-6">
                                     <div class="sm-block" style="padding-top: 0px; padding-left: 0px;">
                                         <a href="#">
-                                            <div class="flip-card" style="height: 130px;">
+                                            <div class="flip-card" style="height:auto; width:auto;">
                                                 <div class="flip-card-inner">
                                                     <div class="flip-card-front">
-                                                        <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/coverbook.png"  style="zoom: 55%;">
+                                                        <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/coverbook.png"  class="responsive">
                                                     </div>
                                                     <div class="flip-card-back" style="font-size: 12px;">
                                                         <p style="color: red;">Review Book</p>
@@ -347,7 +344,7 @@
                             <div class="row" style="margin-top: 25px;">
                                 <div class="col-sm-3"></div>
                                 <div class="col-sm-6"> 
-                                    <a href="http://127.0.0.1:5500/ReviewBook.html" class="btn btn-primary btn-outline-secondary" role="button" style="background-color:rgba(119, 117, 117, 0.664); width: 100%;">View All</a>  
+                                    <a href="http://127.0.0.1:5500/ReviewBook.html?page=1" class="btn btn-primary btn-outline-secondary" role="button" style="background-color:rgba(119, 117, 117, 0.664); width: 100%;">View All</a>  
                                 </div>
                                 <div class="col-sm-3"></div>
                             </div>   
@@ -357,33 +354,31 @@
             </div>
         </div>
         <div id="reviewtutor" class="container-fluid">
-            <div class="block container-fluid">
+            <div class="block">
                 <div class="row container-fluid" style="padding: 10px;">
                     <div class="col-sm-2"><img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/icon/ReviewTutor.png" width="90" height="69"></div>
                     <h1 style="font-family: Fredericka the Great;">Review Tutor</h1>
                     <div class="row">
                         <div class="col-sm-4" style="margin-top: 15px;">
-                            <a href="#" role="button">
-                                <div class="bg-block" style="height:350px;">
-                                    <div class="card row">
-                                        <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/covertutor.png" alt="John" style="width:100%">
-                                        <div class="row" style="padding: 15px;">
-                                            <p style="color: red;">Review Tutor</p>
-                                            <h4>Dummy</h4> 
-                                            <p>Date: By: </p> 
-                                        </div>
+                            <div class="bg-block" style="height:350px;">
+                                <a href="#" class="card-sml"> 
+                                    <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/covertutor.png" class="responsive">
+                                    <div class="col-sm-12" style="color: black; padding-left: 25px; padding-top: 10px;"> 
+                                        <p style="color: red; font-size: 10px; ">Review Tutor</p>
+                                        <p>Dummy</p> 
+                                        <p style="font-size: 10px; ">Date: By: </p> 
                                     </div>
-                                </div>
-                            </a>
+                                </a>
+                            </div>
                         </div>
                         <div class="col-sm-4" style="margin-top: 15px;">
                             <div class="bg-block" style="height:350px;"> 97864521 </div>
                             <div class="row" style="margin-top: 25px;">
-                                <div class="col-sm-3"></div>
-                                <div class="col-sm-6"> 
-                                    <a href="http://127.0.0.1:5500/ReviewTutor.html" class="btn btn-primary btn-outline-secondary" role="button" style="background-color:rgba(119, 117, 117, 0.664); width: 100%;">View All</a>  
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-10"> 
+                                    <a href="http://127.0.0.1:5500/ReviewTutor.html?page=1" class="btn btn-primary btn-outline-secondary" role="button" style="background-color:rgba(119, 117, 117, 0.664); width: 100%;">View All</a>  
                                 </div>
-                                <div class="col-sm-3"></div>
+                                <div class="col-sm-1"></div>
                             </div>
                         </div>
                         <div class="col-sm-4" style="margin-top: 15px;">
@@ -399,19 +394,44 @@
                     <div class="col-sm-2"><img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/icon/FAQ.png" width="90" height="69"></div>
                     <h1 style="font-family: Fredericka the Great;">Board FAQ</h1>
                     <div class="row">
-                        <div class="col-sm-8" >
-                            <div class="bg-block" style="margin: 30px;height: 300px;"> 5623265 </div>
+                        <div class="col-sm-6" style="margin-top: 15px;">
+                            <a href="#">
+                                <div class="flip-card">
+                                    <div class="flip-card-inner">
+                                        <div class="flip-card-front">
+                                            <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/coverFAQ.png"  class="responsive">
+                                        </div>
+                                        <div class="flip-card-back">
+                                            <h4 style="color: red;">Board FAQ</h4>
+                                            <p class="card-text">Date: By: </p> 
+                                            <h2>Dummy</h2> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
-                        <div class="col-sm-4" style="margin-top: 15px;">
-                            <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/ask.png" style="zoom: 100%;">
+                        <div class="col-sm-6" style="margin-top: 15px;">
+                            <div class="sm-block">
+                                <a href="#" class="card-sml">
+                                    <div class="col-sm-5" style="margin: 0px; padding: 0px;"> 
+                                        <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/coverFAQ.png" class="responsive">
+                                    </div>
+                                    <div class="col-sm-7" style="color: black; padding-left: 25px; padding-top: 10px;"> 
+                                        <p style="color: red; font-size: 10px; ">Board FAQ</p>
+                                        <p>Dummy</p> 
+                                        <p style="font-size: 10px; ">Date: By: </p> 
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="sm-block" style="margin-top: 25px;"> 136895 </div>
+                            <div class="row" style="margin-top: 25px;">
+                                <div class="col-sm-3"></div>
+                                <div class="col-sm-6"> 
+                                    <a href="http://127.0.0.1:5500/BoardFAQ.html?page=1" class="btn btn-primary btn-outline-secondary" role="button" style="background-color:rgba(119, 117, 117, 0.664); width: 100%;">View All</a>  
+                                </div>
+                                <div class="col-sm-3"></div>
+                            </div>
                         </div>
-                    </div> 
-                    <div class="row" style="margin-top: 25px;">
-                        <div class="col-sm-4"></div>
-                        <div class="col-sm-4">
-                            <a href="http://127.0.0.1:5500/BoardFAQ.html" class="btn btn-primary btn-outline-secondary" role="button" style="background-color:rgba(119, 117, 117, 0.664); width: 100%;">View All</a>  
-                        </div>
-                        <div class="col-sm-4"></div>
                     </div>
                 </div>
             </div>

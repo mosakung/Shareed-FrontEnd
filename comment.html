@@ -41,27 +41,59 @@
     padding: 15px;
     margin: 5px;
   }
-  .pagination {
-  display: inline-block;
-    }
+  .card-sml{
+    position:auto;
+    width:auto;
+    height:160px;
+    background-color: whitesmoke;
+  }
+  .card-smw{
+    position:auto;
+    width:auto;
+    height:160px;
+    background-color: whitesmoke;
+    padding: 10px;
+    padding-left: 40px;
+  }
+  .flip-card {
+  background-color: whitesmoke;
+  width: auto;
+  height: 360px;
+  perspective: 1000px;
+  margin-top:5px;
+  margin-left: 10px;
+}
 
-    .pagination a {
-    color: black;
-    float: left;
-    padding: 5px 15px;
-    text-decoration: none;
-    }
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
 
-    .pagination a.active {
-    background-color: rgb(100, 100, 100);
-    color: white;
-    border-radius: 10px;
-    }
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
 
-    .pagination a:hover:not(.active) {
-    background-color: #ddd;
-    border-radius: 10px;
-    }
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  background-color: whitesmoke;
+  color: black;
+}
+
+.flip-card-back {
+  background-color:whitesmoke;
+  color: black;
+  transform: rotateY(180deg);
+}
   #sharenote {padding-top:50px;height:650px;color: black;}
   #shareevent{padding-top:50px;height:650px;color: black;}
   #reviewsubject {padding-top:50px;height:650px;color: black;}
@@ -128,80 +160,65 @@
                 </div>
             </div>
         </div>
-    </nav>   
+    </nav>     
 
 <div class="row">
-    <div class="block" style="background: url('https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/HeaderFAQ.png'); background-size:100%; background-repeat: no-repeat;">
-        <h1 style="font-family: Fredericka the Great; font-size:100px; margin-top: 150px; margin-left:50px; padding: 20px;">Board FAQ</h1>
+    <div class="col-sm-2" style="margin-top: 90px; padding: 30px;">
     </div>
-    <div class="col-sm-2"></div>
-    <div class="col-sm-5">
-        <div id="shareNote" class="container-fluid">
-            <div style="margin-top: 15px;">
-                <div class="row">
-                    <a href="#" role="button">
-                        <div class="sm-block" style="height:150px; padding: 5px;">
-                            <div class="row">
-                                <div class="col-sm-3" >
-                                    <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/asking.png"  width="120" height="140">
+    <div class="col-sm-8">
+        <div id="comment" class="container-fluid">
+            <div class="block">
+                <div class="row" style="padding: 10px;">
+                    <div class="col-sm-2"><img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/icon/ShareNote.png" width=90 height=69></div>
+                    <h1 style="font-family: Fredericka the Great;">Share Note</h1>
+                    <div class="row">
+                        <div class="col-sm-6" style="margin-top: 15px;">
+                            <a href="#" role="button"> 
+                                <div class="flip-card">
+                                    <div class="flip-card-inner">
+                                        <div class="flip-card-front">
+                                            <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/PRE380_new.png"  style="zoom: 120%;margin: 10px;">
+                                        </div>
+                                        <div class="flip-card-back">
+                                            <h4 style="color: red;">Share Note</h4>
+                                            <p class="card-text">Date: By: </p> 
+                                            <h2>สรุปเนื้อหาบทที่ 1 วิชา Economics</h2> 
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-sm-9" style="background-color: whitesmoke; width:390px;height: 140px; padding: 15px;">
-                                    <p style="color: red;">Board FAQ</p>
-                                    <p>Dummy</p>
-                                    <p>Day : By: </p>
-                                </div>
-                            </div> 
+                            </a>
                         </div>
-                    </a>
-                    <div class="sm-block" style="height:150px; margin-top: 10px;"> 12115631 </div>
-                    <div class="sm-block" style="height:150px; margin-top: 10px;"> 78823313 </div>
-                    <div class="sm-block" style="height:150px; margin-top: 10px;"> 89215631 </div>
-                    <div class="row" style="margin-top: 25px;">
-                        <div class="col-sm-5"></div>
-                        <div class="col-sm-3"> 
-                            <div class="pagination ">
-                                <a href="#" class="btn disabled">&laquo;</a>
-                                <a href="#"class="active">1</a>
-                                <a href="#" class="btn disabled">&raquo;</a>
+                        <div class="col-sm-6" style="margin-top: 15px;">
+                            <div class="sm-block"> 
+                                <a href="#" role="button">
+                                    <div class="card-sml row">
+                                        <div class="col-sm-5" style="margin: 0px; padding: 0px;"> 
+                                            <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/1_new.png" style="zoom: 53%;">
+                                        </div>
+                                        <div class="col-sm-7" style="color: black;"> 
+                                            <p style="color: red;">Share Note</p>
+                                            <p>Dummy</p> 
+                                            <p class="card-text">Date: By: </p> 
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="sm-block" style="margin-top: 25px;"> 131656 </div>
+                            <div class="row" style="margin-top: 25px;">
+                                <div class="col-sm-3"></div>
+                                <div class="col-sm-6"> 
+                                    <a href="http://127.0.0.1:5500/ShareNote.html" class="btn btn-primary btn-outline-secondary" role="button" style="background-color:rgba(119, 117, 117, 0.664); width: 100%;">View All</a>  
+                                </div>
+                                <div class="col-sm-3"></div>
                             </div>
                         </div>
-                        <div class="col-sm-4"></div>
-                    </div>
+                    </div>      
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-sm-3 block" style="margin-top: 20px; height: 630px; width: min-content;">
-        <a href="#" class="btn btn-primary btn-outline-secondary  btn-lg" role="button" style="background-color:rgba(119, 117, 117, 0.664); width: 100%;">Create New FAQ</a>
-        <div class="row" style="margin-top: 20px;">
-            <p>Search</p>
-            <form class="nav navbar-nav navbar-form" action="#">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search" name="search">
-                    <div class="input-group-btn">
-                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <div class="row" style="margin-top: 20px;">
-            <p>Tag</p>
-            <a href="#" class="btn btn-info btn-sm" role="button">CPE</a>
-            <a href="#" class="btn btn-info btn-sm" role="button">Algorithm</a>
-            <a href="#" class="btn btn-info btn-sm" role="button">Engineer</a>
-            <a href="#" class="btn btn-info btn-sm" role="button">CPE212</a>
-            <a href="#" class="btn btn-info btn-sm" role="button">Algorithm</a>
-        </div>
-        <div class="row" style="margin-top: 20px;">
-            <p>Popular</p>
-            <div class="sm-block" style="height:80px;"> 17574 </div>
-            <div class="sm-block" style="height:80px; margin-top: 10px;"> 759228 </div>
-            <div class="sm-block" style="height:80px; margin-top: 10px;"> 282882 </div>
-        </div>
-    </div>
     <div class="col-sm-2"></div>
 </div>
-
 <footer>
 
     <div class="jumbotron" style="margin-bottom:0;">
