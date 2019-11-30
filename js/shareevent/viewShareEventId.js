@@ -3,26 +3,28 @@ import { removeParam } from '../removeParam.js';
 
 const urlParams = new URLSearchParams(window.location.search);
 
-httpIdGET('http://localhost:3000/shareed/share-note', urlParams.get("postID"), userId, (state, json) => {
+httpIdGET('http://localhost:3000/shareed/share-event', urlParams.get("postID"), userId, (state, json) => {
     document.getElementById('title').innerHTML = json.title;
     document.getElementById('owner').innerHTML = json.Username;
     document.getElementById('writeDown').innerHTML = json.dateTime;
-    document.getElementById('subjectName').innerHTML = json.subjectName;
-    document.getElementById('section').innerHTML = json.section;
-    document.getElementById('instructionName').innerHTML = json.instructorName;
-    document.getElementById('semeter').innerHTML = json.semeter;
-    document.getElementById('description').innerHTML = json.description;
+
+    //document.getElementById('eventName').innerHTML = json.description;
+    document.getElementById('location').innerHTML = json.location;
+    document.getElementById('condition').innerHTML = json.condition;
+    document.getElementById('register').innerHTML = json.register;
+    //document.getElementById('dateAndTime').innerHTML = json.description;
+    document.getElementById('description').innerHTML = json.describe;
     document.getElementById('content').innerHTML = json.content;
     document.getElementById('numComment').innerHTML = json.countComment;
 });
 
 /*{
-   shareNoteId: data[0].shareNoteID,
+   shareEventId: data[0].ShareEventID,
             cover: data[0].Cover,
-            /subjectName: data[0].Subject_Name,
-            /section: data[0].Section,
-            /instructorName: data[0].Instructor_Name,
-            /semeter: data[0].Semeter,
+            /register: data[0].Register,
+            /location: data[0].Location,
+            /condition: data[0].Condi,
+            /describe: data[0].Describ,
             /title: data[0].Title,
             userId: data[0].UserID,
             /dateTime: data[0].Date_Time,
