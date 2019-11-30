@@ -1,4 +1,4 @@
-import { htppDELETE, userId, httpDELETE } from '../callAPI.js';
+import { userId, httpDELETE } from '../callAPI.js';
 
 const urlParams = new URLSearchParams(window.location.search);
 
