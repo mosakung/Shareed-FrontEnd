@@ -7,6 +7,7 @@ httpIdGET('http://localhost:3000/shareed/review-tutor', urlParams.get("postID"),
     document.getElementById('title').innerHTML = json.title;
     document.getElementById('owner').innerHTML = json.Username;
     document.getElementById('writeDown').innerHTML = json.dateTime;
+    document.getElementById('blah').innerHTML = json.dateTime;
     document.getElementById('tutorName').innerHTML = json.tutorName;
     document.getElementById('academy').innerHTML = json.academy;
     document.getElementById('course').innerHTML = json.subjectTeacher;
@@ -14,7 +15,10 @@ httpIdGET('http://localhost:3000/shareed/review-tutor', urlParams.get("postID"),
     document.getElementById('description').innerHTML = json.description;
     document.getElementById('content').innerHTML = json.contect;
     document.getElementById('numComment').innerHTML = json.countComment;
+
+
 });
+
 
 /*{
     "reviewTutorId": "c100000001",
