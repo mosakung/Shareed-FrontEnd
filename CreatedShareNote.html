@@ -291,7 +291,7 @@
             return [`
             <div id="card-upload-` + parameter + `" class="row">
                             <div class="card mt-3" style="margin-top: 5%;">
-                                <a href="#"><img id="remove-picture-` + parameter + `" src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/remove.png" onclick="remove_picture(` + parameter + `)"
+                                <a style="cursor: grabbing;"><img id="remove-picture-` + parameter + `" src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/remove.png" onclick="remove_picture(` + parameter + `)"
                                         style="width: 50px; height: 50px; position: absolute;"></a>
                                 <img id="blahs" src="
             `]
@@ -326,7 +326,7 @@
     <script>
         function import_delete() {
             return [`
-            <a href="#"><img id="remove-picture-cover"
+            <a style="cursor: grabbing;"><img id="remove-picture-cover"
                 src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/remove.png"
                 onclick="cover_delete()" style="width: 50px; height: 50px; position: absolute;"></a>
             `]
@@ -473,8 +473,8 @@
                 <div class="container-fluid row">
                     <div class="col-sm-4" style="margin-top: 10px;"></div>
                     <div class="col-sm-4">
-                        <input type="file" class="form-control" id="images-array-share-note[]" name="images[]"
-                            onchange="preview_images();" multiple />
+                        <input type="file" class="form-control" id="images" name="images[]" onchange="preview_images();"
+                            multiple />
                     </div>
                     <div class="col-sm-4" style="margin-top: 10px;"></div>
                 </div>
