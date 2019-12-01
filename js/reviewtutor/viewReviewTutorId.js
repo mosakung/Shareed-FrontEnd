@@ -4,36 +4,34 @@ import { removeParam } from '../removeParam.js';
 const urlParams = new URLSearchParams(window.location.search);
 
 httpIdGET('http://localhost:3000/shareed/review-tutor', urlParams.get("postID"), userId, (state, json) => {
+    var date = json.dateTime.replace("T", " ");
+    date = date.substring(0, 19);
+    json.tag.forEach(data => {
+        showTag(data);
+    });
+    json.contect.forEach(data => {
+        showContent(data);
+    });
+    
     document.getElementById('title').innerHTML = json.title;
     document.getElementById('owner').innerHTML = json.Username;
-    document.getElementById('writeDown').innerHTML = json.dateTime;
+    document.getElementById('writeDown').innerHTML = date;
     document.getElementById('blah').innerHTML = json.cover;
     document.getElementById('tutorName').innerHTML = json.tutorName;
     document.getElementById('academy').innerHTML = json.academy;
     document.getElementById('course').innerHTML = json.subjectTeacher;
     document.getElementById('contact').innerHTML = json.contact;
     document.getElementById('description').innerHTML = json.description;
-    document.getElementById('content').innerHTML = json.contect;
     document.getElementById('numComment').innerHTML = json.countComment;
 
 });
 
+function showTag(data) {
+    var createTag = "<a href='#' class='btn btn-info btn-sm' role='button' style='margin-left: 10px'>" + data.TagDetail + "</a>"
+    $('#tag-post').append(createTag);
+}
 
-/*{
-    reviewTutorId: data[0].ReviewTutorID,
-           / tutorName: data[0].TutorName,
-           / academy: data[0].Academy,
-           / subjectTeacher: data[0].Subject_Teach,
-            /description: data[0].Des,
-           / contact: data[0].ContactLink,
-           / title: data[0].Title,
-           / cover: data[0].Cover,
-            userId: data[0].UserID,
-            /dateTime: data[0].Date_Time,
-           / Username: data[0].Username,
-           / contect: contentData,
-            tag: tagPost,
-            comment: comment,
-           / countComment: countComment[0].count,
-            isOwner: owner
-}*/ 
+function showContent(data) {
+    var createContent = "<div class='row'>  <div class='col-sm-12'><center><img src = " + data.Picture + "></center></div></div>";
+    $('#content').append(createContent);
+}

@@ -4,22 +4,30 @@ import { removeParam } from '../removeParam.js';
 const urlParams = new URLSearchParams(window.location.search);
 
 httpIdGET('http://localhost:3000/shareed/faq', urlParams.get("postID"), userId, (state, json) => {
+    
+console.log(json)
+    var date = json.dateTime.replace("T", " ");
+    date = date.substring(0, 19);
+    json.tag.forEach(data => {
+        showTag(data);
+    });
+    json.content.forEach(data => {
+        showContent(data);
+    });
+    
     document.getElementById('title').innerHTML = json.title;
     document.getElementById('owner').innerHTML = json.Username;
-    document.getElementById('writeDown').innerHTML = json.dateTime;
+    document.getElementById('writeDown').innerHTML = date;
     document.getElementById('description').innerHTML = json.description;
     document.getElementById('numComment').innerHTML = json.countComment;
 });
 
-/*{
-   faqId: data[0].FAQID,
-            /title: data[0].title,
-            /description: data[0].description,
-            userId: data[0].UserID,
-            /dateTime: data[0].date_Time,
-            /Username: data[0].Username,
-            tag: tagPost,
-            comment: comment,
-            /countComment: countComment[0].count,
-            isOwner: owner
-}*/ 
+function showTag(data) {
+    var createTag = "<a href='#' class='btn btn-info btn-sm' role='button' style='margin-left: 10px'>" + data.TagDetail + "</a>"
+    $('#tag-post').append(createTag);
+}
+
+function showContent(data) {
+    var createContent = "<div class='row'>  <div class='col-sm-12'><center><img src = " + data.Picture + "></center></div></div>";
+    $('#content').append(createContent);
+}
