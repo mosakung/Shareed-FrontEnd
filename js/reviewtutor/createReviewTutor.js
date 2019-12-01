@@ -45,7 +45,7 @@ window.onload = function () {
         const body = JSON.parse(preBody);
 
         httpPOST('http://localhost:3000/shareed/review-tutor', userId, body, (res, json) => {
-            console.log(res);
+            window.location('http://localhost:3000/shareed/revieww-tutor/1');
         })
     }
 }
