@@ -2,7 +2,8 @@ import { httpPOST, userId } from '../callAPI.js';
 
 window.onload = function upload() {
     document.getElementById("create-share-note").onsubmit = function () {
-        let cover = document.getElementById("cover-share-note-create").value;
+        let cover = document.getElementById("cover-share-note-create").name;
+        cover = 'pictureBase/' + cover;
         let title = document.getElementById("title-share-note-create").value;
         let subjectName = document.getElementById("subject-name-share-note-create").value;
         let section = document.getElementById("section-share-note-create").value;
@@ -14,37 +15,41 @@ window.onload = function upload() {
 
         let preBody = `{
             "Cover": "${cover}",
-            "SubjectName": "${subjectName}",
+            "Subject_Name": "${subjectName}",
             "Section": "${section}",
-            "Insturction_Name": "${instructionName}",
+            "Instructor_Name": "${instructionName}",
             "Semeter": "${semeter}",
             "Title": "${title}",
         `;
 
         preBody = preBody + `"tag": [`;
-        
-        let lengthTagArray = tagArray.length; 
+
+        let lengthTagArray = tagArray.length;
 
         tagArray.forEach(function (data, index) {
-            if(index == lengthTagArray - 1) preBody = preBody + `{ "TagDetail": "${data}" }`
+            if (index == lengthTagArray - 1) preBody = preBody + `{ "TagDetail": "${data}" }`
             else preBody = preBody + `{ "TagDetail": "${data}" },`
         })
 
         preBody = preBody + `], "content": [`
-      
-        
-        for(var i = 0; i < pictureArray.length; i++){
-            if(i == pictureArray.length - 1)
+
+
+        for (var i = 0; i < pictureArray.length; i++) {
+            if (i == pictureArray.length - 1)
                 preBody = preBody + `{ "Picture": "pictureBase/${pictureArray[i].name}" }`
             else preBody = preBody + `{ "Picture": "pictureBase/${pictureArray[i].name}" },`
-            
-       }
 
-        preBody = preBody + `]}`
+        }
+
+        preBody = preBody + `] }`
+
+        console.log(preBody);
 
 
         const body = JSON.parse(preBody);
-        alert(body);
+
+        console.log(body);
+
         httpPOST('http://localhost:3000/shareed/share-note', userId, body, (res, json) => {
             console.log(res);
         })
