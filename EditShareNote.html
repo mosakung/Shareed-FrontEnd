@@ -387,48 +387,83 @@
 
     <div class="container">
         <div class="box" style="margin-top:10px">
-            <form name="edit-share-note" id="edit-share-note">
-                Title : <input type="text" name="title"
-                    style="border: none; background-color:rgba(255, 255, 255, 0.37);"><br>
-                <hr>
-                Subject Name: <input type="text" name="subjectName"
-                    style="border: none; background-color:rgba(255, 255, 255, 0.37); "><br>
-                <hr>
-                Section : <input type="text" name="section"
-                    style="border: none; background-color:rgba(255, 255, 255, 0.37);"><br>
-                <hr>
-                Instruction Name : <input type="text" name="instructionName"
-                    style="border: none; background-color:rgba(255, 255, 255, 0.37);"><br>
-                <hr>
-                Semeter : <input type="text" name="semeter"
-                    style="border: none; background-color:rgba(255, 255, 255, 0.37);">
-                <hr>
-                Tag : <input type="text" name="tag" style="border: none; background-color:rgba(255, 255, 255, 0.37);">
-                <hr>
-                Content :
-                <div class="center"
-                    style="background-color: rgba(255, 255, 255, 0.37);margin-bottom: 10px;width: 664px;height:auto;">
-
-                    <div class="row center container-fluid mt-3">
-                        <div class="col-sm-1" style="margin-top: 10px;"></div>
-                        <div class="col-sm-10 row" id="image_preview">
-                        </div>
-                        <div class="col-sm-1" style="margin-top: 10px;"></div>
+            <form class="form-horizontal" name="create-share-note" id="create-share-note">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Title : </label>
+                    <div class="col-sm-9">
+                        <input class="form-control" id="title-share-note-create" type="text" 
+                        style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="Title">
                     </div>
-                    <div class="container-fluid row" style="margin-top: 2%;">
-                        <div class="col-sm-4" style="margin-top: 10px;"></div>
-                        <div class="col-sm-4">
-                            <input type="file" class="form-control" id="images" name="images"
-                                onchange="preview_images();" multiple />
+                </div>
+                <hr>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Subject Name:  </label>
+                    <div class="col-sm-9">
+                        <input class="form-control" id="subject-name-share-note-create" type="text" 
+                        style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="e.g. CPExxx">
+                    </div>
+                </div>
+                <hr>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Section :  </label>
+                    <div class="col-sm-9">
+                        <input class="form-control" id="section-share-note-create" type="text" 
+                        style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="e.g. 4">
+                    </div>
+                </div>
+                <hr>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Instruction Name :  </label>
+                    <div class="col-sm-9">
+                        <input class="form-control" id="instruction-name-share-note-create" type="text" 
+                        style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="Aj.xxxx xxxx">
+                    </div>
+                </div>
+                <hr>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Semeter :  </label>
+                    <div class="col-sm-9">
+                        <input class="form-control" id="semeter-share-note-create" type="text" 
+                        style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="e.g. 2nd semeter">
+                    </div>
+                </div>
+                <hr>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Tag :  </label>
+                    <div class="col-sm-9">
+                        <input class="form-control" id="tag-share-note-create" type="text" 
+                        style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="e.g. #CPExxx #Calculus">
+                    </div>
+                </div>
+                <hr>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Content :  </label>
+                    <div class="col-sm-9">
+                        <div class="center"
+                        style="background-color: rgba(255, 255, 255, 0.37);margin-bottom: 10px; height: auto;">
+                        <div id="myUniqueUploadId" class="custom-file-container" data-upload-id="myUniqueUploadId">
+                            <label>Upload File <a href="javascript:void(0)" class="custom-file-container__image-clear"
+                                    title="Clear Image">&times;</a></label>
+                            <label class="custom-file-container__custom-file">
+                                <input type="file" class="custom-file-container__custom-file__custom-file-input" accept="*"
+                                    multiple aria-label="Choose File" id="images-array-share-note">
+                                <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                                <span class="custom-file-container__custom-file__custom-file-control"></span>
+                            </label>
+                            <div class="custom-file-container__image-preview"></div>
+                            </div>
                         </div>
-                        <div class="col-sm-4" style="margin-top: 10px;"></div>
                     </div>
                 </div>
 
+                
+               
                 <div class="row">
                     <div class="col-sm-1">
-                        <button type="button" class="btn btn-danger btn-lg"
-                            style="font-size:20px;border: none;margin-left: 620px;">Cancel</button>
+                        <a href="http://127.0.0.1:5500/Sharenote.html?page=1" type="button"
+                            class="btn btn-danger btn-lg"
+                            style="font-size:20px;border: none;margin-left: 620px;">Cancel</a>
                     </div>
                     <div class="col-sm-1">
                         <input type="submit" value="Save" class="btn btn-primary btn-lg "
