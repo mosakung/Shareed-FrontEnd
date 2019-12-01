@@ -11,7 +11,7 @@ httpIdGET('http://localhost:3000/shareed/review-book', urlParams.get("postID"), 
     json.content.forEach(data => {
         showContent(data);
     });
-    
+
     document.getElementById('title').innerHTML = json.title;
     document.getElementById('datetime').innerHTML = date;
     document.getElementById('writtenBy').innerHTML = json.writtenBy;
@@ -24,7 +24,7 @@ httpIdGET('http://localhost:3000/shareed/review-book', urlParams.get("postID"), 
 });
 
 function showTag(data) {
-    var createTag = "<a href='#' class='btn btn-info btn-sm' role='button'>" + data.TagDetail + "</a>"
+    var createTag = "<a href='#' class='btn btn-info btn-sm' role='button' style='margin-left: 10px'>" + data.TagDetail + "</a>"
     $('#tag-post').append(createTag);
 }
 
