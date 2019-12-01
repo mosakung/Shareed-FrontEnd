@@ -36,7 +36,7 @@ function showTag(data) {
 }
 
 function showContent(data) {
-    var createContent = "<div class='row'>  <div class='col-sm-12'><center><img src = " + data.Picture + "></center></div></div>";
+    var createContent = "<div class='row'>  <div class='col-sm-12' style='margin-buttom:10px;'><center><img src = " + data.Picture + "></center></div></div>";
     $('#content').append(createContent);
 }
 
