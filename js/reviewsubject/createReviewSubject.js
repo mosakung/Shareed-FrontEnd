@@ -2,14 +2,15 @@ import { httpPOST, userId } from '../callAPI.js';
 
 window.onload = function () {
     document.getElementById("create-review-subject").onsubmit = function () {
-        let subjectId = document.getElementById("subjectId-review-subject-create").value;
+        let subjectId = document.getElementById("subjectId-review-subject-create").name;
+        cover = 'pictureBase/' + cover;
         let subjectName = document.getElementById("subjectname-review-subject-create").value;
         let title = document.getElementById("title-review-subject-create").value;
         let instructorName = document.getElementById("instructorname-review-subject-create").value;
         let section = document.getElementById("section-review-subject-create").value;
         let description = document.getElementById("description-review-subject-create").value;
         let tag = document.getElementById('tag-review-subject-create').value;
-        let pictureArray = document.getElementById('picture-array-review-subject-create').value;
+        let pictureArray = document.getElementById('picture-array-review-subject-create').files;
 
         let tagArray = tag.split(/[#]/g).filter(n => n);
 
@@ -27,18 +28,18 @@ window.onload = function () {
         preBody = preBody + `"tag": [`;
 
         tagArray.forEach(function (data, index) {
-            if(index === length - 1 ) preBody = preBody + `{ "TagDetail": "${data}" }`
+            if(index === tagArrayLength - 1 ) preBody = preBody + `{ "TagDetail": "${data}" }`
             else preBody = preBody + `{ "TagDetail": "${data}" },`
         })
 
         preBody = preBody + `], "content": [`
 
-        let pictureArrayLength = pictureArray.length;
+        for (var i = 0; i < pictureArray.length; i++) {
+            if (i == pictureArray.length - 1)
+                preBody = preBody + `{ "Picture": "pictureBase/${pictureArray[i].name}" }`
+            else preBody = preBody + `{ "Picture": "pictureBase/${pictureArray[i].name}" },`
 
-        pictureArray.forEach(function (data, index) {
-            if(index === length - 1 ) preBody = preBody + `{ "Picture": "${data}" }`
-            else preBody = preBody + `{ "Picture": "${data}" },`
-        })
+        }
 
         preBody = preBody + `]}`
 

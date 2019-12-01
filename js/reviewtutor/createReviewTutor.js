@@ -9,7 +9,7 @@ window.onload = function () {
         let contactLink = document.getElementById("contactlink-review-tutor-create").value;
         let description = document.getElementById("description-review-tutor-create").value;
         let tag = document.getElementById('tag-review-tutor-create').value;
-        let pictureArray = document.getElementById('picture-array-review-tutor-create').value;
+        let pictureArray = document.getElementById('picture-array-review-tutor-create').files;
 
         let tagArray = tag.split(/[#]/g).filter(n => n);
 
@@ -27,18 +27,18 @@ window.onload = function () {
         preBody = preBody + `"tag": [`;
 
         tagArray.forEach(function (data, index) {
-            if(index === length - 1 ) preBody = preBody + `{ "TagDetail": "${data}" }`
+            if(index === tagArrayLength - 1 ) preBody = preBody + `{ "TagDetail": "${data}" }`
             else preBody = preBody + `{ "TagDetail": "${data}" },`
         })
 
         preBody = preBody + `], "content": [`
 
-        let pictureArrayLength = pictureArray.length;
+        for (var i = 0; i < pictureArray.length; i++) {
+            if (i == pictureArray.length - 1)
+                preBody = preBody + `{ "Picture": "pictureBase/${pictureArray[i].name}" }`
+            else preBody = preBody + `{ "Picture": "pictureBase/${pictureArray[i].name}" },`
 
-        pictureArray.forEach(function (data, index) {
-            if(index === length - 1 ) preBody = preBody + `{ "Picture": "${data}" }`
-            else preBody = preBody + `{ "Picture": "${data}" },`
-        })
+        }
 
         preBody = preBody + `]}`
 

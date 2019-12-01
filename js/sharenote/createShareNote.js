@@ -43,13 +43,8 @@ window.onload = function upload() {
 
         preBody = preBody + `] }`
 
-        console.log(preBody);
-
-
         const body = JSON.parse(preBody);
-
-        console.log(body);
-
+        
         httpPOST('http://localhost:3000/shareed/share-note', userId, body, (res, json) => {
             console.log(res);
         })
