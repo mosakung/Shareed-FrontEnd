@@ -15,9 +15,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css"
         href="https://unpkg.com/file-upload-with-preview@4.0.2/dist/file-upload-with-preview.min.css">
-    
+
     <script src="https://unpkg.com/file-upload-with-preview@4.0.2/dist/file-upload-with-preview.min.js"></script>
-    
+
     <script type="module" src="js/reviewBook/createReviewBook.js"></script>
     <style>
         body {
@@ -279,12 +279,13 @@
 
     <div class="container" style="margin-top: 2%;">
         <div class="box" style="margin-top:10px">
-            <form class="form-horizontal" name="create-review-book" id="create-review-book">
+            <form class="form-horizontal" name="create-review-book" id="create-review-book" action = "javascript:window.location.assign( 'http://localhost:5500/ReviewBook.html?page=1' );">
                 <div class="form-group">
                     <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Title : </label>
                     <div class="col-sm-9">
                         <input class="form-control" id="title-review-book-create" type="text"
-                            style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="Title" required>
+                            style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="Title"
+                            required>
                     </div>
                 </div>
                 <hr>
@@ -310,7 +311,8 @@
                     <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Edition :</label>
                     <div class="col-sm-9">
                         <input class="form-control" id="edition-review-book-create" type="number"
-                            style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="e.g. 1" required>
+                            style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="e.g. 1"
+                            required>
                     </div>
                 </div>
                 <hr>
@@ -337,43 +339,44 @@
                     <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Description:
                     </label>
                     <div class="col-sm-9">
-                        <textarea class="form-control" id="description-review-book-create" type="text" cols=auto
+                        <textarea class="form-control" id="description-review-book-create" type="text" cols="auto"
                             rows="10" style="border: none; background-color:rgba(255, 255, 255, 0.37);"
-                            placeholder="Write your description" required> 
-                        </textarea>
+                            placeholder="Write your description" required></textarea>
                     </div>
                 </div>
                 <hr>
                 <div class="form-group">
-                        <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Content :  </label>
-                        <div class="col-sm-9">
-                            <div class="center"
+                    <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Content : </label>
+                    <div class="col-sm-9">
+                        <div class="center"
                             style="background-color: rgba(255, 255, 255, 0.37);margin-bottom: 10px; height: auto;">
                             <div id="myUniqueUploadId" class="custom-file-container" data-upload-id="myUniqueUploadId">
-                                <label>Upload File <a href="javascript:void(0)" class="custom-file-container__image-clear"
+                                <label>Upload File <a href="javascript:void(0)"
+                                        class="custom-file-container__image-clear"
                                         title="Clear Image">&times;</a></label>
                                 <label class="custom-file-container__custom-file">
-                                    <input type="file" class="custom-file-container__custom-file__custom-file-input" accept="*"
-                                        multiple aria-label="Choose File" id="picture-array-review-book-create">
+                                    <input type="file" class="custom-file-container__custom-file__custom-file-input"
+                                        accept="*" multiple aria-label="Choose File"
+                                        id="picture-array-review-book-create">
                                     <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
                                     <span class="custom-file-container__custom-file__custom-file-control"></span>
                                 </label>
                                 <div class="custom-file-container__image-preview"></div>
-                                </div>
                             </div>
                         </div>
                     </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-sm-1">
-                            <a href="http://127.0.0.1:5500/ReviewBook.html" type="button" class="btn btn-danger btn-lg"
-                                style="font-size:20px;border: none;margin-left: 620px;">Cancel</a>
-                        </div>
-                        <div class="col-sm-1">
-                            <input type="submit" value="Post" class="btn btn-primary btn-lg "
-                                style="font-size:20px;border: none;margin-left: 670px;">
-                        </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-1">
+                        <a href="http://127.0.0.1:5500/ReviewBook.html" type="button" class="btn btn-danger btn-lg"
+                            style="font-size:20px;border: none;margin-left: 620px;">Cancel</a>
                     </div>
+                    <div class="col-sm-1">
+                        <input type="submit" value="Post" class="btn btn-primary btn-lg "
+                            style="font-size:20px;border: none;margin-left: 670px;">
+                    </div>
+                </div>
             </form>
         </div>
     </div>
@@ -412,6 +415,7 @@
 
 </body>
 <script>
+
     var upload = new FileUploadWithPreview('myUniqueUploadId');
 </script>
 

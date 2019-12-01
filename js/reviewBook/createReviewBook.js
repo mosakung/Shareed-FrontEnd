@@ -2,7 +2,8 @@ import { httpPOST, userId } from '../callAPI.js';
 
 window.onload = function () {
     document.getElementById("create-review-book").onsubmit = function () {
-        let cover = document.getElementById("cover-review-book-create").name;
+        let cover = document.getElementById("cover-review-book-create").value;
+        cover = cover.substring(12,cover.length);
         cover = 'pictureBase/' + cover;
         let writtenBy = document.getElementById("writtenBy-review-book-create").value;
         let edition = document.getElementById("edition-review-book-create").value;
@@ -36,6 +37,7 @@ window.onload = function () {
 
         preBody = preBody + `], "content": [`
 
+        
         for (var i = 0; i < pictureArray.length; i++) {
             if (i == pictureArray.length - 1)
                 preBody = preBody + `{ "Picture": "pictureBase/${pictureArray[i].name}" }`
@@ -47,8 +49,8 @@ window.onload = function () {
 
         const body = JSON.parse(preBody);
 
+        
         httpPOST('http://localhost:3000/shareed/review-book', userId, body, (res, json) => {
-            window.location('http://localhost:3000/shareed/review-book/1');
-        })
+       });
     }
 }

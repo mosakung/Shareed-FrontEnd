@@ -277,7 +277,7 @@
 
     <div class="container" style="margin-top: 2%;">
         <div class="box" style="margin-top:10px">
-            <form class="form-horizontal" name="create-share-event" id="create-share-event">
+            <form class="form-horizontal" name="create-share-event" id="create-share-event" action = "javascript:window.location.assign( 'http://localhost:5500/ShareEvent.html?page=1' );">
                 <div class="form-group">
                     <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Title :  </label>
                     <div class="col-sm-9">
@@ -322,8 +322,7 @@
                     <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Description:   </label>
                     <div class="col-sm-9">
                         <textarea class="form-control" id="description-share-note-create" type="text" 
-                        cols=auto rows="10" style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="Write your description" required>
-                        </textarea>
+                        cols=auto rows="10" style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="Write your description" required></textarea>
                     </div>
                 </div>
                 <hr>
@@ -396,6 +395,9 @@
 
 </body>
 <script>
+    $('#create-share-event').submit(e => {
+        e.preventDefault()
+    });
     var upload = new FileUploadWithPreview('myUniqueUploadId');
 </script>
 

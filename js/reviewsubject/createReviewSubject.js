@@ -2,8 +2,7 @@ import { httpPOST, userId } from '../callAPI.js';
 
 window.onload = function () {
     document.getElementById("create-review-subject").onsubmit = function () {
-        let subjectId = document.getElementById("subjectId-review-subject-create").name;
-        cover = 'pictureBase/' + cover;
+        let subjectId = document.getElementById("subjectId-review-subject-create").value;
         let subjectName = document.getElementById("subjectname-review-subject-create").value;
         let title = document.getElementById("title-review-subject-create").value;
         let instructorName = document.getElementById("instructorname-review-subject-create").value;
@@ -46,7 +45,7 @@ window.onload = function () {
         const body = JSON.parse(preBody);
 
         httpPOST('http://localhost:3000/shareed/review-subject', userId, body, (res, json) => {
-            window.location('http://localhost:3000/shareed/review-subject/1');
+            window.location('http://localhost:3000/shareed/ReviewSubject/1');
         })
     }
 }

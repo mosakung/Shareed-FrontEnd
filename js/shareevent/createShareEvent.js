@@ -2,13 +2,14 @@ import { httpPOST, userId } from '../callAPI.js';
 
 window.onload = function () {
     document.getElementById("create-share-event").onsubmit = function () {
-        let cover = document.getElementById("cover-share-event-create").name;
+        let cover = document.getElementById("cover-share-event-create").value;
+        cover = cover.substring(12,cover.length);
         cover = 'pictureBase/' + cover;
         let title = document.getElementById("title-share-event-create").value;
         let register = document.getElementById("register-share-event-create").value;
         let location = document.getElementById("section-share-event-create").value;
         let condition = document.getElementById("instruction-name-share-event-create").value;
-        let description = document.getElementById("semeter-share-event-create").value;
+        let description = document.getElementById("description-share-note-create").value;
         let tag = document.getElementById('tag-share-event-create').value;
         let pictureArray = document.getElementById('picture-array-share-event-create').files;
 
@@ -46,7 +47,7 @@ window.onload = function () {
         const body = JSON.parse(preBody);
 
         httpPOST('http://localhost:3000/shareed/share-event', userId, body, (res, json) => {
-            window.location('http://localhost:3000/shareed/share-event/1');
+            window.location('http://localhost:5500/shareed/ShareEvent/1');
         })
     }
 }
