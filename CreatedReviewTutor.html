@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <script type="module" src="js/sharenote/createShareNote.js"></script>
+    <script type="module" src="js/sharenote/createReviewTutor.js"></script>
     <style>
         body {
             background-image: linear-gradient(to bottom right, white, lightblue, deepskyblue, cornflowerblue, grey);
@@ -436,30 +436,30 @@
 
     <div class="container" style="margin-top: 2%;">
         <div class="box" style="margin-top:10px">
-            Title : <input type="text" name="title" style="border: none; background-color:rgba(255, 255, 255, 0.37);"
+            Title : <input id="title-review-tutor-create" type="text" name="title" style="border: none; background-color:rgba(255, 255, 255, 0.37);"
                 placeholder="Title">
             <hr>
-            Tutor Name : <input type="text" name="tutorName"
+            Tutor Name : <input id="tutorname-review-tutor-create" type="text" name="tutorName"
                 style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="e.g. P'xxx">
             <hr>
-            Academy : <input type="text" name="academy"
+            Academy : <input id="academy-review-tutor-create" type="text" name="academy"
                 style="border: none; background-color:rgba(255, 255, 255, 0.37);"
                 placeholder="e.g. kmutt tutorial club">
             <hr>
-            Course : <input type="text" name="course" style="border: none; background-color:rgba(255, 255, 255, 0.37);"
+            Course : <input id="subjectTeach-review-tutor-create" type="text" name="course" style="border: none; background-color:rgba(255, 255, 255, 0.37);"
                 placeholder="e.g. Engineering Economics">
             <hr>
-            Contact : <input type="text" name="contact"
+            Contact : <input id="contactlink-review-tutor-create" type="text" name="contact"
                 style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="e.g. address, tel no.">
             <hr>
-            Tag : <input type="text" name="tag" style="border: none; background-color:rgba(255, 255, 255, 0.37);"
+            Tag : <input id="tag-review-tutor-create" type="text" name="tag" style="border: none; background-color:rgba(255, 255, 255, 0.37);"
                 placeholder="e.g. #CPExxx #Calculus">
             <hr>
             Description :
             <br>
             <br>
             <div>
-                <textarea name="subject" cols="90" rows="20"
+                <textarea id="description-review-tutor-create" name="subject" cols="90" rows="20"
                     style="border: none; background-color:rgba(255, 255, 255, 0.37);margin-left:50px;">
             </textarea>
             </div>
