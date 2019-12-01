@@ -6,10 +6,10 @@ const postId = urlParams.get("postID");
 
 let originalCover = 1;
 
-httpIdGET('http://localhost:3000/shareed/review-book', postId, userId, (state, json) => {
+httpIdGET('http://localhost:3000/shareed/review-tutor', postId, userId, (state, json) => {
 
-    if (!json.cover) $('.fetch-cover-review-book').append(formCover_noData(json));
-    else $('.fetch-cover-review-book').append(formCover_alreadyData(json));
+    if (!json.cover) $('.fetch-cover-review-tutor').append(formCover_noData(json));
+    else $('.fetch-cover-review-tutor').append(formCover_alreadyData(json));
 
     $('.fetch-owner-username').append(formOwnerAndBy(json));
 
@@ -62,52 +62,52 @@ function formOwnerAndBy(json) {
 function formInputBeforeTag(json) {
     return [`
     <div class="form-group">
-        <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Title : </label>
+        <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Title :
+        </label>
         <div class="col-sm-9">
-            <input class="form-control" id="title-review-book-create" type="text"
+            <input class="form-control" id="title-review-tutor-create" type="text"
                 style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="Title"
-                required value=${json.title}>
+                required value="${json.title}">
         </div>
     </div>
     <hr>
     <div class="form-group">
-        <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Book Name :</label>
+        <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Tutor Name :
         </label>
         <div class="col-sm-9">
-            <input class="form-control" id="bookname-review-book-create" type="text"
+            <input class="form-control" id="tutorname-review-tutor-create" type="text"
+                style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="e.g. P'xxx"
+                required value="${json.tutorName}">
+        </div>
+    </div>
+    <hr>
+    <div class="form-group">
+        <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Academy :
+        </label>
+        <div class="col-sm-9">
+            <input class="form-control" id="academy-review-tutor-create" type="text"
                 style="border: none; background-color:rgba(255, 255, 255, 0.37);"
-                placeholder="e.g. calculus1" required value="${json.bookName}">
+                placeholder="e.g. kmutt tutorial club" required value="${json.academy}">
         </div>
     </div>
     <hr>
     <div class="form-group">
-        <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Written :</label>
+        <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Course :
         </label>
         <div class="col-sm-9">
-            <input class="form-control" id="writtenBy-review-book-create" type="text"
+            <input class="form-control" id="subjectTeach-review-tutor-create" type="text"
                 style="border: none; background-color:rgba(255, 255, 255, 0.37);"
-                placeholder="e.g. Dr.Jame Bond" required value="${json.writtenBy}">
+                placeholder="e.g. Engineering Economics" required value="${json.subjectTeacher}">
         </div>
     </div>
     <hr>
     <div class="form-group">
-        <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Edition :</label>
+        <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Contact :
         </label>
         <div class="col-sm-9">
-            <input class="form-control" id="edition-review-book-create" type="number"
-                style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="e.g. 1"
-                required value="${json.edition}">
-        </div>
-    </div>
-    <hr>
-    <div class="form-group">
-        <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Link to Library
-            :</label>
-        </label>
-        <div class="col-sm-9">
-            <input class="form-control" id="link-review-book-create" type="text"
+            <input class="form-control" id="contactlink-review-tutor-create" type="text"
                 style="border: none; background-color:rgba(255, 255, 255, 0.37);"
-                placeholder="e.g. xxxxxxxxxxxx.com" required value="${json.link}">
+                placeholder="e.g. address, tel no." required value="${json.contact}">
         </div>
     </div>
     `]
@@ -138,7 +138,7 @@ function formDescription(json) {
         <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Description:
         </label>
         <div class="col-sm-9">
-            <textarea class="form-control" id="description-share-note-create" type="text" cols=auto
+            <textarea class="form-control" id="description-review-tutor-create" type="text" cols=auto
                 rows="10" style="border: none; background-color:rgba(255, 255, 255, 0.37);"
                 placeholder="Write your description" required>
             ${json.description}</textarea>

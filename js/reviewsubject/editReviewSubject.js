@@ -6,10 +6,7 @@ const postId = urlParams.get("postID");
 
 let originalCover = 1;
 
-httpIdGET('http://localhost:3000/shareed/review-book', postId, userId, (state, json) => {
-
-    if (!json.cover) $('.fetch-cover-review-book').append(formCover_noData(json));
-    else $('.fetch-cover-review-book').append(formCover_alreadyData(json));
+httpIdGET('http://localhost:3000/shareed/review-subject', postId, userId, (state, json) => {
 
     $('.fetch-owner-username').append(formOwnerAndBy(json));
 
@@ -17,38 +14,9 @@ httpIdGET('http://localhost:3000/shareed/review-book', postId, userId, (state, j
     $('.fetch-form-content-all-js').append(formContent(json));
 })
 
-function formCover_noData(json) {
-    return [`
-    <div class="center "
-        style="background-color: rgba(255, 255, 255, 0.37);margin-top: 50px;width: 864px;height: 294px;">
-        <div id="cover-upload"></div>
-        <img id="blah" src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/UploadPicture.png"
-            alt="your image" class="center" />
-    </div>
-
-    <input id="cover-share-note-create" type="file" onchange="readURL(this);" class="center" />
-    `]
-}
-
-function formCover_alreadyData(json) {
-    return [`
-    <div class="center "
-        style="background-color: rgba(255, 255, 255, 0.37);margin-top: 50px;width: 864px;height: 294px;">
-        <div id="cover-upload"></div>
-        <a id="cover-original" style="cursor: grabbing;"><img id="remove-picture-cover"
-        src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/remove.png"
-        onclick="cover_delete()" style="width: 50px; height: 50px; position: absolute;"></a>
-        <img id="blah" src="${json.cover}"
-            alt="your image" class="center" />
-    </div>
-
-    <input id="cover-share-note-create" type="file" onchange="readURL(this);" class="center" />
-    `]
-}
-
 function formOwnerAndBy(json) {
     return [`
-    <div class="box" style="height:50px; margin-top: 10px;">
+    <div class="box" style="height:50px; margin-top: 4%;">
         <div class="col-sm-4">
             Owner : ${json.Username}
         </div>
@@ -64,50 +32,51 @@ function formInputBeforeTag(json) {
     <div class="form-group">
         <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Title : </label>
         <div class="col-sm-9">
-            <input class="form-control" id="title-review-book-create" type="text"
+            <input class="form-control" id="title-review-subject-create" type="text"
                 style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="Title"
-                required value=${json.title}>
+                required value="${json.title}">
         </div>
     </div>
     <hr>
     <div class="form-group">
-        <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Book Name :</label>
-        </label>
-        <div class="col-sm-9">
-            <input class="form-control" id="bookname-review-book-create" type="text"
-                style="border: none; background-color:rgba(255, 255, 255, 0.37);"
-                placeholder="e.g. calculus1" required value="${json.bookName}">
-        </div>
-    </div>
-    <hr>
-    <div class="form-group">
-        <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Written :</label>
-        </label>
-        <div class="col-sm-9">
-            <input class="form-control" id="writtenBy-review-book-create" type="text"
-                style="border: none; background-color:rgba(255, 255, 255, 0.37);"
-                placeholder="e.g. Dr.Jame Bond" required value="${json.writtenBy}">
-        </div>
-    </div>
-    <hr>
-    <div class="form-group">
-        <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Edition :</label>
-        </label>
-        <div class="col-sm-9">
-            <input class="form-control" id="edition-review-book-create" type="number"
-                style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="e.g. 1"
-                required value="${json.edition}">
-        </div>
-    </div>
-    <hr>
-    <div class="form-group">
-        <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Link to Library
+        <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Subject ID
             :</label>
         </label>
         <div class="col-sm-9">
-            <input class="form-control" id="link-review-book-create" type="text"
+            <input class="form-control" id="subjectId-review-subject-create" type="text"
+                style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="e.g. CPExxx"
+                required value="${json.subjectId}">
+        </div>
+    </div>
+    <hr>
+    <div class="form-group">
+        <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Subject Name
+            :</label>
+        </label>
+        <div class="col-sm-9">
+            <input class="form-control" id="subjectname-review-subject-create" type="text"
                 style="border: none; background-color:rgba(255, 255, 255, 0.37);"
-                placeholder="e.g. xxxxxxxxxxxx.com" required value="${json.link}">
+                placeholder="e.g. 2nd semeter" required value="${json.subjectName}">
+        </div>
+    </div>
+    <hr>
+    <div class="form-group">
+        <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Teach By :</label>
+        </label>
+        <div class="col-sm-9">
+            <input class="form-control" id="instructorname-review-subject-create" type="text"
+                style="border: none; background-color:rgba(255, 255, 255, 0.37);"
+                placeholder="e.g. Aj.xxxx xxxx" required value="${json.instructorName}">
+        </div>
+    </div>
+    <hr>
+    <div class="form-group">
+        <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Section :</label>
+        </label>
+        <div class="col-sm-9">
+            <input class="form-control" id="section-review-subject-create" type="text"
+                style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="e.g. 4"
+                required value="${json.section}">
         </div>
     </div>
     `]

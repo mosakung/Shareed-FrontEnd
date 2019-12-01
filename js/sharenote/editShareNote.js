@@ -4,7 +4,10 @@ const urlParams = new URLSearchParams(window.location.search);
 
 const postId = urlParams.get("postID");
 
-let originalCover = 1;
+let originalCoverState = 1;
+let originalCover;
+
+let picArray = [];
 
 httpIdGET('http://localhost:3000/shareed/share-note', postId, userId, (state, json) => {
 
@@ -15,6 +18,11 @@ httpIdGET('http://localhost:3000/shareed/share-note', postId, userId, (state, js
 
     $('.fetch-form-input-all-js').append(formInputBeforeTag(json) + formTag(json));
     $('.fetch-form-content-all-js').append(formContent(json));
+    originalCover = json.cover;
+
+    json.content.forEach(function (data) {
+        picArray.push(data);
+    })
 })
 
 function formCover_noData(json) {
@@ -53,7 +61,7 @@ function formOwnerAndBy(json) {
             Owner : ${json.Username}
         </div>
         <div class="col-sm-4" style="margin-left:250px;">
-            Write Down : ${json.dateTime.substring(0,10)}
+            Write Down : ${json.dateTime.substring(0, 10)}
         </div>
     </div>
     `];
@@ -146,14 +154,15 @@ function formContent(json) {
 
 window.onload = function () {
     document.getElementById("edit-share-note").onsubmit = function () {
-        let cover = document.getElementById("cover-share-note-edit").value;
+        let cover;
+        if (originalCoverState == 1) cover = originalCover
+        else cover = document.getElementById("cover-share-note-create").value;
         let title = document.getElementById("title-share-note-edit").value;
         let subjectName = document.getElementById("subject-name-share-note-edit").value;
         let section = document.getElementById("section-share-note-edit").value;
         let instructionName = document.getElementById("instruction-name-share-note-edit").value;
         let semeter = document.getElementById("semeter-share-note-edit").value;
         let tag = document.getElementById('tag-share-note-edit').value;
-        let description = document.getElementById('description-share-note-edit').value;
         let pictureArray = document.getElementById('picture-array-share-note-edit').value;
 
         let tagArray = tag.split(/[#]/g).filter(n => n);
@@ -172,20 +181,31 @@ window.onload = function () {
         preBody = preBody + `"tag": [`;
 
         tagArray.forEach(function (data, index) {
-            if (index === length - 1) preBody = preBody + `{ "TagDetail": "${data}" }`
+            if (index === tagArrayLength - 1) preBody = preBody + `{ "TagDetail": "${data}" }`
             else preBody = preBody + `{ "TagDetail": "${data}" },`
         })
 
         preBody = preBody + `], "content": [`
 
-        let pictureArrayLength = pictureArray.length;
+        for (var i = 0; i < pictureArray.length; i++) {
+            if (i == pictureArray.length - 1)
+                preBody = preBody + `{ "Picture": "pictureBase/${pictureArray[i].name}" }`
+            else preBody = preBody + `{ "Picture": "pictureBase/${pictureArray[i].name}" },`
+        }
 
-        pictureArray.forEach(function (data, index) {
-            if (index === length - 1) preBody = preBody + `{ "Picture": "${data}" }`
-            else preBody = preBody + `{ "Picture": "${data}" },`
-        })
+        //NEW
+        for(let i =0; i<=deleted.length; i++) delete picArray[deleted.pop()];
 
-        preBody = preBody + `]}`
+        picArray = picArray.filter(n => n);
+
+        for(let i =0; i<=picArray.length; i++) {
+            if (i == 0 && i == picArray.length) preBody = preBody + `,{"Picture": "pictureBase/${picArray[i]}"}`
+            else if(i == picArray.length) preBody = preBody + `{"Picture": "pictureBase/${picArray[i]}"}`
+            else if(i == 0) preBody = preBody + `,{"Picture": "pictureBase/${picArray[i]}"},`
+            else preBody = preBody + `{"Picture": "pictureBase/${picArray[i]}"},`
+        }
+
+        preBody = preBody + `] }`
 
         const body = JSON.parse(preBody);
 

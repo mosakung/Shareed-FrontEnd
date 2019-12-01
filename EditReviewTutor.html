@@ -5,10 +5,19 @@
     <title>ShareEd</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
     <link href="https://fonts.googleapis.com/css?family=Mali|Fredericka the Great" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css"
+        href="https://unpkg.com/file-upload-with-preview@4.0.2/dist/file-upload-with-preview.min.css">
+
+    <script src="https://unpkg.com/file-upload-with-preview@4.0.2/dist/file-upload-with-preview.min.js"></script>
+    <script type="module" src="js/reviewtutor/editReviewTutor.js"></script>
     <style>
         body {
             background-image: linear-gradient(to bottom right, white, lightblue, deepskyblue, cornflowerblue, grey);
@@ -205,115 +214,87 @@
             border-radius: 50%;
             background: #ccc;
         }
-
-        img#blah {
-            top: 0%;
-            z-index: -1;
-        }
-
-        img#remove-picture {
-            width: 5%;
-            height: 5%;
-            left: 94.8%;
-            /* right: 10%; */
-        }
     </style>
+    <script type="text/javascript" src="http://www.expertphp.in/js/jquery.form.js"></script>
+
     <script>
-        $('#add_more').click(function () {
-            "use strict";
-            $(this).before($("<div/>", {
-                id: 'filediv'
-            }).fadeIn('slow').append(
-                $("<input/>", {
-                    name: 'file[]',
-                    type: 'file',
-                    id: 'file',
-                    multiple: 'multiple',
-                    accept: 'image/*'
-                })
-            ));
-        });
 
-        $('#upload').click(function (e) {
-            "use strict";
-            e.preventDefault();
-
-            if (window.filesToUpload.length === 0 || typeof window.filesToUpload === "undefined") {
-                alert("No files are selected.");
-                return false;
-            }
-
-            // Now, upload the files below...
-            // https://developer.mozilla.org/en-US/docs/Using_files_from_web_applications#Handling_the_upload_process_for_a_file.2C_asynchronously
-        });
-
-        deletePreview = function (ele, i) {
-            "use strict";
-            try {
-                $(ele).parent().remove();
-                window.filesToUpload.splice(i, 1);
-            } catch (e) {
-                console.log(e.message);
-            }
+        function patternImageUpload1(parameter) {
+            return [`
+                <div id="card-upload-` + parameter + `" class="row">
+                                <div class="card mt-3" style="margin-top: 5%;">
+                                    <a style="cursor: grabbing;"><img id="remove-picture-` + parameter + `" src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/remove.png" onclick="remove_picture(` + parameter + `)"
+                                            style="width: 50px; height: 50px; position: absolute;"></a>
+                                    <img id="blahs" src="
+                `]
         }
 
-        $("#file").on('change', function () {
-            "use strict";
+        function patternImageUpload3() {
+            return [`
+                " alt="your image" class="center card-img-top" style="z-index: -1; max-width: 550px;">
+                                </div>
+                            </div>
+                `]
+        }
 
-            // create an empty array for the files to resside.
-            window.filesToUpload = [];
+        var j = -1;
 
-            if (this.files.length >= 1) {
-                $("[id^=previewImg]").remove();
-                $.each(this.files, function (i, img) {
-                    var reader = new FileReader(),
-                        newElement = $("<div id='previewImg" + i + "' class='previewBox'><img /></div>"),
-                        deleteBtn = $("<span class='delete' onClick='deletePreview(this, " + i + ")'>X</span>").prependTo(newElement),
-                        preview = newElement.find("img");
-
-                    reader.onloadend = function () {
-                        preview.attr("src", reader.result);
-                        preview.attr("alt", img.name);
-                    };
-
-                    try {
-                        window.filesToUpload.push(document.getElementById("file").files[i]);
-                    } catch (e) {
-                        console.log(e.message);
-                    }
-
-                    if (img) {
-                        reader.readAsDataURL(img);
-                    } else {
-                        preview.src = "";
-                    }
-
-                    newElement.appendTo("#filediv");
-                });
-            }
-        });
-    </script>
-    <script type="text/javascript" src="http://www.expertphp.in/js/jquery.form.js"></script>
-    <script>
         function preview_images() {
             var total_file = document.getElementById("images").files.length;
             for (var i = 0; i < total_file; i++) {
-                $('#image_preview').append("<div class='card col-sm-12 center'><a href='#'><img id='remove-picture' src='https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/remove.png' style='position:relative;'></a><center> <img class='img-responsive' src='" + URL.createObjectURL(event.target.files[i]) + "'></div>");
+                j = j + 1
+                $('#image_preview').append(patternImageUpload1(j) + URL.createObjectURL(event.target.files[i]) + patternImageUpload3());
             }
         }
-    </script>
-    <script>
+
+        var deleted = [];
+
+        function remove_picture(id) {
+            var element = document.getElementById("card-upload-" + id);
+            element.parentNode.removeChild(element);
+            deleted.push(id);
+        }
+
+        function import_delete() {
+            return [`
+                <a style="cursor: grabbing;"><img id="remove-picture-cover"
+                    src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/remove.png"
+                    onclick="cover_delete()" style="width: 50px; height: 50px; position: absolute;"></a>
+                `]
+        }
+
+        function out_delete() {
+            return [``];
+        }
+
+        var coverDelete = 1;
+
         function readURL(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
+                coverDelete = 0;
 
                 reader.onload = function (e) {
                     $('#blah')
                         .attr('src', e.target.result);
-                };
 
+                    $('#cover-upload').append(import_delete());
+                };
                 reader.readAsDataURL(input.files[0]);
             }
+        }
+
+        function cover_delete() {
+            originalCover = 0;
+            coverDelete = 1;
+            $('#blah')
+                .attr('src', 'https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/UploadPicture.png');
+
+            /* var element = document.getElementById("cover-upload");
+            element.removeChild(element.childNodes); */
+            document.getElementById('cover-share-note-create').value = "";
+            $('#cover-upload').empty();
+            $('#cover-original').empty();
         }
 
     </script>
@@ -321,45 +302,28 @@
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
 
-    <div id="navbar"></div>   
+    <div id="navbar"></div>
     <script>
-        $(function(){
+        $(function () {
             $("#navbar").load("navbar.html");
         });
     </script>
 
-    <div class="center"
-        style="background-color: rgba(255, 255, 255, 0.37);margin-top: 50px;width: 864px;height: 294px;">
-        <div class="center card">
-            <a href="#"><img id="remove-picture"
-                    src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/remove.png"
-                    style="position: relative;"></a>
-            <img id="blah"
-                src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/UploadPicture.png"
-                alt="your image" class="center card-img-top" style="position: absolute;">
-        </div>
-    </div>
-    <input type="file" onchange="readURL(this);" class="center">
-    <div class="row">
-        <div class="box" style="height:50px; margin-top: 10px;">
-            <div class="col-sm-4">
-                Owner :
-            </div>
-            <div class="col-sm-4" style="margin-left:250px;">
-                Write Down :
-            </div>
-        </div>
+    <a class="fetch-cover-review-tutor"></a>
 
-    </div>
+    <div class="row fetch-owner-username" style="margin-top: 1%;"></div>
 
     <div class="container">
         <div class="box" style="margin-top:10px">
             <form class="form-horizontal" name="create-review-tutor" id="create-review-tutor">
-                <div class="form-group">
-                    <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Title : </label>
+                <div class="fetch-form-input-all-js"></div>
+                <!-- <div class="form-group">
+                    <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Title :
+                    </label>
                     <div class="col-sm-9">
                         <input class="form-control" id="title-review-tutor-create" type="text"
-                            style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="Title" required>
+                            style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="Title"
+                            required>
                     </div>
                 </div>
                 <hr>
@@ -368,12 +332,14 @@
                     </label>
                     <div class="col-sm-9">
                         <input class="form-control" id="tutorname-review-tutor-create" type="text"
-                            style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="e.g. P'xxx" required>
+                            style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="e.g. P'xxx"
+                            required>
                     </div>
                 </div>
                 <hr>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Academy : </label>
+                    <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Academy :
+                    </label>
                     <div class="col-sm-9">
                         <input class="form-control" id="academy-review-tutor-create" type="text"
                             style="border: none; background-color:rgba(255, 255, 255, 0.37);"
@@ -382,7 +348,8 @@
                 </div>
                 <hr>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Course : </label>
+                    <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Course :
+                    </label>
                     <div class="col-sm-9">
                         <input class="form-control" id="subjectTeach-review-tutor-create" type="text"
                             style="border: none; background-color:rgba(255, 255, 255, 0.37);"
@@ -391,14 +358,15 @@
                 </div>
                 <hr>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Contact : </label>
+                    <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Contact :
+                    </label>
                     <div class="col-sm-9">
                         <input class="form-control" id="contactlink-review-tutor-create" type="text"
                             style="border: none; background-color:rgba(255, 255, 255, 0.37);"
                             placeholder="e.g. address, tel no." required>
                     </div>
-                </div>
-                <hr>
+                </div> -->
+                <!-- <hr>
                 <div class="form-group">
                     <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Tag : </label>
                     <div class="col-sm-9">
@@ -418,42 +386,44 @@
                         </textarea>
                     </div>
                 </div>
-                <hr>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Content: </label>
+                <hr> -->
+                <div class="form-group " style="margin-top: 1%;">
+                    <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Content : </label>
                     <div class="col-sm-9">
                         <div class="center"
-                            style="background-color: rgba(255, 255, 255, 0.37);margin-top:5px; margin-bottom: 10px;height:auto;">
-                            <div class="row center container-fluid mt-3">
-                                <div class="col-sm-1" style="margin-top: 10px;"></div>
-                                <div class="col-sm-10 row" id="image_preview">
-                                </div>
-                                <div class="col-sm-1" style="margin-top: 10px;"></div>
+                            style="background-color: rgba(255, 255, 255, 0.37);margin-bottom: 10px; height: auto;">
+                            <div class="fetch-form-content-all-js"></div>
+                            <div id="myUniqueUploadId" class="custom-file-container" data-upload-id="myUniqueUploadId"
+                                style="margin-top: 7%;">
+                                <label>Upload File <a href="javascript:void(0)"
+                                        class="custom-file-container__image-clear"
+                                        title="Clear Image">&times;</a></label>
+                                <label class="custom-file-container__custom-file">
+                                    <input type="file" class="custom-file-container__custom-file__custom-file-input"
+                                        accept="*" multiple aria-label="Choose File" id="images-array-share-note">
+                                    <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                                    <span class="custom-file-container__custom-file__custom-file-control"></span>
+                                </label>
+                                <div class="custom-file-container__image-preview"></div>
                             </div>
-                            <div class="row" style="margin-top: 2%;">
-                                <div class="col-sm-4" style="margin-top: 10px;"></div>
-                                <div class="col-sm-4">
-                                    <input type="file" class="form-control" id="images" name="images[]"
-                                        onchange="preview_images();" multiple />
-                                </div>
-                                <div class="col-sm-4" style="margin-top: 10px;"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-sm-1">
-                            <a href="http://127.0.0.1:5500/ReviewTutor.html" type="button" class="btn btn-danger btn-lg"
-                                style="font-size:20px;border: none;margin-left: 620px;">Cancel</a>
-                        </div>
-                        <div class="col-sm-1">
-                            <input type="submit" value="Save" class="btn btn-primary btn-lg "
-                                style="font-size:20px;border: none;margin-left: 670px;">
                         </div>
                     </div>
                 </div>
-            </form>
 
+
+
+                <div class="row">
+                    <div class="col-sm-1">
+                        <a href="http://127.0.0.1:5500/Sharenote.html?page=1" type="button"
+                            class="btn btn-danger btn-lg"
+                            style="font-size:20px;border: none;margin-left: 620px;">Cancel</a>
+                    </div>
+                    <div class="col-sm-1">
+                        <input type="submit" value="Post" class="btn btn-primary btn-lg "
+                            style="font-size:20px;border: none;margin-left: 670px;">
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
     <footer>
@@ -463,13 +433,15 @@
                 <div class="col-sm-2"></div>
                 <div class="col-sm-6">
                     <p style="font-size: 16px; margin-left: 35px;"><strong>ShareEd</strong></p>
-                    <p style="font-size: 14px;"> “ ShareEd website is community of student in King Mongkut’s University
+                    <p style="font-size: 14px;"> “ ShareEd website is community of student in King Mongkut’s
+                        University
                         of Technology Thonburi for share their story about education in many features.
                         ShareEd made by KMUTT students called T3M team."</p>
                 </div>
                 <div class="col-sm-3">
                     <p style="font-size: 16px; margin-left: 35px;"><strong>Contact Info</strong></p>
-                    <p style="font-size: 14px;"><span class="glyphicon glyphicon-earphone"></span> +66 86 3175 820</p>
+                    <p style="font-size: 14px;"><span class="glyphicon glyphicon-earphone"></span> +66 86 3175 820
+                    </p>
                     <p style="font-size: 14px;"><span class="glyphicon glyphicon-envelope"></span>
                         shareed@gmail.co.th</a></p>
                     <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/youtube.png"
@@ -488,5 +460,8 @@
     </footer>
 
 </body>
+<script>
+    var upload = new FileUploadWithPreview('myUniqueUploadId');
+</script>
 
 </html>

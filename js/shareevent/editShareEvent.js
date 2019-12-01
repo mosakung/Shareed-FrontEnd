@@ -6,10 +6,10 @@ const postId = urlParams.get("postID");
 
 let originalCover = 1;
 
-httpIdGET('http://localhost:3000/shareed/review-book', postId, userId, (state, json) => {
+httpIdGET('http://localhost:3000/shareed/share-event', postId, userId, (state, json) => {
 
-    if (!json.cover) $('.fetch-cover-review-book').append(formCover_noData(json));
-    else $('.fetch-cover-review-book').append(formCover_alreadyData(json));
+    if (!json.cover) $('.fetch-cover-share-event').append(formCover_noData(json));
+    else $('.fetch-cover-share-event').append(formCover_alreadyData(json));
 
     $('.fetch-owner-username').append(formOwnerAndBy(json));
 
@@ -64,50 +64,34 @@ function formInputBeforeTag(json) {
     <div class="form-group">
         <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Title : </label>
         <div class="col-sm-9">
-            <input class="form-control" id="title-review-book-create" type="text"
-                style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="Title"
-                required value=${json.title}>
+            <input class="form-control" id="title-share-event-create" type="text"
+                style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="Title" required value="${json.title}">
         </div>
     </div>
     <hr>
     <div class="form-group">
-        <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Book Name :</label>
+        <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Location : </label>
+        <div class="col-sm-9">
+            <input class="form-control" id="section-share-event-create" type="text"
+                style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="e.g. KFC" required value="${json.location}">
+        </div>
+    </div>
+    <hr>
+    <div class="form-group">
+        <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Condition :
         </label>
         <div class="col-sm-9">
-            <input class="form-control" id="bookname-review-book-create" type="text"
+            <input class="form-control" id="instruction-name-share-event-create" type="text"
                 style="border: none; background-color:rgba(255, 255, 255, 0.37);"
-                placeholder="e.g. calculus1" required value="${json.bookName}">
+                placeholder="e.g. Only CPE student" required value="${json.condition}">
         </div>
     </div>
     <hr>
     <div class="form-group">
-        <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Written :</label>
-        </label>
+        <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Register : </label>
         <div class="col-sm-9">
-            <input class="form-control" id="writtenBy-review-book-create" type="text"
-                style="border: none; background-color:rgba(255, 255, 255, 0.37);"
-                placeholder="e.g. Dr.Jame Bond" required value="${json.writtenBy}">
-        </div>
-    </div>
-    <hr>
-    <div class="form-group">
-        <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Edition :</label>
-        </label>
-        <div class="col-sm-9">
-            <input class="form-control" id="edition-review-book-create" type="number"
-                style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="e.g. 1"
-                required value="${json.edition}">
-        </div>
-    </div>
-    <hr>
-    <div class="form-group">
-        <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Link to Library
-            :</label>
-        </label>
-        <div class="col-sm-9">
-            <input class="form-control" id="link-review-book-create" type="text"
-                style="border: none; background-color:rgba(255, 255, 255, 0.37);"
-                placeholder="e.g. xxxxxxxxxxxx.com" required value="${json.link}">
+            <input class="form-control" id="register-share-event-create" type="text"
+                style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="Yes or No" required value="${json.register}">
         </div>
     </div>
     `]
@@ -141,7 +125,7 @@ function formDescription(json) {
             <textarea class="form-control" id="description-share-note-create" type="text" cols=auto
                 rows="10" style="border: none; background-color:rgba(255, 255, 255, 0.37);"
                 placeholder="Write your description" required>
-            ${json.description}</textarea>
+            ${json.describe}</textarea>
         </div>
     </div>
     <hr>
