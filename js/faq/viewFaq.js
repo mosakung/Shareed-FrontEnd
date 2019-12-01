@@ -48,7 +48,7 @@ function fourmCard(data) {
                     <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/faqFarme.png" width="140" height="140">
                 </div>
                 <div class="col-sm-9" style="background-color: whitesmoke; width:390px;height: 140px; padding: 15px;">
-                    <p style="color: red;">Share Note</p>
+                    <p style="color: red;">Board FAQ</p>
                     <p>${data.title}</p>
                     <p>Day: ${(data.date_time).substring(0,10)} By: ${data.Username}</p>
                 </div>

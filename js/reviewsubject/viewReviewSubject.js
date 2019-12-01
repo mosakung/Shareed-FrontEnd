@@ -47,7 +47,7 @@ function fourmCard(data) {
             <div class="col-sm-1">
                 </div>
                 <div class="col-sm-11" style="background-color: whitesmoke; width:390px;height: 140px; padding: 15px;">
-                    <p style="color: red;">Share Note</p>
+                    <p style="color: red;">Review Subject</p>
                     <p style="font-size: 25px;">${data.SubjectID}</p>
                     <p>${data.Title}</p>
                     <p>Day: ${(data.Date_Time).substring(0,10)} By: ${data.Username}</p>
