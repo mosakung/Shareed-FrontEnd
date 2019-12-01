@@ -16,7 +16,7 @@ httpIdGET('http://localhost:3000/shareed/faq', urlParams.get("postID"), userId, 
     
     document.getElementById('title').innerHTML = json.title;
     document.getElementById('owner').innerHTML = json.Username;
-    document.getElementById('writeDown').innerHTML = json.dateTime;
+    document.getElementById('writeDown').innerHTML = date;
     document.getElementById('description').innerHTML = json.description;
     document.getElementById('numComment').innerHTML = json.countComment;
 });

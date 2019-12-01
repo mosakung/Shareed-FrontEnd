@@ -15,7 +15,7 @@ httpIdGET('http://localhost:3000/shareed/share-note', urlParams.get("postID"), u
     
     document.getElementById('title').innerHTML = json.title;
     document.getElementById('owner').innerHTML = json.Username;
-    document.getElementById('writeDown').innerHTML = json.dateTime;
+    document.getElementById('writeDown').innerHTML = date;
     document.getElementById('subjectName').innerHTML = json.subjectName;
     document.getElementById('section').innerHTML = json.section;
     document.getElementById('instructionName').innerHTML = json.instructorName;

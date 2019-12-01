@@ -15,7 +15,7 @@ httpIdGET('http://localhost:3000/shareed/share-event', urlParams.get("postID"), 
     
     document.getElementById('title').innerHTML = json.title;
     document.getElementById('owner').innerHTML = json.Username;
-    document.getElementById('writeDown').innerHTML = json.dateTime;
+    document.getElementById('writeDown').innerHTML = date;
 
     //document.getElementById('eventName').innerHTML = json.description;
     document.getElementById('location').innerHTML = json.location;
