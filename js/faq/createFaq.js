@@ -36,8 +36,8 @@ window.onload = function () {
 
         const body = JSON.parse(preBody);
 
-        httpPOST('http://localhost:3000/shareed/review-book', userId, body, (res, json) => {
-            window.location('http://localhost:3000/shareed/faq/1');
+        httpPOST('http://localhost:3000/shareed/faq', userId, body, (res, json) => {
+            window.location('http://localhost:5500/BoardFAQ.html?page=1');
         })
     }
 }
