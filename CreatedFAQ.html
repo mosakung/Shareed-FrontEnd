@@ -322,48 +322,65 @@
 
     <div class="container row center" style="margin-top: 5%;">
         <div class="box container-fluid" style="margin-top:10px">
-            Question Title : <input id="title-faq-create" type="text" name="quesTitle"
-                style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="Question Title">
-            <hr>
-            Tag : <input id="tag-faq-create" type="text" name="tag"
-                style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="e.g. #CPExxx #Calculus">
-            <hr>
-            Description & Content:
-            <div class="center"
-                style="background-color: rgba(255, 255, 255, 0.37);margin-bottom: 10px;width: 664px;height:auto;">
-                <div class="center">
-                    <textarea id="description-share-note-create" cols="80" rows="10"
-                        placeholder="Write your description"
-                        style="border: none; background-color:transparent; margin-top: 5px;">
-                    </textarea>
-                </div>
-                <div class="row center container-fluid mt-3">
-                    <div class="col-sm-1" style="margin-top: 10px;"></div>
-                    <div class="col-sm-10 row" id="image_preview">
+            <form class="form-horizontal" name="create-faq" id="create-faq">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Question Title :  </label>
+                    <div class="col-sm-9">
+                        <input class="form-control" id="title-faq-create" type="text" 
+                        style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="Question Title">
                     </div>
-                    <div class="col-sm-1" style="margin-top: 10px;"></div>
                 </div>
-                <div class="row"style="margin-top: 2%;">
-                    <div class="col-sm-4" style="margin-top: 10px;"></div>
-                    <div class="col-sm-4">
-                        <input type="file" class="form-control" id="images" name="images[]" onchange="preview_images();"
-                            multiple />
+                <hr>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Tag :  </label>
+                    <div class="col-sm-9">
+                        <input class="form-control" id="tag-faq-create" type="text" 
+                        style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="e.g. #CPExxx #Calculus">
                     </div>
-                    <div class="col-sm-4" style="margin-top: 10px;"></div>
                 </div>
-            </div>
-
-            <div class="row" style="margin-top: 10px;">
-                <div class="col-sm-1">
-                    <a href="http://127.0.0.1:5500/BoardFAQ.html?page=1" type="button" class="btn btn-danger btn-lg"
-                        style="font-size:20px;border: none;margin-left: 620px;">Cancel</a>
+                <hr>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Description:   </label>
+                    <div class="col-sm-9">
+                        <textarea class="form-control" id="description-faq-create" type="text" 
+                        cols=auto rows="10" style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="Write your description">
+                        </textarea>
+                    </div>
                 </div>
-                <div class="col-sm-1">
-                    <input type="submit" value="Post" class="btn btn-primary btn-lg "
-                        style="font-size:20px;border: none;margin-left: 670px;">
+                <hr>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Content:   </label>
+                    <div class="col-sm-9">
+                        <div class="center" style="background-color: rgba(255, 255, 255, 0.37);margin-top:5px; margin-bottom: 10px;height:auto;">
+                        <div class="row center container-fluid mt-3">
+                            <div class="col-sm-1" style="margin-top: 10px;"></div>
+                            <div class="col-sm-10 row" id="image_preview">
+                            </div>
+                            <div class="col-sm-1" style="margin-top: 10px;"></div>
+                        </div>
+                        <div class="row" style="margin-top: 2%;">
+                            <div class="col-sm-4" style="margin-top: 10px;"></div>
+                            <div class="col-sm-4">
+                                <input type="file" class="form-control" id="images" name="images[]" onchange="preview_images();"
+                                    multiple />
+                            </div>
+                            <div class="col-sm-4" style="margin-top: 10px;"></div>
+                        </div>
+                    </div>
                 </div>
-
-            </div>
+                <hr>
+                <div class="row" style="margin-top: 10px;">
+                    <div class="col-sm-1">
+                        <a href="http://127.0.0.1:5500/BoardFAQ.html?page=1" type="button" class="btn btn-danger btn-lg"
+                            style="font-size:20px;border: none;margin-left: 620px;">Cancel</a>
+                    </div>
+                    <div class="col-sm-1">
+                        <input type="submit" value="Post" class="btn btn-primary btn-lg "
+                            style="font-size:20px;border: none;margin-left: 670px;">
+                    </div>
+                </div>
+            </form>
+        </div>
         </div>
     </div>
     <footer>
