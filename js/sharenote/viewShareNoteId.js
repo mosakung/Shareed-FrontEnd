@@ -4,6 +4,15 @@ import {removeParam } from '../removeParam.js';
 const urlParams = new URLSearchParams(window.location.search);
 
 httpIdGET('http://localhost:3000/shareed/share-note', urlParams.get("postID"), userId, (state, json) => {
+    var date = json.dateTime.replace("T", " ");
+    date = date.substring(0, 19);
+    json.tag.forEach(data => {
+        showTag(data);
+    });
+    json.content.forEach(data => {
+        showContent(data);
+    });
+    
     document.getElementById('title').innerHTML = json.title;
     document.getElementById('owner').innerHTML = json.Username;
     document.getElementById('writeDown').innerHTML = json.dateTime;
@@ -17,20 +26,12 @@ httpIdGET('http://localhost:3000/shareed/share-note', urlParams.get("postID"), u
 
 });
 
-/*{
-   shareNoteId: data[0].shareNoteID,
-            cover: data[0].Cover,
-            /subjectName: data[0].Subject_Name,
-            /section: data[0].Section,
-            /instructorName: data[0].Instructor_Name,
-            /semeter: data[0].Semeter,
-            /title: data[0].Title,
-            userId: data[0].UserID,
-            /dateTime: data[0].Date_Time,
-            /Username: data[0].Username,
-            /content: contentData,
-            tag: tagPost,
-            comment: comment,
-            /countComment: countComment[0].count,
-            isOwner: owner
-}*/ 
+function showTag(data) {
+    var createTag = "<a href='#' class='btn btn-info btn-sm' role='button' style='margin-left: 10px'>" + data.TagDetail + "</a>"
+    $('#tag-post').append(createTag);
+}
+
+function showContent(data) {
+    var createContent = "<div class='row'>  <div class='col-sm-12'><center><img src = " + data.Picture + "></center></div></div>";
+    $('#content').append(createContent);
+}
