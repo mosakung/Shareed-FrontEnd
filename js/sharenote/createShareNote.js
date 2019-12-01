@@ -22,23 +22,29 @@ window.onload = function upload() {
         `;
 
         preBody = preBody + `"tag": [`;
+        
+        let lengthTagArray = tagArray.length; 
 
         tagArray.forEach(function (data, index) {
-            if(index === length - 1 ) preBody = preBody + `{ "TagDetail": "${data}" }`
+            if(index == lengthTagArray - 1) preBody = preBody + `{ "TagDetail": "${data}" }`
             else preBody = preBody + `{ "TagDetail": "${data}" },`
         })
 
         preBody = preBody + `], "content": [`
-        alert(preBody);
-       var test = new Array();
-       for(var i = 0; i < pictureArray.length; i++){
-           test.push(pictureArray[i].name);
+      
+        
+        for(var i = 0; i < pictureArray.length; i++){
+            if(i == pictureArray.length - 1)
+                preBody = preBody + `{ "Picture": "pictureBase/${pictureArray[i].name}" }`
+            else preBody = preBody + `{ "Picture": "pictureBase/${pictureArray[i].name}" },`
+            
        }
 
         preBody = preBody + `]}`
 
-        const body = JSON.parse(preBody);
 
+        const body = JSON.parse(preBody);
+        alert(body);
         httpPOST('http://localhost:3000/shareed/share-note', userId, body, (res, json) => {
             console.log(res);
         })
