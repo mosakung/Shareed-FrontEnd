@@ -2,7 +2,8 @@ import { httpPOST, userId } from '../callAPI.js';
 
 window.onload = function upload() {
     document.getElementById("create-share-note").onsubmit = function () {
-        let cover = document.getElementById("cover-share-note-create").name;
+        let cover = document.getElementById("cover-share-note-create").value;
+        cover = cover.substring(12,cover.length);
         cover = 'pictureBase/' + cover;
         let title = document.getElementById("title-share-note-create").value;
         let subjectName = document.getElementById("subject-name-share-note-create").value;

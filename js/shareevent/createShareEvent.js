@@ -2,7 +2,8 @@ import { httpPOST, userId } from '../callAPI.js';
 
 window.onload = function () {
     document.getElementById("create-share-event").onsubmit = function () {
-        let cover = document.getElementById("cover-share-event-create").name;
+        let cover = document.getElementById("cover-share-event-create").value;
+        cover = cover.substring(12,cover.length);
         cover = 'pictureBase/' + cover;
         let title = document.getElementById("title-share-event-create").value;
         let register = document.getElementById("register-share-event-create").value;

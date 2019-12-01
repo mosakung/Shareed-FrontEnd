@@ -2,7 +2,8 @@ import { httpPOST, userId } from '../callAPI.js';
 
 window.onload = function () {
     document.getElementById("create-review-book").onsubmit = function () {
-        let cover = document.getElementById("cover-review-book-create").name;
+        let cover = document.getElementById("cover-review-book-create").value;
+        cover = cover.substring(12,cover.length);
         cover = 'pictureBase/' + cover;
         let writtenBy = document.getElementById("writtenBy-review-book-create").value;
         let edition = document.getElementById("edition-review-book-create").value;
