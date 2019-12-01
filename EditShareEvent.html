@@ -321,25 +321,25 @@
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
 
-    <div id="navbar"></div>   
+    <div id="navbar"></div>
     <script>
-        $(function(){
+        $(function () {
             $("#navbar").load("navbar.html");
         });
     </script>
 
     <div class="center"
-    style="background-color: rgba(255, 255, 255, 0.37);margin-top: 50px;width: 864px;height: 294px;">
-    <div class="center card">
-        <a href="#"><img id="remove-picture"
-                src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/remove.png"
-                style="position: relative;"></a>
-        <img id="blah"
-            src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/UploadPicture.png"
-            alt="your image" class="center card-img-top" style="position: absolute;">
+        style="background-color: rgba(255, 255, 255, 0.37);margin-top: 50px;width: 864px;height: 294px;">
+        <div class="center card">
+            <a href="#"><img id="remove-picture"
+                    src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/remove.png"
+                    style="position: relative;"></a>
+            <img id="blah"
+                src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/UploadPicture.png"
+                alt="your image" class="center card-img-top" style="position: absolute;">
+        </div>
     </div>
-</div>
-<input type="file" onchange="readURL(this);" class="center">
+    <input type="file" onchange="readURL(this);" class="center">
     <div class="row">
         <div class="box" style="height:50px; margin-top: 10px;">
             <div class="col-sm-4">
@@ -356,34 +356,36 @@
         <div class="box" style="margin-top:10px">
             <form class="form-horizontal" name="create-share-event" id="create-share-event">
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Title :  </label>
+                    <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Title : </label>
                     <div class="col-sm-9">
-                        <input class="form-control" id="title-share-event-create" type="text" 
-                        style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="Title">
+                        <input class="form-control" id="title-share-event-create" type="text"
+                            style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="Title">
                     </div>
                 </div>
                 <hr>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Location :   </label>
+                    <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Location : </label>
                     <div class="col-sm-9">
-                        <input class="form-control" id="section-share-event-create" type="text" 
-                        style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="e.g. KFC">
+                        <input class="form-control" id="section-share-event-create" type="text"
+                            style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="e.g. KFC">
                     </div>
                 </div>
                 <hr>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Condition :   </label>
+                    <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Condition :
+                    </label>
                     <div class="col-sm-9">
-                        <input class="form-control" id="instruction-name-share-event-create" type="text" 
-                        style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="e.g. Only CPE student">
+                        <input class="form-control" id="instruction-name-share-event-create" type="text"
+                            style="border: none; background-color:rgba(255, 255, 255, 0.37);"
+                            placeholder="e.g. Only CPE student">
                     </div>
                 </div>
                 <hr>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Register :    </label>
+                    <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Register : </label>
                     <div class="col-sm-9">
-                        <input class="form-control" id="register-share-event-create" type="text" 
-                        style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="Yes or No">
+                        <input class="form-control" id="register-share-event-create" type="text"
+                            style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="Yes or No">
                     </div>
                 </div>
                 <hr>
@@ -398,49 +400,54 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Tag : </label>
                     <div class="col-sm-9">
-                        <input class="form-control" id="tag-share-event-create" type="text" 
-                        style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="e.g. #CPExxx #Calculus">
+                        <input class="form-control" id="tag-share-event-create" type="text"
+                            style="border: none; background-color:rgba(255, 255, 255, 0.37);"
+                            placeholder="e.g. #CPExxx #Calculus">
                     </div>
                 </div>
                 <hr>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Description:   </label>
+                    <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Description:
+                    </label>
                     <div class="col-sm-9">
-                        <textarea class="form-control" id="description-share-note-create" type="text" 
-                        cols=auto rows="10" style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="Write your description">
+                        <textarea class="form-control" id="description-share-note-create" type="text" cols=auto
+                            rows="10" style="border: none; background-color:rgba(255, 255, 255, 0.37);"
+                            placeholder="Write your description">
                         </textarea>
                     </div>
                 </div>
                 <hr>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Content:   </label>
+                    <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Content: </label>
                     <div class="col-sm-9">
-                        <div class="center" style="background-color: rgba(255, 255, 255, 0.37);margin-top:5px; margin-bottom: 10px;height:auto;">
-                        <div class="row center container-fluid mt-3">
-                            <div class="col-sm-1" style="margin-top: 10px;"></div>
-                            <div class="col-sm-10 row" id="image_preview">
+                        <div class="center"
+                            style="background-color: rgba(255, 255, 255, 0.37);margin-top:5px; margin-bottom: 10px;height:auto;">
+                            <div class="row center container-fluid mt-3">
+                                <div class="col-sm-1" style="margin-top: 10px;"></div>
+                                <div class="col-sm-10 row" id="image_preview">
+                                </div>
+                                <div class="col-sm-1" style="margin-top: 10px;"></div>
                             </div>
-                            <div class="col-sm-1" style="margin-top: 10px;"></div>
-                        </div>
-                        <div class="row" style="margin-top: 2%;">
-                            <div class="col-sm-4" style="margin-top: 10px;"></div>
-                            <div class="col-sm-4">
-                                <input type="file" class="form-control" id="images" name="images[]" onchange="preview_images();"
-                                    multiple />
+                            <div class="row" style="margin-top: 2%;">
+                                <div class="col-sm-4" style="margin-top: 10px;"></div>
+                                <div class="col-sm-4">
+                                    <input type="file" class="form-control" id="images" name="images[]"
+                                        onchange="preview_images();" multiple />
+                                </div>
+                                <div class="col-sm-4" style="margin-top: 10px;"></div>
                             </div>
-                            <div class="col-sm-4" style="margin-top: 10px;"></div>
                         </div>
                     </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col-sm-1">
-                        <a href="http://127.0.0.1:5500/ShareEvent.html" type="button" class="btn btn-danger btn-lg"
-                            style="font-size:20px;border: none;margin-left: 620px;">Cancel</a>
-                    </div>
-                    <div class="col-sm-1">
-                        <input type="submit" value="Save" class="btn btn-primary btn-lg "
-                            style="font-size:20px;border: none;margin-left: 670px;">
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <a href="http://127.0.0.1:5500/ShareEvent.html" type="button" class="btn btn-danger btn-lg"
+                                style="font-size:20px;border: none;margin-left: 620px;">Cancel</a>
+                        </div>
+                        <div class="col-sm-1">
+                            <input type="submit" value="Save" class="btn btn-primary btn-lg "
+                                style="font-size:20px;border: none;margin-left: 670px;">
+                        </div>
                     </div>
                 </div>
             </form>
