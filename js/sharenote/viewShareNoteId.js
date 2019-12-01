@@ -1,5 +1,5 @@
 import { httpIdGET, userId } from '../callAPI.js';
-import { removeParam } from '../removeParam.js';
+import {removeParam } from '../removeParam.js';
 
 const urlParams = new URLSearchParams(window.location.search);
 
@@ -14,6 +14,7 @@ httpIdGET('http://localhost:3000/shareed/share-note', urlParams.get("postID"), u
     document.getElementById('description').innerHTML = json.description;
     document.getElementById('content').innerHTML = json.content;
     document.getElementById('numComment').innerHTML = json.countComment;
+
 });
 
 /*{

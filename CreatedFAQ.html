@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <script type="module" src="js/sharenote/createShareNote.js"></script>
+    <script type="module" src="js/sharenote/createFaq.js"></script>
     <style>
         body {
             background-image: linear-gradient(to bottom right, white, lightblue, deepskyblue, cornflowerblue, grey);
@@ -229,22 +229,25 @@
 
     <div class="container">
         <div class="box" style="margin-top:10px">
-            Question Title : <input type="text" name="quesTitle" style="border: none; background-color:rgba(255, 255, 255, 0.37);"
+            Question Title : <input id="title-faq-create" type="text" name="quesTitle" style="border: none; background-color:rgba(255, 255, 255, 0.37);"
                 placeholder="Question Title">
+            <hr>
+            Tag : <input id="tag-faq-create" type="text" name="tag" style="border: none; background-color:rgba(255, 255, 255, 0.37);"
+                placeholder="e.g. #CPExxx #Calculus">
             <hr>
             Description :
             <br>
             <br>
             <div>
-                <textarea name="subject" cols="90" rows="20"
+                <textarea id="description-faq-create" ame="subject" cols="90" rows="20"
                     style="border: none; background-color:rgba(255, 255, 255, 0.37);margin-left:50px;">
             </textarea>
             </div>
 
             <div class="row" style="margin-top: 10px;">
                 <div class="col-sm-1">
-                    <button type="button" class="btn btn-danger btn-lg"
-                        style="font-size:20px;border: none;margin-left: 620px;">Cancel</button>
+                    <a href="http://127.0.0.1:5500/BoardFAQ.html?page=1" type="button" class="btn btn-danger btn-lg"
+                    style="font-size:20px;border: none;margin-left: 620px;">Cancel</a>
                 </div>
                 <div class="col-sm-1">
                     <input type="submit" value="Post" class="btn btn-primary btn-lg "

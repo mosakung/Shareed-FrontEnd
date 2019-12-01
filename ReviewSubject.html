@@ -2,74 +2,110 @@
 <html>
 
 <head>
-  <title>ShareEd</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://fonts.googleapis.com/css?family=Mali|Fredericka the Great" rel="stylesheet">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-  <style>
-  body {
-    background-image: linear-gradient(to bottom right,white,lightblue,deepskyblue, cornflowerblue,grey);
-    font-family :Mali;
-    position: relative; 
-  }
-  .block{
-    position:auto;
-    width:auto;
-    height:580px;
-    background-color: rgba(255, 255, 255, 0.37);
-    border-radius: 3px;
-    padding: 30px;
-    margin: 10px;
-  }
-  .bg-block{
-    position:auto;
-    width:auto;
-    height:420px;
-    background-color: whitesmoke;
-    border-radius: 3px;
-    padding: 15px;
-    margin: 5px;
-  }
-  .sm-block{
-    position:auto;
-    width:auto;
-    height:160px;
-    background-color: whitesmoke;
-    border-radius: 3px;
-    padding: 15px;
-    margin: 5px;
-  }
-  .pagination {
-  display: inline-block;
-    }
+    <title>ShareEd</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Mali|Fredericka the Great" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script type="module" src="js/reviewsubject/viewReviewSubject.js"></script>
+    
+    <style>
+        body {
+            background-image: linear-gradient(to bottom right, white, lightblue, deepskyblue, cornflowerblue, grey);
+            font-family: Mali;
+            position: relative;
+        }
 
-    .pagination a {
-    color: black;
-    float: left;
-    padding: 5px 15px;
-    text-decoration: none;
-    }
+        .block {
+            position: auto;
+            width: auto;
+            height: 580px;
+            background-color: rgba(255, 255, 255, 0.37);
+            border-radius: 3px;
+            padding: 30px;
+            margin: 10px;
+        }
 
-    .pagination a.active {
-    background-color: rgb(100, 100, 100);
-    color: white;
-    border-radius: 10px;
-    }
+        .bg-block {
+            position: auto;
+            width: auto;
+            height: 420px;
+            background-color: whitesmoke;
+            border-radius: 3px;
+            padding: 15px;
+            margin: 5px;
+        }
 
-    .pagination a:hover:not(.active) {
-    background-color: #ddd;
-    border-radius: 10px;
-    }
-  #sharenote {padding-top:50px;height:650px;color: black;}
-  #shareevent{padding-top:50px;height:650px;color: black;}
-  #reviewsubject {padding-top:50px;height:650px;color: black;}
-  #reviewtutor {padding-top:50px;height:650px;color: black; }
-  #reviewbook {padding-top:50px;height:650px;color: black; }
-  #boardfaq {padding-top:50px;height:650px;color: black; }
-  </style>
+        .sm-block {
+            position: auto;
+            width: auto;
+            height: 160px;
+            background-color: whitesmoke;
+            border-radius: 3px;
+            padding: 15px;
+            margin: 5px;
+        }
+
+        .pagination {
+            display: inline-block;
+        }
+
+        .pagination a {
+            color: black;
+            float: left;
+            padding: 5px 15px;
+            text-decoration: none;
+        }
+
+        .pagination a.active {
+            background-color: rgb(100, 100, 100);
+            color: white;
+            border-radius: 10px;
+        }
+
+        .pagination a:hover:not(.active) {
+            background-color: #ddd;
+            border-radius: 10px;
+        }
+
+        #sharenote {
+            padding-top: 50px;
+            height: 650px;
+            color: black;
+        }
+
+        #shareevent {
+            padding-top: 50px;
+            height: 650px;
+            color: black;
+        }
+
+        #reviewsubject {
+            padding-top: 50px;
+            height: 650px;
+            color: black;
+        }
+
+        #reviewtutor {
+            padding-top: 50px;
+            height: 650px;
+            color: black;
+        }
+
+        #reviewbook {
+            padding-top: 50px;
+            height: 650px;
+            color: black;
+        }
+
+        #boardfaq {
+            padding-top: 50px;
+            height: 650px;
+            color: black;
+        }
+    </style>
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -130,7 +166,7 @@
                 </div>
             </div>
         </div>
-    </nav>     
+    </nav>
 
     <div class="row">
         <div class="block"
@@ -139,40 +175,19 @@
                 style="font-family: Fredericka the Great; font-size:100px; margin-top: 320px; margin-left:30px; padding: 10px;">
                 Review Subject</h1>
         </div>
-    <div class="col-sm-2"></div>
-    <div class="col-sm-5">
-        <div id="shareNote" class="container-fluid">
-            <div style="margin-top: 15px;">
-                <div class="row">
-                    <a href="#" role="button">
-                        <div class="sm-block" style="height:150px; padding: 5px;">
-                            <div>
-                                <p style="color: red;">Review Subject</p>
-                                <p style="font-size: 25px;">CPE 332</p>
-                                <p>Dummy</p><br>
-                                <p>Day : By: </p>
-                            </div>
-                        </div>
-                    </a>
-                    <div class="sm-block" style="height:150px; margin-top: 10px;"> 12115631 </div>
-                    <div class="sm-block" style="height:150px; margin-top: 10px;"> 78823313 </div>
-                    <div class="sm-block" style="height:150px; margin-top: 10px;"> 89215631 </div>
-                    <div class="row" style="margin-top: 25px;">
-                        <div class="col-sm-2"></div>
-                        <div class="col-sm-8"> 
-                            <div class="pagination ">
-                                <a href="#">&laquo;</a>
-                                <a href="#"class="active">1</a>
-                                <!-- <a href="#">2</a>
-                                <a href="#">3</a>
-                                <a href="#">4</a>
-                                <a href="#">5</a>
-                                <a href="#">6</a>
-                                <a href="#">7</a> -->
-                                    <a href="#">&raquo;</a>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-5">
+            <div id="shareNote" class="container-fluid">
+                <div style="margin-top: 15px;">
+                    <div class="row">
+                        <div class="fetch-all-review-tutor"></div>
+                        <div class="row" style="margin-top: 25px;">
+                            <div class="col-sm-4"></div>
+                            <div class="col-sm-4">
+                                <div class="pagination fetch-page-review-tutor">
                                 </div>
                             </div>
-                            <div class="col-sm-2"></div>
+                            <div class="col-sm-4"></div>
                         </div>
                     </div>
                 </div>
@@ -194,13 +209,7 @@
                     </div>
                 </form>
             </div>
-            <div class="row" style="margin-top: 20px;">
-                <p>Tag</p>
-                <a href="#" class="btn btn-info btn-sm" role="button">CPE</a>
-                <a href="#" class="btn btn-info btn-sm" role="button">Algorithm</a>
-                <a href="#" class="btn btn-info btn-sm" role="button">Engineer</a>
-                <a href="#" class="btn btn-info btn-sm" role="button">CPE212</a>
-                <a href="#" class="btn btn-info btn-sm" role="button">Algorithm</a>
+            <div class="row fetch-tag-review-tutor" style="margin-top: 20px;">
             </div>
             <div class="row" style="margin-top: 20px;">
                 <p>Popular</p>
@@ -242,7 +251,7 @@
         </div>
 
     </footer>
-    
+
 </body>
 
 </html>
