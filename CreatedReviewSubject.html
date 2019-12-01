@@ -384,7 +384,7 @@
 
     <div class="container" style="margin-top: 2%;">
         <div class="box" style="margin-top:25px">
-            <form class="form-horizontal" name="create-review-subject" id="create-review-subject">
+            <form class="form-horizontal" name="create-review-subject" id="create-review-subject" action = "javascript:window.location.assign( 'http://localhost:5500/ReviewSubject.html?page=1' );">
                 <div class="form-group">
                     <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Title : </label>
                     <div class="col-sm-9">
@@ -394,9 +394,7 @@
                 </div>
                 <hr>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Subject ID
-                        :</label>
-                    </label>
+                    <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Subject ID:</label>
                     <div class="col-sm-9">
                         <input class="form-control" id="subjectId-review-subject-create" type="text"
                             style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="e.g. CPExxx" required>
@@ -406,7 +404,6 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Subject Name
                         :</label>
-                    </label>
                     <div class="col-sm-9">
                         <input class="form-control" id="subjectname-review-subject-create" type="text"
                             style="border: none; background-color:rgba(255, 255, 255, 0.37);"
@@ -447,10 +444,9 @@
                     <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Description:
                     </label>
                     <div class="col-sm-9">
-                        <textarea class="form-control" id="description-review-subject-create" type="text" cols=auto
+                        <textarea class="form-control" id="description-review-subject-create" type="text" cols="auto"
                             rows="10" style="border: none; background-color:rgba(255, 255, 255, 0.37);"
-                            placeholder="Write your description" required>
-                            </textarea>
+                            placeholder="Write your description" required></textarea>
                     </div>
                 </div>
                 <hr>

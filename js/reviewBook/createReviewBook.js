@@ -37,6 +37,7 @@ window.onload = function () {
 
         preBody = preBody + `], "content": [`
 
+        
         for (var i = 0; i < pictureArray.length; i++) {
             if (i == pictureArray.length - 1)
                 preBody = preBody + `{ "Picture": "pictureBase/${pictureArray[i].name}" }`
@@ -48,8 +49,8 @@ window.onload = function () {
 
         const body = JSON.parse(preBody);
 
+        
         httpPOST('http://localhost:3000/shareed/review-book', userId, body, (res, json) => {
-            window.location('http://localhost:5500/ReviewBook.html?page=1');
-        })
+       });
     }
 }
