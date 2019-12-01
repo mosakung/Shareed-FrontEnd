@@ -15,7 +15,7 @@ httpIdGET('http://localhost:3000/shareed/review-subject', urlParams.get("postID"
     
     document.getElementById('title').innerHTML = json.title;
     document.getElementById('owner').innerHTML = json.Username;
-    document.getElementById('writeDown').innerHTML = json.dateTime;
+    document.getElementById('writeDown').innerHTML = date;
     document.getElementById('subjectID').innerHTML = json.subjectId;
     document.getElementById('subjectName').innerHTML = json.subjectName;
     document.getElementById('teachBy').innerHTML = json.instructorName;
