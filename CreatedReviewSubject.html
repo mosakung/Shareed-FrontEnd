@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <script type="module" src="js/sharenote/createReviewSubject.js"></script>
+    <script type="module" src="js/sharenote/createShareNote.js"></script>
     <style>
         body {
             background-image: linear-gradient(to bottom right, white, lightblue, deepskyblue, cornflowerblue, grey);
@@ -206,18 +206,6 @@
             border-radius: 50%;
             background: #ccc;
         }
-
-        img#blah {
-            top: 0%;
-            z-index: -1;
-        }
-
-        img#remove-picture {
-            width: 5%;
-            height: 5%;
-            left: 94.8%;
-            /* right: 10%; */
-        }
     </style>
     <script>
         $('#add_more').click(function () {
@@ -299,83 +287,84 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="http://www.expertphp.in/js/jquery.form.js"></script>
     <script>
-            function patternImageUpload1(parameter) {
-                return [`
+        function patternImageUpload1(parameter) {
+            return [`
                 <div id="card-upload-` + parameter + `" class="row">
                                 <div class="card mt-3" style="margin-top: 5%;">
                                     <a style="cursor: grabbing;"><img id="remove-picture-` + parameter + `" src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/remove.png" onclick="remove_picture(` + parameter + `)"
                                             style="width: 50px; height: 50px; position: absolute;"></a>
                                     <img id="blahs" src="
                 `]
-            }
-    
-            function patternImageUpload3() {
-                return [`
+        }
+
+        function patternImageUpload3() {
+            return [`
                 " alt="your image" class="center card-img-top" style="z-index: -1; max-width: 550px;">
                                 </div>
                             </div>
                 `]
+        }
+
+        var j = -1;
+
+        function preview_images() {
+            var total_file = document.getElementById("images").files.length;
+            for (var i = 0; i < total_file; i++) {
+                j = j + 1
+                $('#image_preview').append(patternImageUpload1(j) + URL.createObjectURL(event.target.files[i]) + patternImageUpload3());
             }
-    
-            var j = -1;
-    
-            function preview_images() {
-                var total_file = document.getElementById("images").files.length;
-                for (var i = 0; i < total_file; i++) {
-                    $('#image_preview').append("<div class='card col-sm-12 center'><a href='#'><img id='remove-picture' src='https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/remove.png' style='position:relative;'></a><center> <img class='img-responsive' src='" + URL.createObjectURL(event.target.files[i]) + "'></div>");
-                }
-            }
-    
-            var deleted = [];
-    
-            function remove_picture(id) {
-                var element = document.getElementById("card-upload-" + id);
-                element.parentNode.removeChild(element);
-                deleted.push(id);
-            }
-        </script>
-        <script>
-            function import_delete() {
-                return [`
+        }
+
+        var deleted = [];
+
+        function remove_picture(id) {
+            var element = document.getElementById("card-upload-" + id);
+            element.parentNode.removeChild(element);
+            deleted.push(id);
+        }
+    </script>
+    <script>
+        function import_delete() {
+            return [`
                 <a style="cursor: grabbing;"><img id="remove-picture-cover"
                     src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/remove.png"
                     onclick="cover_delete()" style="width: 50px; height: 50px; position: absolute;"></a>
                 `]
+        }
+
+        function out_delete() {
+            return [``];
+        }
+
+        var coverDelete = 1;
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                coverDelete = 0;
+
+                reader.onload = function (e) {
+                    $('#blah')
+                        .attr('src', e.target.result);
+
+                    $('#cover-upload').append(import_delete());
+                };
+                reader.readAsDataURL(input.files[0]);
             }
-    
-            function out_delete() {
-                return [``];
-            }
-    
-            var coverDelete = 1;
-    
-            function readURL(input) {
-                if (input.files && input.files[0]) {
-                    var reader = new FileReader();
-                    coverDelete = 0;
-    
-                    reader.onload = function (e) {
-                        $('#blah')
-                            .attr('src', e.target.result);
-    
-                        $('#cover-upload').append(import_delete());
-                    };
-                    reader.readAsDataURL(input.files[0]);
-                }
-            }
-    
-            function cover_delete() {
-                coverDelete = 1;
-                $('#blah')
-                    .attr('src', 'https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/UploadPicture.png');
-    
-                /* var element = document.getElementById("cover-upload");
-                element.removeChild(element.childNodes); */
-    
-                $('#cover-upload').empty();
-            }
-    
-        </script>
+        }
+
+        function cover_delete() {
+            coverDelete = 1;
+            $('#blah')
+                .attr('src', 'https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/UploadPicture.png');
+
+            /* var element = document.getElementById("cover-upload");
+            element.removeChild(element.childNodes); */
+
+            $('#cover-upload').empty();
+        }
+
+    </script>
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -440,57 +429,60 @@
 
     <div class="container" style="margin-top: 2%;">
         <div class="box" style="margin-top:10px">
-            Title : <input id="title-review-subject-create" type="text" name="title" style="border: none; background-color:rgba(255, 255, 255, 0.37);"
+            Title : <input type="text" name="title" style="border: none; background-color:rgba(255, 255, 255, 0.37);"
                 placeholder="Title">
             <hr>
-            Subject ID : <input id="subjectId-review-subject-create" type="text" name="subjectID"
+            Subject ID : <input type="text" name="subjectID"
                 style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="e.g. CPExxx">
             <hr>
-            Subject Name : <input id="subjectname-review-subject-create" type="text" name="subjectName"
+            Subject Name : <input type="text" name="subjectName"
                 style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="e.g. Calculus">
             <hr>
-            Teach By : <input id="instructorname-review-subject-create" type="text" name="teachBy"
+            Teach By : <input type="text" name="teachBy"
                 style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="e.g. Aj.xxxx xxxx">
             <hr>
-            Section : <input id="section-review-subject-create" type="text" name="section"
+            Section : <input type="text" name="section"
                 style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="e.g. 4">
             <hr>
-            Tag : <input id="tag-review-subject-create" type="text" name="tag" style="border: none; background-color:rgba(255, 255, 255, 0.37);"
+            Tag : <input type="text" name="tag" style="border: none; background-color:rgba(255, 255, 255, 0.37);"
                 placeholder="e.g. #CPExxx #Calculus">
             <hr>
-            Description :
+            Description & Content:
             <div class="center"
-            style="background-color: rgba(255, 255, 255, 0.37);margin-bottom: 10px;width: 664px;height:auto;">
-            <div class="center">
-                <textarea id="description-faq-create" cols="78" rows="5" placeholder="Write your description"
-                    style="border: none; background-color:transparent; margin-top: 5px;">
-    </textarea>
-            </div>
-            <div class="row">
-                <div class="col-sm-3"></div>
-                <div class="col-sm-6" id="image_preview"></div>
-                <div class="col-sm-3"></div>
-            </div>
-
-            <div class="row">
-                <div class="col-sm-8" style="margin-top: 10px;"></div>
-                <div class="col-sm-4">
-                    <input type="file" class="form-control" id="images" name="images[]" onchange="preview_images();"
-                        multiple />
+                style="background-color: rgba(255, 255, 255, 0.37);margin-bottom: 10px;width: 664px;height:auto;">
+                <div class="center">
+                    <textarea id="description-share-note-create" cols="80" rows="10"
+                        placeholder="Write your description"
+                        style="border: none; background-color:transparent; margin-top: 5px;">
+                    </textarea>
+                </div>
+                <div class="row center container-fluid mt-3">
+                    <div class="col-sm-1" style="margin-top: 10px;"></div>
+                    <div class="col-sm-10 row" id="image_preview">
+                    </div>
+                    <div class="col-sm-1" style="margin-top: 10px;"></div>
+                </div>
+                <div class="row" style="margin-top: 2%;">
+                    <div class="col-sm-4" style="margin-top: 10px;"></div>
+                    <div class="col-sm-4">
+                        <input type="file" class="form-control" id="images" name="images[]" onchange="preview_images();"
+                            multiple />
+                    </div>
+                    <div class="col-sm-4" style="margin-top: 10px;"></div>
                 </div>
             </div>
-        </div>
-        <div class="row">
+            <div class="row">
                 <div class="col-sm-1">
-                        <a href="http://127.0.0.1:5500/ReviewSubject.html?page=1" type="button" class="btn btn-danger btn-lg"
-                            style="font-size:20px;border: none;margin-left: 620px;">Cancel</a>
-                    </div>
-            <div class="col-sm-1">
-                <input type="submit" value="Post" class="btn btn-primary btn-lg "
-                    style="font-size:20px;border: none;margin-left: 670px;">
+                    <a href="http://127.0.0.1:5500/ReviewSubject.html" type="button" class="btn btn-danger btn-lg"
+                        style="font-size:20px;border: none;margin-left: 620px;">Cancel</a>
+                </div>
+                <div class="col-sm-1">
+                    <input type="submit" value="Post" class="btn btn-primary btn-lg "
+                        style="font-size:20px;border: none;margin-left: 670px;">
+                </div>
+
             </div>
 
-        </div>
         </div>
     </div>
     <footer>
