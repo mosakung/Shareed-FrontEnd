@@ -17,7 +17,8 @@
         href="https://unpkg.com/file-upload-with-preview@4.0.2/dist/file-upload-with-preview.min.css">
 
     <script src="https://unpkg.com/file-upload-with-preview@4.0.2/dist/file-upload-with-preview.min.js"></script>
-
+    <script type="module" src="js/sharenote/editShareNote.js"></script>
+    
     <style>
         body {
             background-image: linear-gradient(to bottom right, white, lightblue, deepskyblue, cornflowerblue, grey);
@@ -216,6 +217,7 @@
         }
     </style>
     <script type="text/javascript" src="http://www.expertphp.in/js/jquery.form.js"></script>
+    
     <script>
 
         function patternImageUpload1(parameter) {
@@ -284,14 +286,16 @@
         }
 
         function cover_delete() {
+            originalCover = 0;
             coverDelete = 1;
             $('#blah')
                 .attr('src', 'https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/UploadPicture.png');
 
             /* var element = document.getElementById("cover-upload");
             element.removeChild(element.childNodes); */
-
+            document.getElementById('cover-share-note-create').value = "";
             $('#cover-upload').empty();
+            $('#cover-original').empty();
         }
 
     </script>
@@ -306,33 +310,32 @@
         });
     </script>
 
-    <!-- before  -->
-
-    <div class="center "
+    <a class="fetch-cover-share-note"></a>
+    <!-- <div class="center "
         style="background-color: rgba(255, 255, 255, 0.37);margin-top: 50px;width: 864px;height: 294px;">
         <div id="cover-upload"></div>
         <img id="blah" src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/UploadPicture.png"
             alt="your image" class="center" />
-        <input id="cover-share-note-create" type="file" onchange="readURL(this);" class="center" value="" />
     </div>
 
-    <input type="file" onchange="readURL(this);" class="center" />
-    <div class="row" style="margin-top: 1%;">
-        <div class="box" style="height:50px; margin-top: 10px;">
+    <input id="cover-share-note-create" type="file" onchange="readURL(this);" class="center" /> -->
+
+    <div class="row fetch-owner-username" style="margin-top: 1%;">
+        <!-- <div class="box" style="height:50px; margin-top: 10px;">
             <div class="col-sm-4">
                 Owner :
             </div>
             <div class="col-sm-4" style="margin-left:250px;">
                 Write Down :
             </div>
-        </div>
-
+        </div> -->
     </div>
 
-    <div class="container" style="margin-top: 1%;">
+    <div class="container fetch-form-input-all" style="margin-top: 1%;">
         <div class="box" style="margin-top:10px">
             <form class="form-horizontal" name="create-share-note" id="create-share-note">
-                <div class="form-group">
+                <div class="fetch-form-input-all-js"></div>
+                <!-- <div class="form-group">
                     <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Title : </label>
                     <div class="col-sm-9">
                         <input class="form-control" id="title-share-note-create" type="text"
@@ -384,14 +387,15 @@
                             placeholder="e.g. #CPExxx #Calculus" required>
                     </div>
                 </div>
-                <hr>
+                <hr> -->
 
-                <div class="form-group">
+                <div class="form-group " style="margin-top: 1%;">
                     <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Content : </label>
                     <div class="col-sm-9">
                         <div class="center"
                             style="background-color: rgba(255, 255, 255, 0.37);margin-bottom: 10px; height: auto;">
-                            <div id="myUniqueUploadId" class="custom-file-container" data-upload-id="myUniqueUploadId">
+                            <div class="fetch-form-content-all-js"></div>
+                            <div id="myUniqueUploadId" class="custom-file-container" data-upload-id="myUniqueUploadId" style="margin-top: 7%;">
                                 <label>Upload File <a href="javascript:void(0)"
                                         class="custom-file-container__image-clear"
                                         title="Clear Image">&times;</a></label>
@@ -458,5 +462,6 @@
 <script>
     var upload = new FileUploadWithPreview('myUniqueUploadId');
 </script>
+
 
 </html>
