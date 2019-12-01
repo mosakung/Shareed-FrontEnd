@@ -1,6 +1,6 @@
 import { httpPOST, userId } from '../callAPI.js';
 
-window.onload = function () {
+window.onload = function upload() {
     document.getElementById("create-share-note").onsubmit = function () {
         let cover = document.getElementById("cover-share-note-create").value;
         let title = document.getElementById("title-share-note-create").value;
@@ -9,11 +9,8 @@ window.onload = function () {
         let instructionName = document.getElementById("instruction-name-share-note-create").value;
         let semeter = document.getElementById("semeter-share-note-create").value;
         let tag = document.getElementById('tag-share-note-create').value;
-        let pictureArray = document.getElementById('images-array-share-note').value;
-
+        let pictureArray = document.getElementById('images-array-share-note').files;
         let tagArray = tag.split(/[#]/g).filter(n => n);
-
-        let tagArrayLength = tagArray.length;
 
         let preBody = `{
             "Cover": "${cover}",
@@ -32,13 +29,11 @@ window.onload = function () {
         })
 
         preBody = preBody + `], "content": [`
-
-        let pictureArrayLength = pictureArray.length;
-
-        pictureArray.forEach(function (data, index) {
-            if(index === length - 1 ) preBody = preBody + `{ "Picture": "${data}" }`
-            else preBody = preBody + `{ "Picture": "${data}" },`
-        })
+        alert(preBody);
+       var test = new Array();
+       for(var i = 0; i < pictureArray.length; i++){
+           test.push(pictureArray[i].name);
+       }
 
         preBody = preBody + `]}`
 
