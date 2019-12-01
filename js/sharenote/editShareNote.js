@@ -21,7 +21,7 @@ httpIdGET('http://localhost:3000/shareed/share-note', postId, userId, (state, js
     originalCover = json.cover;
 
     json.content.forEach(function (data) {
-        picArray.push(data);
+        picArray.push(data.Picture);
     })
 })
 
@@ -72,7 +72,7 @@ function formInputBeforeTag(json) {
     <div class="form-group">
         <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Title : </label>
         <div class="col-sm-9">
-            <input class="form-control" id="title-share-note-create" type="text"
+            <input class="form-control" id="title-share-note-edit" type="text"
                 style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="Title" value="${json.title}">
         </div>
     </div>
@@ -81,7 +81,7 @@ function formInputBeforeTag(json) {
         <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Subject Name:
         </label>
         <div class="col-sm-9">
-            <input class="form-control" id="subject-name-share-note-create" type="text"
+            <input class="form-control" id="subject-name-share-note-edit" type="text"
                 style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="e.g. CPExxx" value="${json.subjectName}">
         </div>
     </div>
@@ -89,7 +89,7 @@ function formInputBeforeTag(json) {
     <div class="form-group">
         <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Section : </label>
         <div class="col-sm-9">
-            <input class="form-control" id="section-share-note-create" type="text"
+            <input class="form-control" id="section-share-note-edit" type="text"
                 style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="e.g. 4" value="${json.section}">
         </div>
     </div>
@@ -98,7 +98,7 @@ function formInputBeforeTag(json) {
         <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Instruction Name :
         </label>
         <div class="col-sm-9">
-            <input class="form-control" id="instruction-name-share-note-create" type="text"
+            <input class="form-control" id="instruction-name-share-note-edit" type="text"
                 style="border: none; background-color:rgba(255, 255, 255, 0.37);"
                 placeholder="Aj.xxxx xxxx" value="${json.instructorName}">
         </div>
@@ -107,7 +107,7 @@ function formInputBeforeTag(json) {
     <div class="form-group">
         <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Semeter : </label>
         <div class="col-sm-9">
-            <input class="form-control" id="semeter-share-note-create" type="text"
+            <input class="form-control" id="semeter-share-note-edit" type="text"
                 style="border: none; background-color:rgba(255, 255, 255, 0.37);"
                 placeholder="e.g. 2nd semeter" value="${json.semeter}">
         </div>
@@ -121,7 +121,7 @@ function formTag(json) {
     <div class="form-group">
         <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Tag : </label>
         <div class="col-sm-9">
-            <input class="form-control" id="tag-share-note-create" type="text"
+            <input class="form-control" id="tag-share-note-edit" type="text"
                 style="border: none; background-color:rgba(255, 255, 255, 0.37);"
                 placeholder="e.g. #CPExxx #Calculus" value="`;
     json.tag.forEach(function (data, index) {
@@ -156,14 +156,17 @@ window.onload = function () {
     document.getElementById("edit-share-note").onsubmit = function () {
         let cover;
         if (originalCoverState == 1) cover = originalCover
-        else cover = document.getElementById("cover-share-note-create").value;
+        else if(originalCoverState == 0){
+            cover = document.getElementById("cover-share-note-edit").value;
+            cover = cover.substring(12,cover.length);
+        }
         let title = document.getElementById("title-share-note-edit").value;
         let subjectName = document.getElementById("subject-name-share-note-edit").value;
         let section = document.getElementById("section-share-note-edit").value;
         let instructionName = document.getElementById("instruction-name-share-note-edit").value;
         let semeter = document.getElementById("semeter-share-note-edit").value;
         let tag = document.getElementById('tag-share-note-edit').value;
-        let pictureArray = document.getElementById('picture-array-share-note-edit').value;
+        let pictureArray = document.getElementById('picture-array-share-note-edit').files;
 
         let tagArray = tag.split(/[#]/g).filter(n => n);
 
@@ -171,9 +174,9 @@ window.onload = function () {
 
         let preBody = `{
             "Cover": "${cover}",
-            "SubjectName": "${subjectName}",
+            "Subject_Name": "${subjectName}",
             "Section": "${section}",
-            "Insturction_Name": "${instructionName}",
+            "Instructor_Name": "${instructionName}",
             "Semeter": "${semeter}",
             "Title": "${title}",
         `;
@@ -194,18 +197,23 @@ window.onload = function () {
         }
 
         //NEW
-        for(let i =0; i<=deleted.length; i++) delete picArray[deleted.pop()];
+        for (let i = 0; i <= deleted.length; i++) delete picArray[deleted.pop()];
 
         picArray = picArray.filter(n => n);
 
-        for(let i =0; i<=picArray.length; i++) {
-            if (i == 0 && i == picArray.length) preBody = preBody + `,{"Picture": "pictureBase/${picArray[i]}"}`
-            else if(i == picArray.length) preBody = preBody + `{"Picture": "pictureBase/${picArray[i]}"}`
-            else if(i == 0) preBody = preBody + `,{"Picture": "pictureBase/${picArray[i]}"},`
-            else preBody = preBody + `{"Picture": "pictureBase/${picArray[i]}"},`
+        console.log(pictureArray.length);
+
+        for (let i = 0; i < picArray.length; i++) {
+            if (!pictureArray && picArray.length == 1) preBody = preBody + `{"Picture": "pictureBase/${picArray[i]}"}`;
+            else if (!pictureArray && i == picArray.length - 1) preBody = preBody + `{"Picture": "pictureBase/${picArray[i]}"}`;
+            else if (!pictureArray && picArray.length > 1) preBody = preBody + `{"Picture": "pictureBase/${picArray[i]}"},`;
+            else if (pictureArray.length) preBody = preBody + `,{"Picture": "pictureBase/${picArray[i]}"}`;
         }
+        //
 
         preBody = preBody + `] }`
+
+        console.log(preBody);
 
         const body = JSON.parse(preBody);
 

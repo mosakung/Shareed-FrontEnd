@@ -4,7 +4,10 @@ const urlParams = new URLSearchParams(window.location.search);
 
 const postId = urlParams.get("postID");
 
-let originalCover = 1;
+let originalCoverState = 1;
+let originalCover;
+
+let picArray = [];
 
 httpIdGET('http://localhost:3000/shareed/share-event', postId, userId, (state, json) => {
 
@@ -15,6 +18,12 @@ httpIdGET('http://localhost:3000/shareed/share-event', postId, userId, (state, j
 
     $('.fetch-form-input-all-js').append(formInputBeforeTag(json) + formTag(json) + formDescription(json));
     $('.fetch-form-content-all-js').append(formContent(json));
+    originalCover = json.cover;
+
+    json.content.forEach(function (data) {
+        picArray.push(data.Picture);
+    })
+
 })
 
 function formCover_noData(json) {
@@ -64,7 +73,7 @@ function formInputBeforeTag(json) {
     <div class="form-group">
         <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Title : </label>
         <div class="col-sm-9">
-            <input class="form-control" id="title-share-event-create" type="text"
+            <input class="form-control" id="title-share-event-edit" type="text"
                 style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="Title" required value="${json.title}">
         </div>
     </div>
@@ -72,7 +81,7 @@ function formInputBeforeTag(json) {
     <div class="form-group">
         <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Location : </label>
         <div class="col-sm-9">
-            <input class="form-control" id="section-share-event-create" type="text"
+            <input class="form-control" id="section-share-event-edit" type="text"
                 style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="e.g. KFC" required value="${json.location}">
         </div>
     </div>
@@ -81,7 +90,7 @@ function formInputBeforeTag(json) {
         <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Condition :
         </label>
         <div class="col-sm-9">
-            <input class="form-control" id="instruction-name-share-event-create" type="text"
+            <input class="form-control" id="instruction-name-share-event-edit" type="text"
                 style="border: none; background-color:rgba(255, 255, 255, 0.37);"
                 placeholder="e.g. Only CPE student" required value="${json.condition}">
         </div>
@@ -90,7 +99,7 @@ function formInputBeforeTag(json) {
     <div class="form-group">
         <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Register : </label>
         <div class="col-sm-9">
-            <input class="form-control" id="register-share-event-create" type="text"
+            <input class="form-control" id="register-share-event-edit" type="text"
                 style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="Yes or No" required value="${json.register}">
         </div>
     </div>
@@ -103,7 +112,7 @@ function formTag(json) {
     <div class="form-group">
         <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Tag : </label>
         <div class="col-sm-9">
-            <input class="form-control" id="tag-share-note-create" type="text"
+            <input class="form-control" id="tag-share-event-edit" type="text"
                 style="border: none; background-color:rgba(255, 255, 255, 0.37);"
                 placeholder="e.g. #CPExxx #Calculus" value="`;
     json.tag.forEach(function (data, index) {
@@ -122,7 +131,7 @@ function formDescription(json) {
         <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Description:
         </label>
         <div class="col-sm-9">
-            <textarea class="form-control" id="description-share-note-create" type="text" cols=auto
+            <textarea class="form-control" id="description-share-event-edit" type="text" cols=auto
                 rows="10" style="border: none; background-color:rgba(255, 255, 255, 0.37);"
                 placeholder="Write your description" required>
             ${json.describe}</textarea>
@@ -148,4 +157,72 @@ function formContent(json) {
         </div>`
     })
     return body;
+}
+
+window.onload = function () {
+    document.getElementById("edit-share-event").onsubmit = function () {
+        let cover;
+        if (originalCoverState == 1) cover = originalCover
+        else {
+            cover = document.getElementById("cover-share-note-edit").value;
+             cover = cover.substring(12,cover.length);
+        }
+        let title = document.getElementById("title-share-event-edit").value;
+        let register = document.getElementById("register-share-event-edit").value;
+        let location = document.getElementById("section-share-event-edit").value;
+        let condition = document.getElementById("instruction-name-share-event-edit").value;
+        let description = document.getElementById("description-share-event-edit").value;
+        let tag = document.getElementById('tag-share-event-edit').value;
+        let pictureArray = document.getElementById('picture-array-share-event-edit').files;
+
+        let tagArray = tag.split(/[#]/g).filter(n => n);
+
+        let tagArrayLength = tagArray.length;
+
+        let preBody = `{
+            "Cover": "${cover}",
+            "Resgister": "${register}",
+            "Location": "${location}",
+            "Condi": "${condition}",
+            "Describ": "${description}",
+            "Title": "${title}",
+        `;
+
+        preBody = preBody + `"tag": [`;
+
+        tagArray.forEach(function (data, index) {
+            if (index === tagArrayLength - 1) preBody = preBody + `{ "TagDetail": "${data}" }`
+            else preBody = preBody + `{ "TagDetail": "${data}" },`
+        })
+
+        preBody = preBody + `], "content": [`
+
+        for (var i = 0; i < pictureArray.length; i++) {
+            if (i == pictureArray.length - 1)
+                preBody = preBody + `{ "Picture": "pictureBase/${pictureArray[i].name}" }`
+            else preBody = preBody + `{ "Picture": "pictureBase/${pictureArray[i].name}" },`
+        }
+
+        //NEW
+        for (let i = 0; i <= deleted.length; i++) delete picArray[deleted.pop()];
+
+        picArray = picArray.filter(n => n);
+
+        for (let i = 0; i < picArray.length; i++) {
+            if (!pictureArray && picArray.length == 1) preBody = preBody + `{"Picture": "pictureBase/${picArray[i]}"}`;
+            else if (!pictureArray && i == picArray.length - 1) preBody = preBody + `{"Picture": "pictureBase/${picArray[i]}"}`;
+            else if (!pictureArray && picArray.length > 1) preBody = preBody + `{"Picture": "pictureBase/${picArray[i]}"},`;
+            else if (pictureArray.length) preBody = preBody + `,{"Picture": "pictureBase/${picArray[i]}"}`;
+        }
+
+        preBody = preBody + `] }`
+
+        console.log(preBody);
+
+        const body = JSON.parse(preBody);
+
+        httpPUT('http://localhost:3000/shareed/share-event', postId, userId, body, (res, json) => {
+            console.log(res);
+        })
+    }
 }

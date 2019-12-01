@@ -4,7 +4,10 @@ const urlParams = new URLSearchParams(window.location.search);
 
 const postId = urlParams.get("postID");
 
-let originalCover = 1;
+let originalCoverState = 1;
+let originalCover;
+
+let picArray = [];
 
 httpIdGET('http://localhost:3000/shareed/review-book', postId, userId, (state, json) => {
 
@@ -15,6 +18,11 @@ httpIdGET('http://localhost:3000/shareed/review-book', postId, userId, (state, j
 
     $('.fetch-form-input-all-js').append(formInputBeforeTag(json) + formTag(json) + formDescription(json));
     $('.fetch-form-content-all-js').append(formContent(json));
+    originalCover = json.cover;
+
+    json.content.forEach(function (data) {
+        picArray.push(data.Picture);
+    })
 })
 
 function formCover_noData(json) {
@@ -26,7 +34,7 @@ function formCover_noData(json) {
             alt="your image" class="center" />
     </div>
 
-    <input id="cover-share-note-create" type="file" onchange="readURL(this);" class="center" />
+    <input id="cover-review-book-edit" type="file" onchange="readURL(this);" class="center" />
     `]
 }
 
@@ -42,7 +50,7 @@ function formCover_alreadyData(json) {
             alt="your image" class="center" />
     </div>
 
-    <input id="cover-share-note-create" type="file" onchange="readURL(this);" class="center" />
+    <input id="cover-review-book-edit" type="file" onchange="readURL(this);" class="center" />
     `]
 }
 
@@ -64,7 +72,7 @@ function formInputBeforeTag(json) {
     <div class="form-group">
         <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Title : </label>
         <div class="col-sm-9">
-            <input class="form-control" id="title-review-book-create" type="text"
+            <input class="form-control" id="title-review-book-edit" type="text"
                 style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="Title"
                 required value=${json.title}>
         </div>
@@ -74,7 +82,7 @@ function formInputBeforeTag(json) {
         <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Book Name :</label>
         </label>
         <div class="col-sm-9">
-            <input class="form-control" id="bookname-review-book-create" type="text"
+            <input class="form-control" id="bookname-review-book-edit" type="text"
                 style="border: none; background-color:rgba(255, 255, 255, 0.37);"
                 placeholder="e.g. calculus1" required value="${json.bookName}">
         </div>
@@ -84,7 +92,7 @@ function formInputBeforeTag(json) {
         <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Written :</label>
         </label>
         <div class="col-sm-9">
-            <input class="form-control" id="writtenBy-review-book-create" type="text"
+            <input class="form-control" id="writtenBy-review-book-edit" type="text"
                 style="border: none; background-color:rgba(255, 255, 255, 0.37);"
                 placeholder="e.g. Dr.Jame Bond" required value="${json.writtenBy}">
         </div>
@@ -94,7 +102,7 @@ function formInputBeforeTag(json) {
         <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Edition :</label>
         </label>
         <div class="col-sm-9">
-            <input class="form-control" id="edition-review-book-create" type="number"
+            <input class="form-control" id="edition-review-book-edit" type="number"
                 style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="e.g. 1"
                 required value="${json.edition}">
         </div>
@@ -105,7 +113,7 @@ function formInputBeforeTag(json) {
             :</label>
         </label>
         <div class="col-sm-9">
-            <input class="form-control" id="link-review-book-create" type="text"
+            <input class="form-control" id="link-review-book-edit" type="text"
                 style="border: none; background-color:rgba(255, 255, 255, 0.37);"
                 placeholder="e.g. xxxxxxxxxxxx.com" required value="${json.link}">
         </div>
@@ -119,7 +127,7 @@ function formTag(json) {
     <div class="form-group">
         <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Tag : </label>
         <div class="col-sm-9">
-            <input class="form-control" id="tag-share-note-create" type="text"
+            <input class="form-control" id="tag-review-book-edit" type="text"
                 style="border: none; background-color:rgba(255, 255, 255, 0.37);"
                 placeholder="e.g. #CPExxx #Calculus" value="`;
     json.tag.forEach(function (data, index) {
@@ -138,7 +146,7 @@ function formDescription(json) {
         <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Description:
         </label>
         <div class="col-sm-9">
-            <textarea class="form-control" id="description-share-note-create" type="text" cols=auto
+            <textarea class="form-control" id="description-review-book-edit" type="text" cols=auto
                 rows="10" style="border: none; background-color:rgba(255, 255, 255, 0.37);"
                 placeholder="Write your description" required>
             ${json.description}</textarea>
@@ -164,4 +172,77 @@ function formContent(json) {
         </div>`
     })
     return body;
+}
+
+window.onload = function () {
+    document.getElementById("edit-review-book").onsubmit = function () {
+        let cover;
+        if (originalCoverState == 1) cover = originalCover
+        else if(originalCoverState == 0){
+            cover = document.getElementById("cover-review-book-edit").value;
+            cover = cover.substring(12,cover.length);
+        }
+        let writtenBy = document.getElementById("writtenBy-review-book-edit").value;
+        let edition = document.getElementById("edition-review-book-edit").value;
+        let link = document.getElementById("link-review-book-edit").value;
+        let bookname = document.getElementById("bookname-review-book-edit").value;
+        let title = document.getElementById("title-review-book-edit").value;
+        let description = document.getElementById("description-review-book-edit").value;
+        let tag = document.getElementById('tag-review-book-edit').value;
+        let pictureArray = document.getElementById('picture-array-review-book-edit').files;
+
+        let tagArray = tag.split(/[#]/g).filter(n => n);
+
+        let tagArrayLength = tagArray.length;
+
+        let preBody = `{
+            "Cover": "${cover}",
+            "WrittenBy": "${writtenBy}",
+            "Edition": "${edition}",
+            "Link": "${link}",
+            "Des": "${description}",
+            "BookName": "${bookname}",
+            "Title": "${title}",
+        `;
+
+        preBody = preBody + `"tag": [`;
+
+        tagArray.forEach(function (data, index) {
+            if (index === tagArrayLength - 1) preBody = preBody + `{ "TagDetail": "${data}" }`
+            else preBody = preBody + `{ "TagDetail": "${data}" },`
+        })
+
+        preBody = preBody + `], "content": [`
+
+        for (var i = 0; i < pictureArray.length; i++) {
+            if (i == pictureArray.length - 1)
+                preBody = preBody + `{ "Picture": "pictureBase/${pictureArray[i].name}" }`
+            else preBody = preBody + `{ "Picture": "pictureBase/${pictureArray[i].name}" },`
+        }
+
+        //NEW
+        for (let i = 0; i <= deleted.length; i++) delete picArray[deleted.pop()];
+
+        picArray = picArray.filter(n => n);
+
+        console.log(pictureArray.length);
+
+        for (let i = 0; i < picArray.length; i++) {
+            if (!pictureArray && picArray.length == 1) preBody = preBody + `{"Picture": "pictureBase/${picArray[i]}"}`;
+            else if (!pictureArray && i == picArray.length - 1) preBody = preBody + `{"Picture": "pictureBase/${picArray[i]}"}`;
+            else if (!pictureArray && picArray.length > 1) preBody = preBody + `{"Picture": "pictureBase/${picArray[i]}"},`;
+            else if (pictureArray.length) preBody = preBody + `,{"Picture": "pictureBase/${picArray[i]}"}`;
+        }
+        //
+
+        preBody = preBody + `] }`
+
+        console.log(preBody);
+
+        const body = JSON.parse(preBody);
+
+        httpPUT('http://localhost:3000/shareed/review-book', postId, userId, body, (res, json) => {
+            console.log(res);
+        })
+    }
 }
