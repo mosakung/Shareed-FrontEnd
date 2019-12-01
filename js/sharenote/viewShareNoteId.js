@@ -20,7 +20,7 @@ httpIdGET('http://localhost:3000/shareed/share-note', urlParams.get("postID"), u
     document.getElementById('section').innerHTML = json.section;
     document.getElementById('instructionName').innerHTML = json.instructorName;
     document.getElementById('semeter').innerHTML = json.semeter;
-    document.getElementById('description').innerHTML = json.description;
+    // document.getElementById('description').innerHTML = json.description;
     document.getElementById('content').innerHTML = json.content;
     document.getElementById('numComment').innerHTML = json.countComment;
 

@@ -9,7 +9,7 @@ httpIdGET('http://localhost:3000/shareed/review-tutor', urlParams.get("postID"),
     json.tag.forEach(data => {
         showTag(data);
     });
-    json.content.forEach(data => {
+    json.contect.forEach(data => {
         showContent(data);
     });
     
@@ -22,7 +22,6 @@ httpIdGET('http://localhost:3000/shareed/review-tutor', urlParams.get("postID"),
     document.getElementById('course').innerHTML = json.subjectTeacher;
     document.getElementById('contact').innerHTML = json.contact;
     document.getElementById('description').innerHTML = json.description;
-    document.getElementById('content').innerHTML = json.contect;
     document.getElementById('numComment').innerHTML = json.countComment;
 
 });

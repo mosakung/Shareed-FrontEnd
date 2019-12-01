@@ -21,7 +21,6 @@ httpIdGET('http://localhost:3000/shareed/review-subject', urlParams.get("postID"
     document.getElementById('teachBy').innerHTML = json.instructorName;
     document.getElementById('section').innerHTML = json.section;
     document.getElementById('description').innerHTML = json.description;
-    document.getElementById('content').innerHTML = json.content;
     document.getElementById('numComment').innerHTML = json.countComment;
 });
 
