@@ -45,7 +45,7 @@ function fourmCard(data) {
         <div class="sm-block" style="height:150px; padding: 5px;">
             <div class="row">
                 <div class="col-sm-3">
-                    <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/${data.Cover}" width="140" height="140">
+                    <img src="${data.Cover}" width="140" height="140">
                 </div>
                 <div class="col-sm-9" style="background-color: whitesmoke; width:390px;height: 140px; padding: 15px;">
                     <p style="color: red;">Review Tutor</p>

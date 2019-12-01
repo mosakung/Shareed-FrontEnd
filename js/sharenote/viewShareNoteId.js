@@ -27,6 +27,7 @@ httpIdGET('http://localhost:3000/shareed/share-note', urlParams.get("postID"), u
     document.getElementById('semeter').innerHTML = json.semeter;
     // document.getElementById('description').innerHTML = json.description;
     document.getElementById('numComment').innerHTML = json.countComment;
+    document.getElementById('blah').src = json.cover;
 
 });
 

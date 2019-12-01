@@ -29,6 +29,8 @@ httpIdGET('http://localhost:3000/shareed/share-event', urlParams.get("postID"), 
     //document.getElementById('dateAndTime').innerHTML = json.description;
     document.getElementById('description').innerHTML = json.describe;
     document.getElementById('numComment').innerHTML = json.countComment;
+    document.getElementById('blah').src = json.cover;
+
 });
 
 function showTag(data) {

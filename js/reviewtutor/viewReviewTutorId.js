@@ -27,7 +27,7 @@ httpIdGET('http://localhost:3000/shareed/review-tutor', urlParams.get("postID"),
     document.getElementById('contact').innerHTML = json.contact;
     document.getElementById('description').innerHTML = json.description;
     document.getElementById('numComment').innerHTML = json.countComment;
-
+    document.getElementById('blah').src = json.cover;
 });
 
 function showTag(data) {
