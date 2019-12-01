@@ -8,6 +8,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script type="module" src="js/homePage.js"></script>
+  
   <style>
   body {
     background-image: linear-gradient(to bottom right,white,lightblue,deepskyblue, cornflowerblue,grey);
@@ -130,8 +132,8 @@
                     </div>
                     <h1 style="margin-left:100px; font-family: Fredericka the Great;">Share Note</h1>
                     <div class="row">
-                        <div class="col-sm-6" style="margin-top: 15px;">
-                            <a href="http://127.0.0.1:5500/ViewNote.html?page=1" role="button"> 
+                        <div class="col-sm-6 fetch-share-note-filp" style="margin-top: 15px;">
+                            <!-- <a href="http://127.0.0.1:5500/ViewNote.html?page=1" role="button"> 
                                 <div class="flip-card">
                                     <div class="flip-card-inner">
                                         <div class="flip-card-front container-fluid responsive">
@@ -144,10 +146,10 @@
                                         </div>
                                     </div>
                                 </div>
-                            </a>
+                            </a> -->
                         </div>
-                        <div class="col-sm-6" style="margin-top: 15px;">
-                            <div class="sm-block">
+                        <div class="col-sm-6 fetch-share-note-non-filp" style="margin-top: 15px;">
+                            <!-- <div class="sm-block">
                                 <a href="#" class="card-sml responsive">
                                     <div class="col-sm-5 container-fluid" style="margin: 0px; padding: 0px;"> 
                                         <div class="responsive"> 
@@ -160,8 +162,8 @@
                                         <p style="font-size: 10px; ">Date: By: </p> 
                                     </div>
                                 </a>
-                            </div>
-                            <div class="sm-block" style="margin-top: 25px;"> 131656 </div>                            
+                            </div> -->
+                            <!-- <div class="sm-block" style="margin-top: 25px;"> 131656 </div> -->                            
                         </div>
                     </div>
                     <div class="row" style="margin-top: 25px;">
@@ -184,8 +186,8 @@
                         </div>
                     <h1 style="margin-left:100px; font-family: Fredericka the Great;">Share Event</h1>
                     <div class="row">
-                        <div class="col-sm-6" style="margin-top: 15px;">
-                            <a href="http://127.0.0.1:5500/ViewEvent.html?page=1">
+                        <div class="col-sm-6 fetch-share-event-filp" style="margin-top: 15px;">
+                            <!-- <a href="http://127.0.0.1:5500/ViewEvent.html?page=1">
                                 <div class="flip-card">
                                     <div class="flip-card-inner">
                                         <div class="flip-card-front container-fluid responsive">
@@ -198,10 +200,10 @@
                                         </div>
                                     </div>
                                 </div>
-                            </a>
+                            </a> -->
                         </div>
-                        <div class="col-sm-6" style="margin-top: 15px;">
-                            <div class="sm-block">
+                        <div class="col-sm-6 fetch-share-event-non-filp" style="margin-top: 15px;">
+                            <!-- <div class="sm-block">
                                 <a href="#" class="card-sml">
                                     <div class="col-sm-5" style="margin: 0px; padding: 0px;"> 
                                         <div class="responsive"> 
@@ -214,8 +216,8 @@
                                         <p style="font-size: 10px; ">Date: By: </p> 
                                     </div>
                                 </a>
-                            </div>
-                            <div class="sm-block" style="margin-top: 25px;"> 136895 </div>
+                            </div> -->
+                            <!-- <div class="sm-block" style="margin-top: 25px;"> 136895 </div> -->
                         </div>
                     </div>
                     <div class="row" style="margin-top: 25px;">
@@ -236,8 +238,8 @@
                                 <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/icon/ReviewSubject.png" style="max-width:120px; max-height:60px; min-height:60px;">
                             </div>
                         </div>
-                    <h1 style="margin-left:100px; font-family: Fredericka the Great;">Review Subject</h1>
-                    <div class="sm-block" style="margin-top: 25px;">
+                    <h1 class="fetch-review-subject" style="margin-left:100px; font-family: Fredericka the Great;">Review Subject</h1>
+                    <!-- <div class="sm-block" style="margin-top: 25px;">
                         <a href="http://127.0.0.1:5500/ViewSubject.html?page=1" class="card-sml">
                             <div class="col-sm-12" style="color: black; padding-left: 25px; padding-top: 20px;"> 
                                 <p style="color: red; font-size: 10px; ">Review Subject</p>
@@ -246,8 +248,8 @@
                                 <p style="font-size: 10px; ">Date: By: </p> 
                             </div>
                         </a>
-                    </div>
-                    <div class="sm-block" style="margin-top: 25px;"> 12115631 </div>
+                    </div> -->
+                    <!-- <div class="sm-block" style="margin-top: 25px;"> 12115631 </div> -->
                     <div class="row" style="margin-top: 25px;">
                         <div class="col-sm-4"></div>
                         <div class="col-sm-4"> 
@@ -267,8 +269,8 @@
                         </div>
                     </div>
                     <h1 style="margin-left:100px; font-family: Fredericka the Great;">Review Book</h1>
-                    <div class="row">
-                        <div class="col-sm-6" style="margin-top: 15px;">
+                    <div class="row fetch-review-book">
+                        <!-- <div class="col-sm-6" style="margin-top: 15px;">
                             <a href="http://127.0.0.1:5500/ViewBook.html?page=1">
                                 <div class="flip-card">
                                     <div class="flip-card-inner">
@@ -283,8 +285,8 @@
                                     </div>
                                 </div>
                             </a>
-                        </div>
-                        <div class="col-sm-6" style="margin-top: 15px;">
+                        </div> -->
+                        <!-- <div class="col-sm-6" style="margin-top: 15px;">
                             <a href="http://127.0.0.1:5500/ViewBook.html?page=1">
                                 <div class="flip-card">
                                     <div class="flip-card-inner">
@@ -299,7 +301,7 @@
                                     </div>
                                 </div>
                             </a>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="row" style="margin-top: 25px;">
                         <div class="col-sm-4"></div>
@@ -320,8 +322,8 @@
                         </div>
                     </div>
                     <h1 style="margin-left:100px; font-family: Fredericka the Great;">Review Tutor</h1>
-                    <div class="row">
-                        <div class="col-sm-4" style="margin-top: 15px;">
+                    <div class="row fetch-review-tutor">
+                        <!-- <div class="col-sm-4" style="margin-top: 15px;">
                             <div class="bg-block" style="height:350px;">
                                 <a href="http://127.0.0.1:5500/ViewTutor.html?page=1" class="card-sml">
                                     <div class="responsive"> 
@@ -334,13 +336,13 @@
                                     </div>
                                 </a>
                             </div>
-                        </div>
-                        <div class="col-sm-4" style="margin-top: 15px;">
+                        </div> -->
+                        <!-- <div class="col-sm-4" style="margin-top: 15px;">
                             <div class="bg-block" style="height:350px;"> 97864521 </div>
-                        </div>
-                        <div class="col-sm-4" style="margin-top: 15px;">
+                        </div> -->
+                        <!-- <div class="col-sm-4" style="margin-top: 15px;">
                             <div class="bg-block" style="height:350px;"> 14614643 </div>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="row" style="margin-top: 25px;">
                         <div class="col-sm-4"></div>
@@ -362,8 +364,8 @@
                     </div>
                     <h1 style="margin-left:100px; font-family: Fredericka the Great;">Board FAQ</h1>
                     <div class="row">
-                        <div class="col-sm-6" style="margin-top: 15px;">
-                            <a href="http://127.0.0.1:5500/ViewFAQ.html?page=1">
+                        <div class="col-sm-6 fetch-faq-filp" style="margin-top: 15px;">
+                            <!-- <a href="http://127.0.0.1:5500/ViewFAQ.html?page=1">
                                 <div class="flip-card">
                                     <div class="flip-card-inner">
                                         <div class="flip-card-front container-fluid responsive">
@@ -376,10 +378,10 @@
                                         </div>
                                     </div>
                                 </div>
-                            </a>
+                            </a> -->
                         </div>
-                        <div class="col-sm-6" style="margin-top: 15px;">
-                            <div class="sm-block">
+                        <div class="col-sm-6 fetch-faq-non-filp" style="margin-top: 15px;">
+                            <!-- <div class="sm-block">
                                 <a href="#" class="card-sml">
                                     <div class="col-sm-5 container-fluid" style="margin: 0px; padding: 0px;"> 
                                         <div class="responsive">
@@ -392,8 +394,8 @@
                                         <p style="font-size: 10px; ">Date: By: </p> 
                                     </div>
                                 </a>
-                            </div>
-                            <div class="sm-block" style="margin-top: 25px;"> 136895 </div>
+                            </div> -->
+                            <!-- <div class="sm-block" style="margin-top: 25px;"> 136895 </div> -->
                         </div>
                     </div>
                     <div class="row" style="margin-top: 25px;">
