@@ -17,7 +17,7 @@ httpIdGET('http://localhost:3000/shareed/review-book', urlParams.get("postID"), 
         showComment(data);
    });
 
-    //document.getElementById('blah').src = "https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/1.png";
+    document.getElementById('blah').src = json.cover;
     document.getElementById('title').innerHTML = json.title;
     document.getElementById('datetime').innerHTML = date;
     document.getElementById('writtenBy').innerHTML = json.writtenBy;

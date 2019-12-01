@@ -77,11 +77,16 @@
                 </div>
                 </div>
                 <div class="col-sm-2">
-                    <a href="http://127.0.0.1:5500/EditShareNote.html" class="btn btn-primary" title="Edited"><span class="glyphicon glyphicon-pencil"></span></a>
-                    <a href="#" class="btn btn-danger" title="Deleted"><span class="glyphicon glyphicon-trash"></span></a>
-                    <!-- <a href="#" class="btn btn-info btn-outline-secondary" title="Report" style="background-color:rgba(119, 117, 117, 0.664);">Report</a> -->
+                    <a href="http://127.0.0.1:5500/EditShareNote.html" id="editPost" class="btn btn-primary"
+                        title="Edited"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a href="#" class="btn btn-danger" id="deletePost" title="Deleted"><span
+                            class="glyphicon glyphicon-trash"></span></a>
+                    <a href="#" class="btn btn-info btn-outline-secondary" id="report" title="Report"
+                        style="background-color:rgba(119, 117, 117, 0.664);">Report</a>
                 </div>
-                <img id="blah" src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/UploadPicture.png" alt="your image" class="center responsive" style="margin-top:10px; width: 100%;">
+            </div>
+            <div class="container-fluid responsive" style="height: 294px;  margin-top:15px; background-color:  rgba(255, 255, 255, 0.37);">
+                <center><img id="blah" style="max-width:864px; max-height:294px; min-height:294px;" ></center>
             </div>
             <!-- content -->
             <div class="container-fluid">
@@ -109,13 +114,14 @@
                     <div class="panel panel-default widget">
                         <div class="panel-heading">
                             <div class="row">
-                                <div class="col-sm-11"><p class="panel-title"><span class="glyphicon glyphicon-comment"></span>  Comments</p></div>
+                                <div class="col-sm-11">
+                                    <p class="panel-title"><span class="glyphicon glyphicon-comment"></span>  Comments</p></div>
                                 <div class="col-sm-1"><span id="numComment" class="label label-info"></span>
                                 </div>
                             </div>
                         </div>
                         <div class="panel-body">
-                            <ul class="list-group">
+                            <ul id="allComment" class="list-group">
                                 <li class="list-group-item">
                                     <div class="row">
                                         <div class="col-sm-2">
@@ -125,7 +131,7 @@
                                                 <div class="col-sm-9" style="font-size:20px;">
                                                     <textbox id="nameUser">Name</textbox>
                                                 </div>
-                                                <!-- <div class="col-sm-3" style="font-size:12px;">11:00 on 11 Nov 2013</div> -->
+                                                <div class="col-sm-3" style="font-size:12px;"></div>
                                             </div>
                                             <div class="comment-text">
                                                 <form class="form-inline" action="#">
@@ -137,82 +143,6 @@
                                                             </div>
                                                     </div>
                                                 </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-sm-2">
-                                            <img src="http://placehold.it/80" class="img-circle img-responsive" alt="" /></div>
-                                        <div class="col-sm-10">
-                                            <div class="row">
-                                                    <div class="col-sm-10" style="font-size:20px;">
-                                                        <textbox id="nameUser">Name</textbox>
-                                                    </div>
-                                                    <div class="col-sm-2">
-                                                        <a href="#" class="btn btn-primary btn-xs" title="Edited"><span class="glyphicon glyphicon-pencil"></span></a>
-                                                        <a href="#" class="btn btn-danger btn-xs" title="Deleted"><span class="glyphicon glyphicon-trash"></span></a>
-                                                        <!-- <a href="#" class="btn btn-info btn-outline-secondary btn-xs" title="Report" style="background-color:rgba(119, 117, 117, 0.664);">Report</a> -->
-                                                    </div>
-                                            </div>
-                                            <br>
-                                            <div class="comment-text">
-                                                <textbox id="comment">
-                                                    &nbsp&nbsp&nbsp Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
-                                                euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim
-                                                </textbox>
-                                                <div  style="display: none;">
-                                                    <textarea name="comment" id="comment" class="responsive" style="border-color:black; background-color:white;">
-                                                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim
-                                                    </textarea>
-                                                    <div class="row">
-                                                        <div class="col-sm-9"></div>
-                                                        <div class="col-sm-3">
-                                                            <a href="#" class="btn btn-danger btn-xs" title="Cancel">Cancel</a>
-                                                            <a href="#" class="btn btn-success btn-xs" title="Submit">Submit</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <br>
-                                            <div class="row">
-                                                <div class="col-sm-9"></div>
-                                                <div class="col-sm-3" style="font-size:12px;">
-                                                    <textbox id="dateTime">11:00 on 11 Nov 2013</textbox>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-sm-2">
-                                            <img src="http://placehold.it/80" class="img-circle img-responsive" alt="" /></div>
-                                        <div class="col-sm-10">
-                                            <div class="row">
-                                                    <div class="col-sm-10" style="font-size:20px;">
-                                                        <textbox id="nameUser">Name</textbox>
-                                                    </div>
-                                                    <div class="col-sm-2">
-                                                        <!-- <a href="#" class="btn btn-primary btn-xs" title="Edited"><span class="glyphicon glyphicon-pencil"></span></a>
-                                                        <a href="#" class="btn btn-danger btn-xs" title="Deleted"><span class="glyphicon glyphicon-trash"></span></a> -->
-                                                        <a href="#" onclick="alert('Cannot use function Profile.')" class="btn btn-info btn-outline-secondary btn-xs" title="Report" style="background-color:rgba(119, 117, 117, 0.664);">Report</a>
-                                                    </div>
-                                            </div>
-                                            <br>
-                                            <div class="comment-text">
-                                                <textbox id="comment">
-                                                    &nbsp&nbsp&nbsp Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
-                                                euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim
-                                                </textbox>
-                                            </div>
-                                            <br>
-                                            <div class="row">
-                                                    <div class="col-sm-9"></div>
-                                                    <div class="col-sm-3" style="font-size:12px;">
-                                                        <textbox id="dateTime">11:00 on 11 Nov 2013</textbox>
-                                                    </div>
                                             </div>
                                         </div>
                                     </div>

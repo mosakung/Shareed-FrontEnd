@@ -7,6 +7,7 @@ httpIdGET('http://localhost:3000/shareed/share-event', urlParams.get("postID"), 
     console.log(json)
     var date = json.dateTime.replace("T", " ");
     date = date.substring(0, 19);
+    checkOwner(json.isOwner);
     json.tag.forEach(data => {
         showTag(data);
     });
@@ -27,7 +28,6 @@ httpIdGET('http://localhost:3000/shareed/share-event', urlParams.get("postID"), 
     document.getElementById('register').innerHTML = json.register;
     //document.getElementById('dateAndTime').innerHTML = json.description;
     document.getElementById('description').innerHTML = json.describe;
-    document.getElementById('content').innerHTML = json.content;
     document.getElementById('numComment').innerHTML = json.countComment;
 });
 

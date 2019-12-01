@@ -4,8 +4,10 @@ import {removeParam } from '../removeParam.js';
 const urlParams = new URLSearchParams(window.location.search);
 
 httpIdGET('http://localhost:3000/shareed/share-note', urlParams.get("postID"), userId, (state, json) => {
+    console.log(json);
     var date = json.dateTime.replace("T", " ");
     date = date.substring(0, 19);
+    checkOwner(json.isOwner);
     json.tag.forEach(data => {
         showTag(data);
     });
@@ -24,7 +26,6 @@ httpIdGET('http://localhost:3000/shareed/share-note', urlParams.get("postID"), u
     document.getElementById('instructionName').innerHTML = json.instructorName;
     document.getElementById('semeter').innerHTML = json.semeter;
     // document.getElementById('description').innerHTML = json.description;
-    document.getElementById('content').innerHTML = json.content;
     document.getElementById('numComment').innerHTML = json.countComment;
 
 });

@@ -6,6 +6,7 @@ const urlParams = new URLSearchParams(window.location.search);
 httpIdGET('http://localhost:3000/shareed/review-subject', urlParams.get("postID"), userId, (state, json) => {
     var date = json.dateTime.replace("T", " ");
     date = date.substring(0, 19);
+    checkOwner(json.isOwner);
     json.tag.forEach(data => {
         showTag(data);
     });
