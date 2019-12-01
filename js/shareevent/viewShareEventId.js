@@ -4,6 +4,7 @@ import { removeParam } from '../removeParam.js';
 const urlParams = new URLSearchParams(window.location.search);
 
 httpIdGET('http://localhost:3000/shareed/share-event', urlParams.get("postID"), userId, (state, json) => {
+    console.log(json)
     var date = json.dateTime.replace("T", " ");
     date = date.substring(0, 19);
     json.tag.forEach(data => {

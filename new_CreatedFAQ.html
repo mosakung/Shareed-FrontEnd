@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ShareEd</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Mali|Fredericka the Great" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script type="module" src="js/sharenote/createFaq.js"></script>
+    <style>
+        body {
+            background-image: linear-gradient(to bottom right, white, lightblue, deepskyblue, cornflowerblue, grey);
+            font-family: Mali;
+            position: relative;
+        }
+
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+
+        }
+
+        .right {
+            position: absolute;
+            right: 0px;
+
+        }
+
+
+        .block {
+            position: auto;
+            width: auto;
+            height: 580px;
+            background-color: rgba(255, 255, 255, 0.37);
+            border-radius: 3px;
+            padding: 30px;
+            margin: 10px;
+        }
+
+        .header {
+            position: auto;
+            width: 864px;
+            height: 294px;
+            background-color: rgba(255, 255, 255, 0.37);
+            border-radius: 3px;
+            padding: 30px;
+            margin: 10px;
+        }
+
+        .bg-block {
+            position: auto;
+            width: auto;
+            height: 420px;
+            background-color: rgba(255, 255, 255, 0.37);
+            border-radius: 3px;
+            padding: 15px;
+            margin: 5px;
+        }
+
+        .sm-block {
+            position: auto;
+            width: 900px;
+            height: auto;
+            background-color: rgba(255, 255, 255, 0.37);
+            border-radius: 3px;
+            padding: 15px;
+            margin: 5px;
+        }
+
+        .box {
+            position: auto;
+            width: 864px;
+            height: auto;
+            background-color: rgba(255, 255, 255, 0.37);
+            border-radius: 3px;
+            padding: 15px;
+            margin: auto;
+        }
+
+        .infor {
+            position: auto;
+            width: 250px;
+            height: auto;
+            background-color: rgba(255, 255, 255, 0.37);
+            border-radius: 3px;
+            padding: 15px;
+            margin: 5px;
+        }
+
+        .pagination {
+            display: inline-block;
+        }
+
+        .pagination a {
+            color: black;
+            float: left;
+            padding: 5px 15px;
+            text-decoration: none;
+        }
+
+        .pagination a.active {
+            background-color: rgb(100, 100, 100);
+            color: white;
+            border-radius: 10px;
+        }
+
+        .pagination a:hover:not(.active) {
+            background-color: #ddd;
+            border-radius: 10px;
+        }
+
+        #sharenote {
+            padding-top: 50px;
+            height: 650px;
+            color: black;
+        }
+
+        #shareevent {
+            padding-top: 50px;
+            height: 650px;
+            color: black;
+        }
+
+        #reviewsubject {
+            padding-top: 50px;
+            height: 650px;
+            color: black;
+        }
+
+        #reviewtutor {
+            padding-top: 50px;
+            height: 650px;
+            color: black;
+        }
+
+        #reviewbook {
+            padding-top: 50px;
+            height: 650px;
+            color: black;
+        }
+
+        #boardfaq {
+            padding-top: 50px;
+            height: 650px;
+            color: black;
+        }
+
+        img {
+            max-width: 864px;
+            max-height: 294px;
+        }
+    </style>
+    <script>
+        $('#add_more').click(function () {
+            "use strict";
+            $(this).before($("<div/>", {
+                id: 'filediv'
+            }).fadeIn('slow').append(
+                $("<input/>", {
+                    name: 'file[]',
+                    type: 'file',
+                    id: 'file',
+                    multiple: 'multiple',
+                    accept: 'image/*'
+                })
+            ));
+        });
+
+        $('#upload').click(function (e) {
+            "use strict";
+            e.preventDefault();
+
+            if (window.filesToUpload.length === 0 || typeof window.filesToUpload === "undefined") {
+                alert("No files are selected.");
+                return false;
+            }
+
+            // Now, upload the files below...
+            // https://developer.mozilla.org/en-US/docs/Using_files_from_web_applications#Handling_the_upload_process_for_a_file.2C_asynchronously
+        });
+
+        deletePreview = function (ele, i) {
+            "use strict";
+            try {
+                $(ele).parent().remove();
+                window.filesToUpload.splice(i, 1);
+            } catch (e) {
+                console.log(e.message);
+            }
+        }
+
+        $("#file").on('change', function () {
+            "use strict";
+
+            // create an empty array for the files to resside.
+            window.filesToUpload = [];
+
+            if (this.files.length >= 1) {
+                $("[id^=previewImg]").remove();
+                $.each(this.files, function (i, img) {
+                    var reader = new FileReader(),
+                        newElement = $("<div id='previewImg" + i + "' class='previewBox'><img /></div>"),
+                        deleteBtn = $("<span class='delete' onClick='deletePreview(this, " + i + ")'>X</span>").prependTo(newElement),
+                        preview = newElement.find("img");
+
+                    reader.onloadend = function () {
+                        preview.attr("src", reader.result);
+                        preview.attr("alt", img.name);
+                    };
+
+                    try {
+                        window.filesToUpload.push(document.getElementById("file").files[i]);
+                    } catch (e) {
+                        console.log(e.message);
+                    }
+
+                    if (img) {
+                        reader.readAsDataURL(img);
+                    } else {
+                        preview.src = "";
+                    }
+
+                    newElement.appendTo("#filediv");
+                });
+            }
+        });
+    </script>
+    <script type="text/javascript" src="http://www.expertphp.in/js/jquery.form.js"></script>
+    <script>
+        function patternImageUpload1(parameter) {
+            return [`
+            <div id="card-upload-` + parameter + `" class="row">
+                            <div class="card mt-3" style="margin-top: 5%;">
+                                <a style="cursor: grabbing;"><img id="remove-picture-` + parameter + `" src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/remove.png" onclick="remove_picture(` + parameter + `)"
+                                        style="width: 50px; height: 50px; position: absolute;"></a>
+                                <img id="blahs" src="
+            `]
+        }
+
+        function patternImageUpload3() {
+            return [`
+            " alt="your image" class="center card-img-top" style="z-index: -1; max-width: 550px;">
+                            </div>
+                        </div>
+            `]
+        }
+
+        var j = -1;
+
+        function preview_images() {
+            var total_file = document.getElementById("images").files.length;
+            for (var i = 0; i < total_file; i++) {
+                j = j + 1
+                $('#image_preview').append(patternImageUpload1(j) + URL.createObjectURL(event.target.files[i]) + patternImageUpload3());
+            }
+        }
+
+        var deleted = [];
+
+        function remove_picture(id) {
+            var element = document.getElementById("card-upload-" + id);
+            element.parentNode.removeChild(element);
+            deleted.push(id);
+        }
+    </script>
+    <script>
+        function import_delete() {
+            return [`
+            <a style="cursor: grabbing;"><img id="remove-picture-cover"
+                src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/remove.png"
+                onclick="cover_delete()" style="width: 50px; height: 50px; position: absolute;"></a>
+            `]
+        }
+
+        function out_delete() {
+            return [``];
+        }
+
+        var coverDelete = 1;
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                coverDelete = 0;
+
+                reader.onload = function (e) {
+                    $('#blah')
+                        .attr('src', e.target.result);
+
+                    $('#cover-upload').append(import_delete());
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function cover_delete() {
+            coverDelete = 1;
+            $('#blah')
+                .attr('src', 'https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/UploadPicture.png');
+
+            /* var element = document.getElementById("cover-upload");
+            element.removeChild(element.childNodes); */
+
+            $('#cover-upload').empty();
+        }
+
+    </script>
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+
+    <div id="navbar"></div>   
+    <script>
+        $(function(){
+            $("#navbar").load("navbar.html");
+        });
+    </script>
+
+    <div class="row" style="margin-top:10px">
+        <div class="box" style="height:50px; margin-top: 55px;">
+            <div class="col-sm-4">
+                Owner :
+            </div>
+            <div class="col-sm-4" style="margin-left:250px;">
+                Write Down :
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container row center" style="margin-top: 5%;">
+        <div class="box container-fluid" style="margin-top:10px">
+            Question Title : <input id="title-faq-create" type="text" name="quesTitle"
+                style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="Question Title">
+            <hr>
+            Tag : <input id="tag-faq-create" type="text" name="tag"
+                style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="e.g. #CPExxx #Calculus">
+            <hr>
+            Description & Content:
+            <div class="center"
+                style="background-color: rgba(255, 255, 255, 0.37);margin-bottom: 10px;width: 664px;height:auto;">
+                <div class="center">
+                    <textarea id="description-share-note-create" cols="80" rows="10"
+                        placeholder="Write your description"
+                        style="border: none; background-color:transparent; margin-top: 5px;">
+                    </textarea>
+                </div>
+                <div class="row center container-fluid mt-3">
+                    <div class="col-sm-1" style="margin-top: 10px;"></div>
+                    <div class="col-sm-10 row" id="image_preview">
+                    </div>
+                    <div class="col-sm-1" style="margin-top: 10px;"></div>
+                </div>
+                <div class="row"style="margin-top: 2%;">
+                    <div class="col-sm-4" style="margin-top: 10px;"></div>
+                    <div class="col-sm-4">
+                        <input type="file" class="form-control" id="images" name="images[]" onchange="preview_images();"
+                            multiple />
+                    </div>
+                    <div class="col-sm-4" style="margin-top: 10px;"></div>
+                </div>
+            </div>
+
+            <div class="row" style="margin-top: 10px;">
+                <div class="col-sm-1">
+                    <a href="http://127.0.0.1:5500/BoardFAQ.html?page=1" type="button" class="btn btn-danger btn-lg"
+                        style="font-size:20px;border: none;margin-left: 620px;">Cancel</a>
+                </div>
+                <div class="col-sm-1">
+                    <input type="submit" value="Post" class="btn btn-primary btn-lg "
+                        style="font-size:20px;border: none;margin-left: 670px;">
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <footer>
+
+        <div class="jumbotron" style="margin-bottom:0;">
+            <div class="row">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-6">
+                    <p style="font-size: 16px; margin-left: 35px;"><strong>ShareEd</strong></p>
+                    <p style="font-size: 14px;"> “ ShareEd website is community of student in King Mongkut’s
+                        University
+                        of Technology Thonburi for share their story about education in many features.
+                        ShareEd made by KMUTT students called T3M team."</p>
+                </div>
+                <div class="col-sm-3">
+                    <p style="font-size: 16px; margin-left: 35px;"><strong>Contact Info</strong></p>
+                    <p style="font-size: 14px;"><span class="glyphicon glyphicon-earphone"></span> +66 86 3175 820
+                    </p>
+                    <p style="font-size: 14px;"><span class="glyphicon glyphicon-envelope"></span>
+                        shareed@gmail.co.th</a></p>
+                    <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/youtube.png"
+                        width="auto" height="auto">
+                    <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/twitter.png"
+                        width="auto" height="auto">
+                    <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/instragram.png"
+                        width="auto" height="auto">
+                    <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/facebook.png"
+                        width="auto" height="auto">
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
+        </div>
+
+    </footer>
+
+</body>
+
+</html>
