@@ -41,16 +41,16 @@ httpGET('http://localhost:3000/shareed/review-book', urlParams.get("page"), (sta
 
 function fourmCard(data) {
     return [`
-    <a href="#" role="button">
+    <a href="http://127.0.0.1:5500/ViewBook.html?postID=${data.ReviewBookID}" role="button">
         <div class="sm-block" style="height:150px; padding: 5px;">
             <div class="row">
                 <div class="col-sm-3">
                     <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/${data.Cover}" width="140" height="140">
                 </div>
                 <div class="col-sm-9" style="background-color: whitesmoke; width:390px;height: 140px; padding: 15px;">
-                    <p style="color: red;">Share Note</p>
+                    <p style="color: red;">Review Book</p>
                     <p>${data.Title}</p>
-                    <p>Day: ${(data.Date_Time).substring(0,10)} By: ${data.UserName}</p>
+                    <p>Day: ${(data.date_time).substring(0,10)} By: ${data.Username}</p>
                 </div>
             </div> 
         </div>

@@ -8,6 +8,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script type="module" src="js/faq/viewFaq.js"></script>
+  
   <style>
   body {
     background-image: linear-gradient(to bottom right,white,lightblue,deepskyblue, cornflowerblue,grey);
@@ -139,30 +141,11 @@
         <div id="shareNote" class="container-fluid">
             <div style="margin-top: 15px;">
                 <div class="row">
-                    <a href="#" role="button">
-                        <div class="sm-block" style="height:150px; padding: 5px;">
-                            <div class="row">
-                                <div class="col-sm-3" >
-                                    <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/asking.png"  width="120" height="140">
-                                </div>
-                                <div class="col-sm-9" style="background-color: whitesmoke; width:390px;height: 140px; padding: 15px;">
-                                    <p style="color: red;">Board FAQ</p>
-                                    <p>Dummy</p>
-                                    <p>Day : By: </p>
-                                </div>
-                            </div> 
-                        </div>
-                    </a>
-                    <div class="sm-block" style="height:150px; margin-top: 10px;"> 12115631 </div>
-                    <div class="sm-block" style="height:150px; margin-top: 10px;"> 78823313 </div>
-                    <div class="sm-block" style="height:150px; margin-top: 10px;"> 89215631 </div>
+                    <div class="fetch-all-faq" ></div>
                     <div class="row" style="margin-top: 25px;">
-                        <div class="col-sm-5"></div>
-                        <div class="col-sm-3"> 
-                            <div class="pagination ">
-                                <a href="#" class="btn disabled">&laquo;</a>
-                                <a href="#"class="active">1</a>
-                                <a href="#" class="btn disabled">&raquo;</a>
+                        <div class="col-sm-4"></div>
+                        <div class="col-sm-4"> 
+                            <div class="pagination fetch-page-faq">
                             </div>
                         </div>
                         <div class="col-sm-4"></div>
@@ -172,7 +155,7 @@
         </div>
     </div>
     <div class="col-sm-3 block" style="margin-top: 20px; height: 630px; width: min-content;">
-        <a href="#" class="btn btn-primary btn-outline-secondary  btn-lg" role="button" style="background-color:rgba(119, 117, 117, 0.664); width: 100%;">Create New FAQ</a>
+        <a href="http://127.0.0.1:5500/CreatedFAQ.html" class="btn btn-primary btn-outline-secondary  btn-lg" role="button" style="background-color:rgba(119, 117, 117, 0.664); width: 100%;">Create New FAQ</a>
         <div class="row" style="margin-top: 20px;">
             <p>Search</p>
             <form class="nav navbar-nav navbar-form" action="#">
@@ -184,13 +167,7 @@
                 </div>
             </form>
         </div>
-        <div class="row" style="margin-top: 20px;">
-            <p>Tag</p>
-            <a href="#" class="btn btn-info btn-sm" role="button">CPE</a>
-            <a href="#" class="btn btn-info btn-sm" role="button">Algorithm</a>
-            <a href="#" class="btn btn-info btn-sm" role="button">Engineer</a>
-            <a href="#" class="btn btn-info btn-sm" role="button">CPE212</a>
-            <a href="#" class="btn btn-info btn-sm" role="button">Algorithm</a>
+        <div class="row fetch-tag-faq" style="margin-top: 20px;">
         </div>
         <div class="row" style="margin-top: 20px;">
             <p>Popular</p>

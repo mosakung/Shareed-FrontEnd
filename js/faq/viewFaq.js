@@ -7,7 +7,7 @@ const getUrl = removeParam("page", window.location.href);
 
 httpGET('http://localhost:3000/shareed/faq', urlParams.get("page"), (state, json) => {
     json.data.forEach(function (data) {
-        $('.fetch-all-review-book').append(fourmCard(data));
+        $('.fetch-all-faq').append(fourmCard(data));
     });
     
     let patternPage = [``]
@@ -24,7 +24,7 @@ httpGET('http://localhost:3000/shareed/faq', urlParams.get("page"), (state, json
 
     patternPage = patternPage + '<a href="'+ getUrl + 'page=' + (i-1) + '">&raquo;</a>'
 
-    $('.fetch-page-review-book').append(patternPage);
+    $('.fetch-page-faq').append(patternPage);
 
     let patternTag = [``];
 
@@ -36,21 +36,21 @@ httpGET('http://localhost:3000/shareed/faq', urlParams.get("page"), (state, json
        })
    })
 
-    $('.fetch-tag-review-book').append(patternTag);
+    $('.fetch-tag-faq').append(patternTag);
 })
 
 function fourmCard(data) {
     return [`
-    <a href="#" role="button">
+    <a href="http://127.0.0.1:5500/ViewDAQ.html?postID=${data.FAQID}" role="button">
         <div class="sm-block" style="height:150px; padding: 5px;">
             <div class="row">
                 <div class="col-sm-3">
                     <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/faqFarme.png" width="140" height="140">
                 </div>
                 <div class="col-sm-9" style="background-color: whitesmoke; width:390px;height: 140px; padding: 15px;">
-                    <p style="color: red;">Share Note</p>
-                    <p>${data.Title}</p>
-                    <p>Day: ${(data.Date_Time).substring(0,10)} By: ${data.UserName}</p>
+                    <p style="color: red;">Board FAQ</p>
+                    <p>${data.title}</p>
+                    <p>Day: ${(data.date_time).substring(0,10)} By: ${data.Username}</p>
                 </div>
             </div> 
         </div>

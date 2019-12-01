@@ -5,7 +5,7 @@ const urlParams = new URLSearchParams(window.location.search);
 
 const getUrl = removeParam("page", window.location.href);
 
-httpGET('http://localhost:3000/shareed/review-tutor', urlParams.get("page"), (state, json) => {
+httpGET('http://localhost:3000/shareed/review-subject', urlParams.get("page"), (state, json) => {
     json.data.forEach(function (data) {
         $('.fetch-all-review-tutor').append(fourmCard(data));
     });
@@ -41,14 +41,16 @@ httpGET('http://localhost:3000/shareed/review-tutor', urlParams.get("page"), (st
 
 function fourmCard(data) {
     return [`
-    <a href="#" role="button">
+    <a href="http://127.0.0.1:5500/ViewSubject.html?postID=${data.ReviewSubjectID}" role="button">
         <div class="sm-block" style="height:150px; padding: 5px;">
             <div class="row">
-                <div class="col-sm-9" style="background-color: whitesmoke; width:390px;height: 140px; padding: 15px;">
-                    <p style="color: red;">Share Note</p>
+            <div class="col-sm-1">
+                </div>
+                <div class="col-sm-11" style="background-color: whitesmoke; width:390px;height: 140px; padding: 15px;">
+                    <p style="color: red;">Review Subject</p>
                     <p style="font-size: 25px;">${data.SubjectID}</p>
                     <p>${data.Title}</p>
-                    <p>Day: ${(data.Date_Time).substring(0,10)} By: ${data.UserName}</p>
+                    <p>Day: ${(data.Date_Time).substring(0,10)} By: ${data.Username}</p>
                 </div>
             </div> 
         </div>
