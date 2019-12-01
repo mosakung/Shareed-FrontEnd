@@ -46,7 +46,7 @@ window.onload = function upload() {
         const body = JSON.parse(preBody);
         
         httpPOST('http://localhost:3000/shareed/share-note', userId, body, (res, json) => {
-            window.location('http://localhost:3000/shareed/share-note/1');
+            window.location('http://localhost:5500/ShareNote.html?page=1');
         })
     }
 }

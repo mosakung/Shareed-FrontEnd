@@ -5,11 +5,20 @@
     <title>ShareEd</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
     <link href="https://fonts.googleapis.com/css?family=Mali|Fredericka the Great" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <script type="module" src="js/sharenote/createShareNote.js"></script>
+    <link rel="stylesheet" type="text/css"
+        href="https://unpkg.com/file-upload-with-preview@4.0.2/dist/file-upload-with-preview.min.css">
+    
+    <script src="https://unpkg.com/file-upload-with-preview@4.0.2/dist/file-upload-with-preview.min.js"></script>
+    
+    <script type="module" src="js/reviewsubject/createReviewSubject.js"></script>
     <style>
         body {
             background-image: linear-gradient(to bottom right, white, lightblue, deepskyblue, cornflowerblue, grey);
@@ -375,7 +384,7 @@
 
     <div class="container" style="margin-top: 2%;">
         <div class="box" style="margin-top:25px">
-            <form class="form-horizontal" name="create-review-book" id="create-review-book">
+            <form class="form-horizontal" name="create-review-subject" id="create-review-subject">
                 <div class="form-group">
                     <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Title : </label>
                     <div class="col-sm-9">
@@ -446,26 +455,24 @@
                 </div>
                 <hr>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Content: </label>
+                    <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Content :  </label>
                     <div class="col-sm-9">
                         <div class="center"
-                            style="background-color: rgba(255, 255, 255, 0.37);margin-top:5px; margin-bottom: 10px;height:auto;">
-                            <div class="row center container-fluid mt-3">
-                                <div class="col-sm-1" style="margin-top: 10px;"></div>
-                                <div class="col-sm-10 row" id="image_preview">
-                                </div>
-                                <div class="col-sm-1" style="margin-top: 10px;"></div>
-                            </div>
-                            <div class="row" style="margin-top: 2%;">
-                                <div class="col-sm-4" style="margin-top: 10px;"></div>
-                                <div class="col-sm-4">
-                                    <input type="file" class="form-control" id="images" name="images[]"
-                                        onchange="preview_images();" multiple />
-                                </div>
-                                <div class="col-sm-4" style="margin-top: 10px;"></div>
+                        style="background-color: rgba(255, 255, 255, 0.37);margin-bottom: 10px; height: auto;">
+                        <div id="myUniqueUploadId" class="custom-file-container" data-upload-id="myUniqueUploadId">
+                            <label>Upload File <a href="javascript:void(0)" class="custom-file-container__image-clear"
+                                    title="Clear Image">&times;</a></label>
+                            <label class="custom-file-container__custom-file">
+                                <input type="file" class="custom-file-container__custom-file__custom-file-input" accept="*"
+                                    multiple aria-label="Choose File" id="picture-array-review-subject-create">
+                                <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                                <span class="custom-file-container__custom-file__custom-file-control"></span>
+                            </label>
+                            <div class="custom-file-container__image-preview"></div>
                             </div>
                         </div>
                     </div>
+                </div>
                     <hr>
                     <div class="row">
                         <div class="col-sm-1">
@@ -515,5 +522,7 @@
     </footer>
 
 </body>
-
+<script>
+        var upload = new FileUploadWithPreview('myUniqueUploadId');
+</script>
 </html>
