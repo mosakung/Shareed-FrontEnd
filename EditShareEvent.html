@@ -354,58 +354,96 @@
 
     <div class="container">
         <div class="box" style="margin-top:10px">
-            Title : <input type="text" name="title" style="border: none; background-color:rgba(255, 255, 255, 0.37);">
-            <hr>
-            <!-- Event Name: <input type="text" name="eventName"
-                style="border: none; background-color:rgba(255, 255, 255, 0.37);">
-            <hr> -->
-            Location : <input type="text" name="location"
-                style="border: none; background-color:rgba(255, 255, 255, 0.37);">
-            <hr>
-            Condition : <input type="text" name="condition"
-                style="border: none; background-color:rgba(255, 255, 255, 0.37);">
-            <hr>
-            Register : <input type="text" name="register"
-                style="border: none; background-color:rgba(255, 255, 255, 0.37);">
-            <hr>
-            <!-- Date and Time : <input type="text" name="dateAndTime"
-                style="border:none; background-color:rgba(255, 255, 255, 0.37);">
-            <hr> -->
-            Tag : <input type="text" name="tag" style="border: none; background-color:rgba(255, 255, 255, 0.37);">
-            <hr>
-            Description :
-            <div class="center"
-                style="background-color: rgba(255, 255, 255, 0.37);margin-bottom: 10px;width: 664px;height:auto;">
-                <div class="center">
-                    <textarea cols="78" rows="5" placeholder="Write your description"
-                        style="border: none; background-color:transparent; margin-top: 5px;">
-        </textarea>
-                </div>
-                <div class="row">
-                    <div class="col-sm-3"></div>
-                    <div class="col-sm-6" id="image_preview"></div>
-                    <div class="col-sm-3"></div>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-8" style="margin-top: 10px;"></div>
-                    <div class="col-sm-4">
-                        <input type="file" class="form-control" id="images" name="images[]" onchange="preview_images();"
-                            multiple />
+            <form class="form-horizontal" name="create-share-event" id="create-share-event">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Title :  </label>
+                    <div class="col-sm-9">
+                        <input class="form-control" id="title-share-event-create" type="text" 
+                        style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="Title">
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-1">
-                    <button type="button" class="btn btn-danger btn-lg"
-                        style="font-size:20px;border: none;margin-left: 620px;">Cancel</button>
+                <hr>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Location :   </label>
+                    <div class="col-sm-9">
+                        <input class="form-control" id="section-share-event-create" type="text" 
+                        style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="e.g. KFC">
+                    </div>
                 </div>
-                <div class="col-sm-1">
-                    <input type="submit" value="Post" class="btn btn-primary btn-lg "
-                        style="font-size:20px;border: none;margin-left: 670px;">
+                <hr>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Condition :   </label>
+                    <div class="col-sm-9">
+                        <input class="form-control" id="instruction-name-share-event-create" type="text" 
+                        style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="e.g. Only CPE student">
+                    </div>
                 </div>
-
-            </div>
+                <hr>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Register :    </label>
+                    <div class="col-sm-9">
+                        <input class="form-control" id="register-share-event-create" type="text" 
+                        style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="Yes or No">
+                    </div>
+                </div>
+                <hr>
+                <!-- <div class="form-group">
+                    <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Date and Time :    </label>
+                    <div class="col-sm-9">
+                        <input class="form-control" id="register-share-event-create" type="text" 
+                        style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="e.g. 10th Dec 2019">
+                    </div>
+                </div>
+                <hr> -->
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Tag : </label>
+                    <div class="col-sm-9">
+                        <input class="form-control" id="tag-share-event-create" type="text" 
+                        style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="e.g. #CPExxx #Calculus">
+                    </div>
+                </div>
+                <hr>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Description:   </label>
+                    <div class="col-sm-9">
+                        <textarea class="form-control" id="description-share-note-create" type="text" 
+                        cols=auto rows="10" style="border: none; background-color:rgba(255, 255, 255, 0.37);" placeholder="Write your description">
+                        </textarea>
+                    </div>
+                </div>
+                <hr>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Content:   </label>
+                    <div class="col-sm-9">
+                        <div class="center" style="background-color: rgba(255, 255, 255, 0.37);margin-top:5px; margin-bottom: 10px;height:auto;">
+                        <div class="row center container-fluid mt-3">
+                            <div class="col-sm-1" style="margin-top: 10px;"></div>
+                            <div class="col-sm-10 row" id="image_preview">
+                            </div>
+                            <div class="col-sm-1" style="margin-top: 10px;"></div>
+                        </div>
+                        <div class="row" style="margin-top: 2%;">
+                            <div class="col-sm-4" style="margin-top: 10px;"></div>
+                            <div class="col-sm-4">
+                                <input type="file" class="form-control" id="images" name="images[]" onchange="preview_images();"
+                                    multiple />
+                            </div>
+                            <div class="col-sm-4" style="margin-top: 10px;"></div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-1">
+                        <a href="http://127.0.0.1:5500/ShareEvent.html" type="button" class="btn btn-danger btn-lg"
+                            style="font-size:20px;border: none;margin-left: 620px;">Cancel</a>
+                    </div>
+                    <div class="col-sm-1">
+                        <input type="submit" value="Save" class="btn btn-primary btn-lg "
+                            style="font-size:20px;border: none;margin-left: 670px;">
+                    </div>
+                </div>
+            </form>
 
         </div>
 
