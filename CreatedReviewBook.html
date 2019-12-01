@@ -322,12 +322,8 @@
         function preview_images() {
             var total_file = document.getElementById("images").files.length;
             for (var i = 0; i < total_file; i++) {
-<<<<<<< HEAD
-                $('#image_preview').append("<div class='card col-sm-12 center'><a href='#'><img id='remove-picture' src='https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/remove.png' style='position:relative;'></a><center> <img class='img-responsive' src='" + URL.createObjectURL(event.target.files[i]) + "'></div>");
-=======
                 j = j + 1
-                $('#image_preview').append(patternImageUpload1(j) + URL.createObjectURL(event.target.files[i]) + patternImageUpload3());
->>>>>>> develop
+                $('#image_preview').append("<div class='card col-sm-12 center'><a href='#'><img id='remove-picture' src='https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/remove.png' style='position:relative;'></a><center> <img class='img-responsive' src='" + URL.createObjectURL(event.target.files[i]) + "'></div>");
             }
         }
 
@@ -444,7 +440,6 @@
     </nav>
     <div class="center"
         style="background-color: rgba(255, 255, 255, 0.37);margin-top: 50px;width: 864px;height: 294px;">
-<<<<<<< HEAD
         <div class="center card">
             <a href="#"><img id="remove-picture"
                     src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/remove.png"
@@ -454,7 +449,7 @@
                 alt="your image" class="center card-img-top" style="position: absolute;">
         </div>
     </div>
-    <input type="file" onchange="readURL(this);" class="center">
+    <div id="cover-upload"><input type="file" onchange="readURL(this);" class="center"></div>
 
     <div class="row" style="margin-top:0px">
         <div class="box" style="height:50px; margin-top: 10px;">
@@ -465,13 +460,6 @@
                 Write Down :
             </div>
         </div>
-=======
-        <div id="cover-upload"></div>
-        <img id="blah" src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/UploadPicture.png"
-            alt="your image" class="center" />
-        <input type="file" onchange="readURL(this);" class="center" />
-    </div>
->>>>>>> develop
 
     <div class="container" style="margin-top: 2%;">
         <div class="box" style="margin-top:10px">
@@ -494,11 +482,10 @@
                 placeholder="e.g. #CPExxx #Calculus">
             <hr>
             Description :
-<<<<<<< HEAD
             <div class="center"
                 style="background-color: rgba(255, 255, 255, 0.37);margin-bottom: 10px;width: 664px;height:auto;">
                 <div class="center">
-                    <textarea cols="78" rows="5" placeholder="Write your description"
+                    <textarea id="description-review-book-create" cols="78" rows="5" placeholder="Write your description"
                         style="border: none; background-color:transparent; margin-top: 5px;">
                         </textarea>
                 </div>
@@ -518,28 +505,6 @@
                             <input type="submit" class="btn btn-primary" name='submit_image' value="Upload Image" />
                         </div>-->
                 </div>
-=======
-            <br>
-            <br>
-            <div>
-                <textarea id="description-review-book-create" name="subject" cols="90" rows="20"
-                    style="border: none; background-color:rgba(255, 255, 255, 0.37);margin-left:50px;">
-            </textarea>
-            </div>
-            <div class="row center container-fluid mt-3">
-                <div class="col-sm-1" style="margin-top: 10px;"></div>
-                <div class="col-sm-10 row" id="image_preview">
-                </div>
-                <div class="col-sm-1" style="margin-top: 10px;"></div>
-            </div>
-            <div class="row">
-                <div class="col-sm-4" style="margin-top: 10px;"></div>
-                <div class="col-sm-4">
-                    <input type="file" class="form-control" id="images" name="images[]" onchange="preview_images();"
-                        multiple />
-                </div>
-                <div class="col-sm-4" style="margin-top: 10px;"></div>
->>>>>>> develop
             </div>
             <div class="row">
                 <div class="col-sm-1">
