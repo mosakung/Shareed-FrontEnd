@@ -41,7 +41,7 @@ httpGET('http://localhost:3000/shareed/share-note', urlParams.get("page"), (stat
 
 function fourmCard(data) {
     return [`
-    <a href="http://127.0.0.1:5500/ViewNote.html?postID=${data.ShareNoteID}" role="button">
+    <a href="http://localhost:5500/ViewNote.html?postID=${data.ShareNoteID}" role="button">
         <div class="sm-block" style="height:150px; padding: 5px;">
             <div class="row">
                 <div class="col-sm-3">

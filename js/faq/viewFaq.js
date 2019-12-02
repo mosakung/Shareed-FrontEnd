@@ -41,7 +41,7 @@ httpGET('http://localhost:3000/shareed/faq', urlParams.get("page"), (state, json
 
 function fourmCard(data) {
     return [`
-    <a href="http://127.0.0.1:5500/ViewFAQ.html?postID=${data.FAQID}" role="button">
+    <a href="http://localhost:5500/ViewFAQ.html?postID=${data.FAQID}" role="button">
         <div class="sm-block" style="height:150px; padding: 5px;">
             <div class="row">
                 <div class="col-sm-3">

@@ -26,7 +26,7 @@ httpGET('http://localhost:3000/shareed/homepage-user', userId, (state, json) => 
 
     function patternShareNote(data, index) {
         if (index == 0) return [`
-        <a href="http://127.0.0.1:5500/ViewNote.html?postID=${data.ShareNoteID}" role="button"> 
+        <a href="http://localhost:5500/ViewNote.html?postID=${data.ShareNoteID}" role="button"> 
             <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-front container-fluid responsive">
@@ -43,7 +43,7 @@ httpGET('http://localhost:3000/shareed/homepage-user', userId, (state, json) => 
         `]
         else return [`
         <div class="sm-block">
-            <a href="http://127.0.0.1:5500/ViewNote.html?postID=${data.ShareNoteID}" class="card-sml responsive">
+            <a href="http://localhost:5500/ViewNote.html?postID=${data.ShareNoteID}" class="card-sml responsive">
                 <div class="col-sm-5 container-fluid" style="margin: 0px; padding: 0px;"> 
                     <div class="responsive"> 
                         <img src="${data.Cover}" style=" max-width:200px; max-height:160px; min-height:160px;">
@@ -61,7 +61,7 @@ httpGET('http://localhost:3000/shareed/homepage-user', userId, (state, json) => 
 
     function patternShareEvent(data, index) {
         if (index == 0) return [`
-        <a href="http://127.0.0.1:5500/ViewEvent.html?postID=${data.ShareEventID}">
+        <a href="http://localhost:5500/ViewEvent.html?postID=${data.ShareEventID}">
             <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-front container-fluid responsive">
@@ -78,7 +78,7 @@ httpGET('http://localhost:3000/shareed/homepage-user', userId, (state, json) => 
         `]
         else return [`
         <div class="sm-block">
-            <a href="http://127.0.0.1:5500/ViewEvent.html?postID=${data.ShareEventID}" class="card-sml">
+            <a href="http://localhost:5500/ViewEvent.html?postID=${data.ShareEventID}" class="card-sml">
                 <div class="col-sm-5" style="margin: 0px; padding: 0px;"> 
                     <div class="responsive"> 
                         <img src="${data.Cover}" style="max-width:200px; max-height:160px; min-height:160px;">
@@ -97,7 +97,7 @@ httpGET('http://localhost:3000/shareed/homepage-user', userId, (state, json) => 
     function patternReviewSubject(data, index) {
         return [`
         <div class="sm-block" style="margin-top: 25px;">
-            <a href="http://127.0.0.1:5500/ViewSubject.html?postID=${data.ReviewSubjectID}" class="card-sml">
+            <a href="http://localhost:5500/ViewSubject.html?postID=${data.ReviewSubjectID}" class="card-sml">
                 <div class="col-sm-12" style="color: black; padding-left: 25px; padding-top: 20px;"> 
                     <p style="color: red; font-size: 10px; ">Review Subject</p>
                     <p style="font-size: 25px;">${data.SubjectID}</p>
@@ -112,7 +112,7 @@ httpGET('http://localhost:3000/shareed/homepage-user', userId, (state, json) => 
     function patternReviewBook(data, index) {
         return [`
         <div class="col-sm-6" style="margin-top: 15px;">
-            <a href="http://127.0.0.1:5500/ViewBook.html?postID=${data.ReviewBookID}">
+            <a href="http://localhost:5500/ViewBook.html?postID=${data.ReviewBookID}">
                 <div class="flip-card">
                     <div class="flip-card-inner">
                         <div class="flip-card-front container-fluid responsive">
@@ -134,7 +134,7 @@ httpGET('http://localhost:3000/shareed/homepage-user', userId, (state, json) => 
         return [`
         <div class="col-sm-4" style="margin-top: 15px;">
             <div class="bg-block" style="height:350px;">
-                <a href="http://127.0.0.1:5500/ViewTutor.html?postID=${data.ReviewTutorID}" class="card-sml">
+                <a href="http://localhost:5500/ViewTutor.html?postID=${data.ReviewTutorID}" class="card-sml">
                     <div class="responsive"> 
                         <img src="${data.Cover}" style=" max-width:240px; max-height:240px; min-height:240px;">
                     </div>
@@ -151,7 +151,7 @@ httpGET('http://localhost:3000/shareed/homepage-user', userId, (state, json) => 
 
     function patternFaq(data, index) {
         if (index == 0) return [`
-        <a href="http://127.0.0.1:5500/ViewFAQ.html?postID=${data.FAQID}">
+        <a href="http://localhost:5500/ViewFAQ.html?postID=${data.FAQID}">
             <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-front container-fluid responsive">
@@ -167,7 +167,7 @@ httpGET('http://localhost:3000/shareed/homepage-user', userId, (state, json) => 
         </a>
         `]
         else return [`
-        <a href="http://127.0.0.1:5500/ViewFAQ.html?postID=${data.FAQID}">
+        <a href="http://localhost:5500/ViewFAQ.html?postID=${data.FAQID}">
             <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-front container-fluid responsive">

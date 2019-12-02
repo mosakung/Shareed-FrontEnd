@@ -59,7 +59,7 @@
         function callToEdit() {
             const urlParamsHtml = new URLSearchParams(window.location.search);
             var postIDHtml = urlParamsHtml.get("postID");
-            document.getElementById("editPost").href = ("http://127.0.0.1:5500/EditShareEvent.html?postID=" + postIDHtml);
+            document.getElementById("editPost").href = ("http://localhost:5500/EditShareEvent.html?postID=" + postIDHtml);
         }
 
         function callToDelete() {
@@ -85,7 +85,7 @@
             httpDELETE('http://localhost:3000/shareed/share-event', postId, userId, (res) => {
                 const text = 'delete are ' + res;
                 alert(text);
-                location.replace("http://127.0.0.1:5500/ShareEvent.html?page=1 ");
+                location.replace("http://localhost:5500/ShareEvent.html?page=1 ");
             })
         }
     </script>   
@@ -110,7 +110,7 @@
                 </div>
                     </div>
                 <div class="col-sm-2">
-                    <a href="http://127.0.0.1:5500/EditReviewBook.html" onclick="callToEdit()" id="editPost" class="btn btn-primary"
+                    <a href="http://localhost:5500/EditReviewBook.html" onclick="callToEdit()" id="editPost" class="btn btn-primary"
                         title="Edited"><span class="glyphicon glyphicon-pencil"></span></a>
                     <a href="#" class="btn btn-danger" onclick="callToDelete()" id="deletePost" title="Deleted"><span
                             class="glyphicon glyphicon-trash"></span></a>
