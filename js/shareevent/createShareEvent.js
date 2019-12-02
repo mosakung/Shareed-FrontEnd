@@ -47,7 +47,7 @@ window.onload = function () {
         const body = JSON.parse(preBody);
 
         httpPOST('http://localhost:3000/shareed/share-event', userId, body, (res, json) => {
-            window.location('http://localhost:5500/shareed/ShareEvent/1');
+            window.location('http://localhost:5500/ShareEvent.html?page=1');
         })
     }
 }

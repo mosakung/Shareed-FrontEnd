@@ -3,6 +3,9 @@ import { httpPOST, userId } from '../callAPI.js';
 window.onload = function () {
     document.getElementById("create-review-tutor").onsubmit = function () {
         let tutorName = document.getElementById("tutorname-review-tutor-create").value;
+        let cover = document.getElementById("cover-review-tutor-create").value;
+        cover = cover.substring(12,cover.length);
+        cover = 'pictureBase/' + cover;
         let title = document.getElementById("title-review-tutor-create").value;
         let academy = document.getElementById("academy-review-tutor-create").value;
         let subjectTeach = document.getElementById("subjectTeach-review-tutor-create").value;
@@ -22,6 +25,7 @@ window.onload = function () {
             "contactLink": "${contactLink}",
             "description": "${description}",
             "Title": "${title}",
+            "Cover": "${cover}"
         `;
 
         preBody = preBody + `"tag": [`;
@@ -37,7 +41,6 @@ window.onload = function () {
             if (i == pictureArray.length - 1)
                 preBody = preBody + `{ "Picture": "pictureBase/${pictureArray[i].name}" }`
             else preBody = preBody + `{ "Picture": "pictureBase/${pictureArray[i].name}" },`
-
         }
 
         preBody = preBody + `]}`
@@ -45,7 +48,6 @@ window.onload = function () {
         const body = JSON.parse(preBody);
 
         httpPOST('http://localhost:3000/shareed/review-tutor', userId, body, (res, json) => {
-            window.location('http://localhost:3000/shareed/ReviewTutor/1');
         })
     }
 }

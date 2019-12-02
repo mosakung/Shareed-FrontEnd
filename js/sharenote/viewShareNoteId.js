@@ -4,7 +4,6 @@ import {removeParam } from '../removeParam.js';
 const urlParams = new URLSearchParams(window.location.search);
 
 httpIdGET('http://localhost:3000/shareed/share-note', urlParams.get("postID"), userId, (state, json) => {
-    console.log(json);
     var date = json.dateTime.replace("T", " ");
     date = date.substring(0, 19);
     checkOwner(json.isOwner);
@@ -14,7 +13,8 @@ httpIdGET('http://localhost:3000/shareed/share-note', urlParams.get("postID"), u
     json.content.forEach(data => {
         showContent(data);
     });
-    json.comment.forEach(data=>{
+
+    json.comment.forEach(data =>{
         showComment(data);
    });
     
@@ -41,7 +41,7 @@ function showContent(data) {
     $('#content').append(createContent);
 }
 
-function showComment(data) {
+function showComment(data,index) {
     var date = data.Date_Time.replace("T", " ");
      date = date.substring(0, 19);
      var showEdit = false;
@@ -57,12 +57,12 @@ function showComment(data) {
           <div class='col-sm-10'>
               <div class='row'>
                   <div class='col-sm-10' style='font-size:20px;'>` + data.Username + `</div>
-                  <div class='col-sm-2'>
-                      <a href='#' class='btn btn-primary btn-xs' title='Edited' style="display: ` + showEdit + `;"><span
-                              class='glyphicon glyphicon-pencil'style="display: ` + showEdit + `;"></span></a>
-                      <a href='#' class='btn btn-danger btn-xs' title='Deleted' style="display: ` + showEdit + `;"><span
+                  <div class='col-sm-2'  >
+                      <a class='btn btn-primary btn-xs' title='Edited' style="display: ` + showEdit + `;"><span
+                              class='glyphicon glyphicon-pencil' style="display: ` + showEdit + `;"></span></a>
+                      <a class='btn btn-danger btn-xs'  title='Deleted' style="display: ` + showEdit + `;"><span
                               class='glyphicon glyphicon-trash' style="display: ` + showEdit + `;"></span></a>
-                      <a href='#' class='btn btn-info btn-outline-secondary btn-xs' title='Report' style='background-color:rgba(119, 117, 117, 0.664);display: ` + showReport + `;'>Report</a>
+                      <a class='btn btn-info btn-outline-secondary btn-xs' title='Report' style='background-color:rgba(119, 117, 117, 0.664);display: ` + showReport + `;'>Report</a>
                   </div>
               </div>
               <div class='comment-text'>
@@ -90,3 +90,7 @@ function showComment(data) {
           document.getElementById('editPost').style.display = 'none';
       }
   }
+
+  $("#editBgComment").click(function(){
+    
+  });

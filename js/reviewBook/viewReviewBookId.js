@@ -56,11 +56,11 @@ function showComment(data) {
             <div class='row'>
                 <div class='col-sm-10' style='font-size:20px;'>` + data.Username + `</div>
                 <div class='col-sm-2'>
-                    <a href='#' class='btn btn-primary btn-xs' title='Edited' style="display: ` + showEdit + `;"><span
+                    <a class='btn btn-primary btn-xs' title='Edited' style="display: ` + showEdit + `;"><span
                             class='glyphicon glyphicon-pencil'style="display: ` + showEdit + `;"></span></a>
-                    <a href='#' class='btn btn-danger btn-xs' title='Deleted' style="display: ` + showEdit + `;"><span
+                    <a class='btn btn-danger btn-xs' title='Deleted'style="display: ` + showEdit + `;"><span
                             class='glyphicon glyphicon-trash' style="display: ` + showEdit + `;"></span></a>
-                    <a href='#' class='btn btn-info btn-outline-secondary btn-xs' title='Report' style='background-color:rgba(119, 117, 117, 0.664);display: ` + showReport + `;'>Report</a>
+                    <a class='btn btn-info btn-outline-secondary btn-xs' title='Report' style='background-color:rgba(119, 117, 117, 0.664);display: ` + showReport + `;'>Report</a>
                 </div>
             </div>
             <div class='comment-text'>
@@ -88,3 +88,4 @@ function checkOwner(data) {
         document.getElementById('editPost').style.display = 'none';
     }
 }
+
