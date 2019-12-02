@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ShareEd</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Mali|Fredericka the Great" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://unpkg.com/file-upload-with-preview@4.0.2/dist/file-upload-with-preview.min.css">
+
+    <script src="https://unpkg.com/file-upload-with-preview@4.0.2/dist/file-upload-with-preview.min.js"></script>
+    <script type="module" src="js/reviewsubject/editReviewSubject.js"></script>
+    <style>
+        body {
+            background-image: linear-gradient(to bottom right, white, lightblue, deepskyblue, cornflowerblue, grey);
+            font-family: Mali;
+            position: relative;
+        }
+
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+
+        }
+
+        .right {
+            position: absolute;
+            right: 0px;
+
+        }
+
+
+        .block {
+            position: auto;
+            width: auto;
+            height: 580px;
+            background-color: rgba(255, 255, 255, 0.37);
+            border-radius: 3px;
+            padding: 30px;
+            margin: 10px;
+        }
+
+        .header {
+            position: auto;
+            width: 864px;
+            height: 294px;
+            background-color: rgba(255, 255, 255, 0.37);
+            border-radius: 3px;
+            padding: 30px;
+            margin: 10px;
+        }
+
+        .bg-block {
+            position: auto;
+            width: auto;
+            height: 420px;
+            background-color: rgba(255, 255, 255, 0.37);
+            border-radius: 3px;
+            padding: 15px;
+            margin: 5px;
+        }
+
+        .sm-block {
+            position: auto;
+            width: 900px;
+            height: auto;
+            background-color: rgba(255, 255, 255, 0.37);
+            border-radius: 3px;
+            padding: 15px;
+            margin: 5px;
+        }
+
+        .box {
+            position: auto;
+            width: 864px;
+            height: auto;
+            background-color: rgba(255, 255, 255, 0.37);
+            border-radius: 3px;
+            padding: 15px;
+            margin: auto;
+        }
+
+        .infor {
+            position: auto;
+            width: 250px;
+            height: auto;
+            background-color: rgba(255, 255, 255, 0.37);
+            border-radius: 3px;
+            padding: 15px;
+            margin: 5px;
+        }
+
+        .pagination {
+            display: inline-block;
+        }
+
+        .pagination a {
+            color: black;
+            float: left;
+            padding: 5px 15px;
+            text-decoration: none;
+        }
+
+        .pagination a.active {
+            background-color: rgb(100, 100, 100);
+            color: white;
+            border-radius: 10px;
+        }
+
+        .pagination a:hover:not(.active) {
+            background-color: #ddd;
+            border-radius: 10px;
+        }
+
+        #sharenote {
+            padding-top: 50px;
+            height: 650px;
+            color: black;
+        }
+
+        #shareevent {
+            padding-top: 50px;
+            height: 650px;
+            color: black;
+        }
+
+        #reviewsubject {
+            padding-top: 50px;
+            height: 650px;
+            color: black;
+        }
+
+        #reviewtutor {
+            padding-top: 50px;
+            height: 650px;
+            color: black;
+        }
+
+        #reviewbook {
+            padding-top: 50px;
+            height: 650px;
+            color: black;
+        }
+
+        #boardfaq {
+            padding-top: 50px;
+            height: 650px;
+            color: black;
+        }
+
+        img {
+            max-width: 864px;
+            max-height: 294px;
+        }
+
+        #formdiv {
+            text-align: center;
+        }
+
+        #file {
+            color: green;
+            padding: 5px;
+            border: 1px dashed #123456;
+            background-color: #f9ffe5;
+        }
+
+        #img {
+            width: 17px;
+            border: none;
+            height: 17px;
+            margin-left: -20px;
+            margin-bottom: 191px;
+        }
+
+        .upload {
+            width: 100%;
+            height: 90px;
+        }
+
+        .previewBox {
+            text-align: center;
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin-right: 10px;
+            margin-bottom: 20px;
+            float: left;
+        }
+
+        .previewBox img {
+            height: 150px;
+            width: 150px;
+            padding: 5px;
+            border: 1px solid rgb(232, 222, 189);
+        }
+
+        .delete {
+            color: red;
+            font-weight: bold;
+            position: absolute;
+            top: 0;
+            cursor: pointer;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #ccc;
+        }
+    </style>
+    <script type="text/javascript" src="http://www.expertphp.in/js/jquery.form.js"></script>
+
+    <script>
+
+        function patternImageUpload1(parameter) {
+            return [`
+                    <div id="card-upload-` + parameter + `" class="row">
+                                    <div class="card mt-3" style="margin-top: 5%;">
+                                        <a style="cursor: grabbing;"><img id="remove-picture-` + parameter + `" src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/remove.png" onclick="remove_picture(` + parameter + `)"
+                                                style="width: 50px; height: 50px; position: absolute;"></a>
+                                        <img id="blahs" src="
+                    `]
+        }
+
+        function patternImageUpload3() {
+            return [`
+                    " alt="your image" class="center card-img-top" style="z-index: -1; max-width: 550px;">
+                                    </div>
+                                </div>
+                    `]
+        }
+
+        var j = -1;
+
+        function preview_images() {
+            originalCoverState = 0;
+            var total_file = document.getElementById("images").files.length;
+            for (var i = 0; i < total_file; i++) {
+                j = j + 1
+                $('#image_preview').append(patternImageUpload1(j) + URL.createObjectURL(event.target.files[i]) + patternImageUpload3());
+            }
+        }
+
+        var deleted = [];
+
+        function remove_picture(id) {
+            var element = document.getElementById("card-upload-" + id);
+            element.parentNode.removeChild(element);
+            deleted.push(id);
+        }
+
+        function import_delete() {
+            return [`
+                    <a style="cursor: grabbing;"><img id="remove-picture-cover"
+                        src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/remove.png"
+                        onclick="cover_delete()" style="width: 50px; height: 50px; position: absolute;"></a>
+                    `]
+        }
+
+        function out_delete() {
+            return [``];
+        }
+
+        var coverDelete = 1;
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                coverDelete = 0;
+
+                reader.onload = function (e) {
+                    $('#blah')
+                        .attr('src', e.target.result);
+
+                    $('#cover-upload').append(import_delete());
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function cover_delete() {
+            originalCoverState = 0;
+            coverDelete = 1;
+            $('#blah')
+                .attr('src', 'https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/UploadPicture.png');
+
+            /* var element = document.getElementById("cover-upload");
+            element.removeChild(element.childNodes); */
+            document.getElementById('cover-share-note-create').value = "";
+            $('#cover-upload').empty();
+            $('#cover-original').empty();
+        }
+
+    </script>
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+
+    <div id="navbar"></div>
+    <script>
+        $(function () {
+            $("#navbar").load("navbar.html");
+        });
+    </script>
+
+    <div class="row fetch-owner-username" style="margin-top: 1%;"></div>
+
+    <div class="container">
+        <div class="box" style="margin-top:10px">
+            <form class="form-horizontal" name="edit-review-subject" id="edit-review-subject" action = "javascript:window.location.assign( 'http://localhost:5500/ReviewSubject.html?page=1' );">
+                <div class="fetch-form-input-all-js"></div>
+
+                <div class="form-group " style="margin-top: 1%;">
+                    <label class="col-sm-3 control-label" style="font-size: 15px; text-align: left;">Content : </label>
+                    <div class="col-sm-9">
+                        <div class="center"
+                            style="background-color: rgba(255, 255, 255, 0.37);margin-bottom: 10px; height: auto;">
+                            <div class="fetch-form-content-all-js"></div>
+                            <div id="myUniqueUploadId" class="custom-file-container" data-upload-id="myUniqueUploadId"
+                                style="margin-top: 7%;">
+                                <label>Upload File <a href="javascript:void(0)"
+                                        class="custom-file-container__image-clear"
+                                        title="Clear Image">&times;</a></label>
+                                <label class="custom-file-container__custom-file">
+                                    <input type="file" class="custom-file-container__custom-file__custom-file-input"
+                                        accept="*" multiple aria-label="Choose File" id="picture-array-review-subject-edit">
+                                    <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                                    <span class="custom-file-container__custom-file__custom-file-control"></span>
+                                </label>
+                                <div class="custom-file-container__image-preview"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1">
+                        <a href="http://127.0.0.1:5500/Sharenote.html?page=1" type="button"
+                            class="btn btn-danger btn-lg"
+                            style="font-size:20px;border: none;margin-left: 620px;">Cancel</a>
+                    </div>
+                    <div class="col-sm-1">
+                        <input type="submit" value="Post" class="btn btn-primary btn-lg "
+                            style="font-size:20px;border: none;margin-left: 670px;">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <footer>
+
+        <div class="jumbotron" style="margin-bottom:0;">
+            <div class="row">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-6">
+                    <p style="font-size: 16px; margin-left: 35px;"><strong>ShareEd</strong></p>
+                    <p style="font-size: 14px;"> “ ShareEd website is community of student in King Mongkut’s University
+                        of Technology Thonburi for share their story about education in many features.
+                        ShareEd made by KMUTT students called T3M team."</p>
+                </div>
+                <div class="col-sm-3">
+                    <p style="font-size: 16px; margin-left: 35px;"><strong>Contact Info</strong></p>
+                    <p style="font-size: 14px;"><span class="glyphicon glyphicon-earphone"></span> +66 86 3175 820</p>
+                    <p style="font-size: 14px;"><span class="glyphicon glyphicon-envelope"></span>
+                        shareed@gmail.co.th</a></p>
+                    <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/youtube.png"
+                        width="auto" height="auto">
+                    <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/twitter.png"
+                        width="auto" height="auto">
+                    <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/instragram.png"
+                        width="auto" height="auto">
+                    <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/facebook.png"
+                        width="auto" height="auto">
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
+        </div>
+
+    </footer>
+
+</body>
+<script>
+    /* $('#edit-review-subject').submit(e => {
+        e.preventDefault()
+    })  */
+    var upload = new FileUploadWithPreview('myUniqueUploadId');
+</script>
+
+</html>

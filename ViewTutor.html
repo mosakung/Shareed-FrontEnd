@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ShareEd</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Mali|Fredericka the Great" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script type="module" src="js/reviewtutor/viewReviewTutorId.js"></script>
+  <style>
+  body {
+    background-image: linear-gradient(to bottom right,white,lightblue,deepskyblue, cornflowerblue,grey);
+    font-family :Mali;
+    position: relative; 
+  }
+  .block{
+    position:auto;
+    width:auto;
+    height:580px;
+    background-color: rgba(255, 255, 255, 0.37);
+    border-radius: 3px;
+    padding: 30px;
+    margin: 10px;
+  }
+  .bg-block{
+    position:auto;
+    width:auto;
+    height:420px;
+    background-color: whitesmoke;
+    border-radius: 3px;
+    padding: 15px;
+    margin: 5px;
+  }
+  .sm-block{
+    position:auto;
+    width:auto;
+    height:160px;
+    background-color: whitesmoke;
+    border-radius: 3px;
+    padding: 15px;
+    margin: 5px;
+  }
+    .responsive {
+    width: 96%;
+    height: auto;
+    }
+  </style>
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+
+    <div id="navbar"></div>   
+    <script>
+        $(function(){
+            $("#navbar").load("navbar.html");
+        });
+
+        function callToEdit() {
+            const urlParamsHtml = new URLSearchParams(window.location.search);
+            var postIDHtml = urlParamsHtml.get("postID");
+            document.getElementById("editPost").href = ("http://127.0.0.1:5500/EditReviewTutor.html?postID=" + postIDHtml);
+        }
+
+        function callToDelete() {
+            function httpDELETE(url, postId, userId, callback) {
+                const Http = new XMLHttpRequest();
+                url = url.concat('/' + postId + '/' + userId);
+                Http.open("DELETE", url, true);
+                Http.send();
+
+                Http.onreadystatechange = function (temp) {
+
+                    if (this.readyState == 4 && this.status == 250) {
+                        callback(true, Http.responseText);
+                    }
+                }
+            }
+
+            let userId = '100000001';
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const postId = urlParams.get("postID");
+
+            httpDELETE('http://localhost:3000/shareed/review-tutor', postId, userId, (res) => {
+                const text = 'delete are ' + res;
+                alert(text);
+                location.replace("http://127.0.0.1:5500/ReviewTutor.html?page=1 ");
+            })
+        }
+    </script>      
+
+<div class="row">
+    <div class="col-sm-2">
+    </div>
+    <div class="col-sm-8" style="margin-top: 20px;">
+        <div class="block" style="height: auto;">
+            <!-- title -->
+            <div class="row">
+                <div class="col-sm-10" style="font-size:30px;">
+                    <strong><textbox id="title"></textbox></strong>
+                <br>
+                <div class="row"  style="font-size:12px; margin-top: 10px;">
+                    <div class="col-sm-6">
+                        <strong>Owner : </strong><textbox id="owner"></textbox>
+                    </div>
+                    <div class="col-sm-6">
+                        <strong>Write Down : </strong><textbox id="writeDown"></textbox>
+                    </div>
+                </div>
+                </div>
+                <div class="col-sm-2">
+                    <a href="#" onclick="callToEdit()" id="editPost" class="btn btn-primary"
+                        title="Edited"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a href="#" class="btn btn-danger" onclick="callToDelete()" id="deletePost" title="Deleted"><span
+                            class="glyphicon glyphicon-trash"></span></a>
+                    <a href="#" class="btn btn-info btn-outline-secondary" id="report" title="Report"
+                        style="background-color:rgba(119, 117, 117, 0.664);">Report</a>
+                </div>
+            </div>
+            <div class="container-fluid responsive" style="height: 294px;  margin-top:15px; background-color:  rgba(255, 255, 255, 0.37);">
+                <center><img id="blah" style="max-width:864px; max-height:294px; min-height:294px;" ></center>
+            </div>
+            <!-- content -->
+            <div class="container-fluid">
+                <div class="box" style="margin-top:10px">
+                    <div id= "tag-post" class="row"></div>
+                    </div>
+                    <br>
+                    <strong>Tutor Name : </strong><textbox id="tutorName"></textbox>
+                    <br> 
+                    <strong>Academy : </strong><textbox id="academy"></textbox>
+                    <br>
+                    <strong>Course : </strong><textbox id="course"></textbox>
+                    <br>
+                    <strong>Contact : </strong><textbox id="contact"></textbox>
+                    <br>
+                    <strong>Description : </strong><textbox id="description"></textbox>
+                    <div class="row"> 
+                        <div class="block responsive" id="content" style="height: auto;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <!-- comment -->
+            <div id="comment" class="container-fluid">
+                <div class="row" style="padding: 10px;">
+                    <div class="panel panel-default widget">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-sm-11"><p class="panel-title"><span class="glyphicon glyphicon-comment"></span>  Comments</p></div>
+                                <div class="col-sm-1"><span id="numComment" class="label label-info"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <ul id="allComment" class="list-group">
+                                <li class="list-group-item">
+                                    <div class="row">
+                                        <div class="col-sm-2">
+                                            <img src="http://placehold.it/80" class="img-circle img-responsive" alt="" /></div>
+                                        <div class="col-sm-10">
+                                            <div class="row">
+                                                <div class="col-sm-9" style="font-size:20px;">
+                                                    <textbox id="nameUser">Name</textbox>
+                                                </div>
+                                                <!-- <div class="col-sm-3" style="font-size:12px;">11:00 on 11 Nov 2013</div> -->
+                                            </div>
+                                            <div class="comment-text">
+                                                <form class="form-inline" action="#">
+                                                    <textarea name="comment" id="comment" class="responsive"style="border-color:black; background-color:white;"></textarea>
+                                                    <div class="row">
+                                                            <div class="col-sm-10"></div>
+                                                            <div class="col-sm-2">
+                                                                <a href="#" class="btn btn-success btn-xs" title="Submit">Submit</a>
+                                                            </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>      
+        </div>
+    </div>
+    <div class="col-sm-2"></div>
+</div>
+<footer>
+
+    <div class="jumbotron" style="margin-bottom:0;">
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-6">
+                <p style="font-size: 16px; margin-left: 35px;"><strong>ShareEd</strong></p>
+                <p style="font-size: 14px;"> “ ShareEd website is community of student in King Mongkut’s University
+                    of Technology Thonburi for share their story about education in many features.
+                    ShareEd made by KMUTT students called T3M team."</p>
+            </div>
+            <div class="col-sm-3">
+                <p style="font-size: 16px; margin-left: 35px;"><strong>Contact Info</strong></p>
+                <p style="font-size: 14px;"><span class="glyphicon glyphicon-earphone"></span> +66 86 3175 820</p>
+                <p style="font-size: 14px;"><span class="glyphicon glyphicon-envelope"></span>
+                    shareed@gmail.co.th</a></p>
+                <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/youtube.png"
+                    width="auto" height="auto">
+                <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/twitter.png"
+                    width="auto" height="auto">
+                <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/instragram.png"
+                    width="auto" height="auto">
+                <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/facebook.png"
+                    width="auto" height="auto">
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+    </div>
+
+</footer>
+</body>
+</html>

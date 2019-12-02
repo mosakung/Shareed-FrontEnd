@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ShareEd</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Mali|Fredericka the Great" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script type="module" src="js/homePage.js"></script>
+  
+  <style>
+  body {
+    background-image: linear-gradient(to bottom right,white,lightblue,deepskyblue, cornflowerblue,grey);
+    font-family :Mali;
+    position: relative; 
+  }
+  .block{
+    position:auto;
+    width:auto;
+    height:580px;
+    background-color: rgba(255, 255, 255, 0.37);
+    border-radius: 3px;
+    padding: 30px;
+    margin: 10px;
+  }
+  .bg-block{
+    position:auto;
+    width:auto;
+    height:420px;
+    background-color: whitesmoke;
+    border-radius: 3px;
+  }
+  .sm-block{
+    position:auto;
+    width:auto;
+    height:160px;
+    background-color: whitesmoke;
+    border-radius: 3px;
+  }
+  .card-sml{
+    position:auto;
+    width:auto;
+    height:160px;
+    background-color: whitesmoke;
+  }
+  .card-smw{
+    position:auto;
+    width:auto;
+    height:160px;
+    background-color: whitesmoke;
+  }
+  .flip-card {
+    position:auto;
+    background-color: whitesmoke;
+    width: auto;
+    height: 345px;
+    perspective: 1000px;
+    margin-top:0px;
+    margin-left: 0px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  background-color: whitesmoke;
+  color: black;
+}
+
+.flip-card-back {
+  background-color:whitesmoke;
+  color: black;
+  transform: rotateY(180deg);
+}
+.responsive {
+  width: 100%;
+  height: auto;
+}
+  #sharenote {padding-top:50px;height:650px;color: black;}
+  #shareevent{padding-top:50px;height:650px;color: black;}
+  #reviewsubject {padding-top:50px;height:650px;color: black;}
+  #reviewtutor {padding-top:50px;height:650px;color: black; }
+  #reviewbook {padding-top:50px;height:650px;color: black; }
+  #boardfaq {padding-top:50px;height:650px;color: black; }
+  </style>
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+
+    <div id="navbar"></div>   
+    <script>
+        $(function(){
+            $("#navbar").load("navbar.html");
+        });
+    </script>
+
+<div class="row">
+    <div class="col-sm-2" style="margin-top: 90px; padding: 30px;">
+        <!-- <p><a href="#sharenote">Share Note</a></p>
+        <p><a href="#shareevent">Share Event</a></p>
+        <p><a href="#reviewsubject">Review Subject</a></p>
+        <p><a href="#reviewbook">Review Book</a></p>
+        <p><a href="#reviewtutor">Review Tutor</a></p>
+        <p><a href="#boardfaq">Board FAQ</a></p> -->
+    </div>
+    <div class="col-sm-8 container-fluid">
+        <div id="sharenote" class="container-fluid">
+            <div class="block responsive">
+                <div class="row" style="padding: 10px;">
+                    <div class="col-sm-1">
+                        <div class="responsive"> 
+                            <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/icon/ShareNote.png" style="max-width:120px; max-height:60px; min-height:60px;">
+                        </div>
+                    </div>
+                    <h1 style="margin-left:100px; font-family: Fredericka the Great;">Share Note</h1>
+                    <div class="row">
+                        <div class="col-sm-6 fetch-share-note-filp" style="margin-top: 15px;">
+                            <!-- <a href="http://127.0.0.1:5500/ViewNote.html?page=1" role="button"> 
+                                <div class="flip-card">
+                                    <div class="flip-card-inner">
+                                        <div class="flip-card-front container-fluid responsive">
+                                            <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/PRE380_new.png"  style=" max-width:340px; max-height:345px; min-height:345px;" ></center>
+                                        </div>
+                                        <div class="flip-card-back">
+                                            <h4 style="color: red;">Share Note</h4>
+                                            <p class="card-text">Date: By: </p> 
+                                            <h2>สรุปเนื้อหาบทที่ 1 วิชา Economics</h2> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </a> -->
+                        </div>
+                        <div class="col-sm-6 fetch-share-note-non-filp" style="margin-top: 15px;">
+                            <!-- <div class="sm-block">
+                                <a href="#" class="card-sml responsive">
+                                    <div class="col-sm-5 container-fluid" style="margin: 0px; padding: 0px;"> 
+                                        <div class="responsive"> 
+                                            <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/1_new.png" style=" max-width:200px; max-height:160px; min-height:160px;">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-7" style="color: black; padding-left: 25px; padding-top: 10px;"> 
+                                        <p style="color: red; font-size: 10px; ">Share Note</p>
+                                        <p>Dummy</p> 
+                                        <p style="font-size: 10px; ">Date: By: </p> 
+                                    </div>
+                                </a>
+                            </div> -->
+                            <!-- <div class="sm-block" style="margin-top: 25px;"> 131656 </div> -->                            
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 25px;">
+                        <div class="col-sm-4"></div>
+                        <div class="col-sm-4"> 
+                            <a href="http://127.0.0.1:5500/ShareNote.html?page=1" class="btn btn-primary btn-outline-secondary" role="button" style="background-color:rgba(119, 117, 117, 0.664); width: 100%;">View All</a>  
+                        </div>
+                        <div class="col-sm-4"></div>
+                    </div>        
+                </div>
+            </div>
+        </div>
+        <div id="shareevent" class="container-fluid">
+            <div class="block responsive">
+                <div class="row" style="padding: 10px;">
+                    <div class="col-sm-1">
+                            <div class="responsive"> 
+                                <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/icon/ShareEvent.png" style="max-width:120px; max-height:60px; min-height:60px;">
+                            </div>
+                        </div>
+                    <h1 style="margin-left:100px; font-family: Fredericka the Great;">Share Event</h1>
+                    <div class="row">
+                        <div class="col-sm-6 fetch-share-event-filp" style="margin-top: 15px;">
+                            <!-- <a href="http://127.0.0.1:5500/ViewEvent.html?page=1">
+                                <div class="flip-card">
+                                    <div class="flip-card-inner">
+                                        <div class="flip-card-front container-fluid responsive">
+                                            <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/4_new.png"  style=" max-width:340px; max-height:345px; min-height:345px;" ></center>
+                                        </div>
+                                        <div class="flip-card-back">
+                                            <h4 style="color: red;">Share Event</h4>
+                                            <p class="card-text">Date: By: </p> 
+                                            <h2>Dummy</h2> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </a> -->
+                        </div>
+                        <div class="col-sm-6 fetch-share-event-non-filp" style="margin-top: 15px;">
+                            <!-- <div class="sm-block">
+                                <a href="#" class="card-sml">
+                                    <div class="col-sm-5" style="margin: 0px; padding: 0px;"> 
+                                        <div class="responsive"> 
+                                            <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/4_new.png" style="max-width:200px; max-height:160px; min-height:160px;">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-7" style="color: black; padding-left: 25px; padding-top: 10px;"> 
+                                        <p style="color: red; font-size: 10px; ">Share Event</p>
+                                        <p>Dummy</p> 
+                                        <p style="font-size: 10px; ">Date: By: </p> 
+                                    </div>
+                                </a>
+                            </div> -->
+                            <!-- <div class="sm-block" style="margin-top: 25px;"> 136895 </div> -->
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 25px;">
+                        <div class="col-sm-4"></div>
+                        <div class="col-sm-4"> 
+                            <a href="http://127.0.0.1:5500/ShareEvent.html?page=1" class="btn btn-primary btn-outline-secondary" role="button" style="background-color:rgba(119, 117, 117, 0.664); width: 100%;">View All</a>  
+                        </div>
+                        <div class="col-sm-4"></div>
+                    </div>      
+                </div>
+            </div>
+        </div>
+        <div id="reviewsubject" class="container-fluid">
+            <div class="block responsive">
+                <div class="row" style="padding: 10px;">
+                    <div class="col-sm-1">
+                            <div class="responsive"> 
+                                <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/icon/ReviewSubject.png" style="max-width:120px; max-height:60px; min-height:60px;">
+                            </div>
+                        </div>
+                    <h1 class="fetch-review-subject" style="margin-left:100px; font-family: Fredericka the Great;">Review Subject</h1>
+                    <!-- <div class="sm-block" style="margin-top: 25px;">
+                        <a href="http://127.0.0.1:5500/ViewSubject.html?page=1" class="card-sml">
+                            <div class="col-sm-12" style="color: black; padding-left: 25px; padding-top: 20px;"> 
+                                <p style="color: red; font-size: 10px; ">Review Subject</p>
+                                <p style="font-size: 25px;">CPE 332</p>
+                                <p>&nbsp&nbsp&nbsp Dummy</p> 
+                                <p style="font-size: 10px; ">Date: By: </p> 
+                            </div>
+                        </a>
+                    </div> -->
+                    <!-- <div class="sm-block" style="margin-top: 25px;"> 12115631 </div> -->
+                    <div class="row" style="margin-top: 25px;">
+                        <div class="col-sm-4"></div>
+                        <div class="col-sm-4"> 
+                            <a href="http://127.0.0.1:5500/ReviewSubject.html?page=1" class="btn btn-primary btn-outline-secondary" role="button" style="background-color:rgba(119, 117, 117, 0.664); width: 100%;">View All</a>  
+                        </div>
+                        <div class="col-sm-4"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="reviewbook" class="container-fluid">
+            <div class="block responsive">
+                <div class="row container-fluid" style="padding: 10px;">
+                    <div class="col-sm-1">
+                        <div class="responsive"> 
+                            <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/icon/ReviewBook.png" style="max-width:120px; max-height:60px; min-height:60px;">
+                        </div>
+                    </div>
+                    <h1 style="margin-left:100px; font-family: Fredericka the Great;">Review Book</h1>
+                    <div class="row fetch-review-book">
+                        <!-- <div class="col-sm-6" style="margin-top: 15px;">
+                            <a href="http://127.0.0.1:5500/ViewBook.html?page=1">
+                                <div class="flip-card">
+                                    <div class="flip-card-inner">
+                                        <div class="flip-card-front container-fluid responsive">
+                                            <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/coverbook.png"  style=" max-width:340px; max-height:345px; min-height:345px;" ></center>
+                                        </div>
+                                        <div class="flip-card-back">
+                                            <h4 style="color: red;">Review Book</h4>
+                                            <p class="card-text">Date: By: </p> 
+                                            <h2>Dummy</h2> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div> -->
+                        <!-- <div class="col-sm-6" style="margin-top: 15px;">
+                            <a href="http://127.0.0.1:5500/ViewBook.html?page=1">
+                                <div class="flip-card">
+                                    <div class="flip-card-inner">
+                                        <div class="flip-card-front container-fluid responsive">
+                                            <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/coverbook.png"  style=" max-width:340px; max-height:345px; min-height:345px;" ></center>
+                                        </div>
+                                        <div class="flip-card-back">
+                                            <h4 style="color: red;">Review Book</h4>
+                                            <p class="card-text">Date: By: </p> 
+                                            <h2>Dummy</h2> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div> -->
+                    </div>
+                    <div class="row" style="margin-top: 25px;">
+                        <div class="col-sm-4"></div>
+                        <div class="col-sm-4"> 
+                            <a href="http://127.0.0.1:5500/ReviewBook.html?page=1" class="btn btn-primary btn-outline-secondary" role="button" style="background-color:rgba(119, 117, 117, 0.664); width: 100%;">View All</a>  
+                        </div>
+                        <div class="col-sm-4"></div>
+                    </div>
+                </div>  
+            </div>
+        </div>
+        <div id="reviewtutor" class="container-fluid">
+            <div class="block responsive">
+                <div class="row container-fluid" style="padding: 10px;">
+                    <div class="col-sm-1">
+                        <div class="responsive"> 
+                            <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/icon/ReviewTutor.png" style="max-width:120px; max-height:60px; min-height:60px;">
+                        </div>
+                    </div>
+                    <h1 style="margin-left:100px; font-family: Fredericka the Great;">Review Tutor</h1>
+                    <div class="row fetch-review-tutor">
+                        <!-- <div class="col-sm-4" style="margin-top: 15px;">
+                            <div class="bg-block" style="height:350px;">
+                                <a href="http://127.0.0.1:5500/ViewTutor.html?page=1" class="card-sml">
+                                    <div class="responsive"> 
+                                        <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/covertutor.png" style=" max-width:240px; max-height:240px; min-height:240px;">
+                                    </div>
+                                    <div class="col-sm-12" style="color: black; padding-left: 25px; padding-top: 10px;"> 
+                                        <p style="color: red; font-size: 10px; ">Review Tutor</p>
+                                        <p>Dummy</p> 
+                                        <p style="font-size: 10px; ">Date: By: </p> 
+                                    </div>
+                                </a>
+                            </div>
+                        </div> -->
+                        <!-- <div class="col-sm-4" style="margin-top: 15px;">
+                            <div class="bg-block" style="height:350px;"> 97864521 </div>
+                        </div> -->
+                        <!-- <div class="col-sm-4" style="margin-top: 15px;">
+                            <div class="bg-block" style="height:350px;"> 14614643 </div>
+                        </div> -->
+                    </div>
+                    <div class="row" style="margin-top: 25px;">
+                        <div class="col-sm-4"></div>
+                        <div class="col-sm-4"> 
+                            <a href="http://127.0.0.1:5500/ReviewTutor.html?page=1" class="btn btn-primary btn-outline-secondary" role="button" style="background-color:rgba(119, 117, 117, 0.664); width: 100%;">View All</a>  
+                        </div>
+                        <div class="col-sm-4"></div>
+                    </div>        
+                </div>
+            </div>
+        </div>
+        <div id="boardfaq" class="container-fluid">
+            <div class="block responsive">
+                <div class="row" style="padding: 10px;">
+                    <div class="col-sm-1">
+                        <div class="responsive"> 
+                            <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/icon/FAQ.png" style="max-width:120px; max-height:60px; min-height:60px;">
+                        </div>
+                    </div>
+                    <h1 style="margin-left:100px; font-family: Fredericka the Great;">Board FAQ</h1>
+                    <div class="row">
+                        <div class="col-sm-6 fetch-faq-filp" style="margin-top: 15px;">
+                            <!-- <a href="http://127.0.0.1:5500/ViewFAQ.html?page=1">
+                                <div class="flip-card">
+                                    <div class="flip-card-inner">
+                                        <div class="flip-card-front container-fluid responsive">
+                                            <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/coverFAQ.png"  style=" max-width:340px; max-height:345px; min-height:345px;" ></center>
+                                        </div>
+                                        <div class="flip-card-back">
+                                            <h4 style="color: red;">Board FAQ</h4>
+                                            <p class="card-text">Date: By: </p> 
+                                            <h2>Dummy</h2> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </a> -->
+                        </div>
+                        <div class="col-sm-6 fetch-faq-non-filp" style="margin-top: 15px;">
+                            <!-- <div class="sm-block">
+                                <a href="#" class="card-sml">
+                                    <div class="col-sm-5 container-fluid" style="margin: 0px; padding: 0px;"> 
+                                        <div class="responsive">
+                                            <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/coverFAQ.png" style="max-width:200px; max-height:160px; min-height:160px;">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-7" style="color: black; padding-left: 25px; padding-top: 10px;"> 
+                                        <p style="color: red; font-size: 10px; ">Board FAQ</p>
+                                        <p>Dummy</p> 
+                                        <p style="font-size: 10px; ">Date: By: </p> 
+                                    </div>
+                                </a>
+                            </div> -->
+                            <!-- <div class="sm-block" style="margin-top: 25px;"> 136895 </div> -->
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 25px;">
+                        <div class="col-sm-4"></div>
+                        <div class="col-sm-4"> 
+                            <a href="http://127.0.0.1:5500/BoardFAQ.html?page=1" class="btn btn-primary btn-outline-secondary" role="button" style="background-color:rgba(119, 117, 117, 0.664); width: 100%;">View All</a>  
+                        </div>
+                        <div class="col-sm-4"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-2"></div>
+</div>
+<footer>
+
+    <div class="jumbotron" style="margin-bottom:0;">
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-6">
+                <p style="font-size: 16px; margin-left: 35px;"><strong>ShareEd</strong></p>
+                <p style="font-size: 14px;"> “ ShareEd website is community of student in King Mongkut’s University
+                    of Technology Thonburi for share their story about education in many features.
+                    ShareEd made by KMUTT students called T3M team."</p>
+            </div>
+            <div class="col-sm-3">
+                <p style="font-size: 16px; margin-left: 35px;"><strong>Contact Info</strong></p>
+                <p style="font-size: 14px;"><span class="glyphicon glyphicon-earphone"></span> +66 86 3175 820</p>
+                <p style="font-size: 14px;"><span class="glyphicon glyphicon-envelope"></span>
+                    shareed@gmail.co.th</a></p>
+                <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/youtube.png"
+                    width="auto" height="auto">
+                <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/twitter.png"
+                    width="auto" height="auto">
+                <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/instragram.png"
+                    width="auto" height="auto">
+                <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/facebook.png"
+                    width="auto" height="auto">
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+    </div>
+
+</footer>
+</body>
+</html>

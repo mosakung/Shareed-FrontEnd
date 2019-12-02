@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ShareEd</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Mali|Fredericka the Great" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script type="module" src="js/reviewBook/viewReviewBook.js"></script>
+
+  <style>
+  body {
+    background-image: linear-gradient(to bottom right,white,lightblue,deepskyblue, cornflowerblue,grey);
+    font-family :Mali;
+    position: relative; 
+  }
+  .block{
+    position:auto;
+    width:auto;
+    height:580px;
+    background-color: rgba(255, 255, 255, 0.37);
+    border-radius: 3px;
+    padding: 30px;
+    margin: 10px;
+  }
+  .bg-block{
+    position:auto;
+    width:auto;
+    height:420px;
+    background-color: whitesmoke;
+    border-radius: 3px;
+    padding: 15px;
+    margin: 5px;
+  }
+  .sm-block{
+    position:auto;
+    width:auto;
+    height:160px;
+    background-color: whitesmoke;
+    border-radius: 3px;
+    padding: 15px;
+    margin: 5px;
+  }
+  .pagination {
+  display: inline-block;
+    }
+
+    .pagination a {
+    color: black;
+    float: left;
+    padding: 5px 15px;
+    text-decoration: none;
+    }
+
+    .pagination a.active {
+    background-color: rgb(100, 100, 100);
+    color: white;
+    border-radius: 10px;
+    }
+
+    .pagination a:hover:not(.active) {
+    background-color: #ddd;
+    border-radius: 10px;
+    }
+  #sharenote {padding-top:50px;height:650px;color: black;}
+  #shareevent{padding-top:50px;height:650px;color: black;}
+  #reviewsubject {padding-top:50px;height:650px;color: black;}
+  #reviewtutor {padding-top:50px;height:650px;color: black; }
+  #reviewbook {padding-top:50px;height:650px;color: black; }
+  #boardfaq {padding-top:50px;height:650px;color: black; }
+  </style>
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+
+    <div id="navbar"></div>   
+    <script>
+        $(function(){
+            $("#navbar").load("navbar.html");
+        });
+    </script>  
+
+<div class="row">
+    <div class="block" style="background: url('https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/HeaderBook.png'); background-size:100%; background-repeat: no-repeat;">
+        <h1 style="font-family: Fredericka the Great; font-size:100px; margin-top: 100px; margin-left:5px; padding: 5px;">Review Book</h1>
+    </div>
+    <div class="col-sm-2"></div>
+    <div class="col-sm-5">
+        <div id="shareNote" class="container-fluid">
+            <div style="margin-top: 15px;">
+                <div class="row">
+                    <div class="fetch-all-review-book"></div>
+                    <center><div class="pagination fetch-page-review-book"></div></center>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3 block" style="margin-top: 20px; height: 630px; width: min-content;">
+        <a href="http://127.0.0.1:5500/CreatedReviewBook.html" class="btn btn-primary btn-outline-secondary  btn-lg" role="button" style="background-color:rgba(119, 117, 117, 0.664); width: 100%;">Create New Review</a>
+        <div class="row" style="margin-top: 20px;">
+            <p>Search</p>
+            <form class="nav navbar-nav navbar-form" action="#">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search" name="search">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" onclick="alert('Cannot use function Search.')" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="row fetch-tag-review-book" style="margin-top: 20px;">
+        </div>
+        <div class="row" style="margin-top: 20px;">
+            <p>Popular</p>
+            <div class="sm-block" style="height:80px;"> 17574 </div>
+            <div class="sm-block" style="height:80px; margin-top: 10px;"> 759228 </div>
+            <div class="sm-block" style="height:80px; margin-top: 10px;"> 282882 </div>
+        </div>
+    </div>
+    <div class="col-sm-2"></div>
+</div>
+
+<footer>
+
+    <div class="jumbotron" style="margin-bottom:0;">
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-6">
+                <p style="font-size: 16px; margin-left: 35px;"><strong>ShareEd</strong></p>
+                <p style="font-size: 14px;"> “ ShareEd website is community of student in King Mongkut’s University
+                    of Technology Thonburi for share their story about education in many features.
+                    ShareEd made by KMUTT students called T3M team."</p>
+            </div>
+            <div class="col-sm-3">
+                <p style="font-size: 16px; margin-left: 35px;"><strong>Contact Info</strong></p>
+                <p style="font-size: 14px;"><span class="glyphicon glyphicon-earphone"></span> +66 86 3175 820</p>
+                <p style="font-size: 14px;"><span class="glyphicon glyphicon-envelope"></span>
+                    shareed@gmail.co.th</a></p>
+                <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/youtube.png"
+                    width="auto" height="auto">
+                <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/twitter.png"
+                    width="auto" height="auto">
+                <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/instragram.png"
+                    width="auto" height="auto">
+                <img src="https://raw.githubusercontent.com/mosakung/Shareed-FrontEnd/develop/Photo/facebook.png"
+                    width="auto" height="auto">
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+    </div>
+
+</footer>
+</body>
+</html>
