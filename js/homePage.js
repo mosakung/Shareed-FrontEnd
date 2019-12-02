@@ -97,7 +97,7 @@ httpGET('http://localhost:3000/shareed/homepage-user', userId, (state, json) => 
     function patternReviewSubject(data, index) {
         return [`
         <div class="sm-block" style="margin-top: 25px;">
-            <a href="http://127.0.0.1:5500/ViewSubject.html?page=${data.ReviewSubjectID}" class="card-sml">
+            <a href="http://127.0.0.1:5500/ViewSubject.html?postID=${data.ReviewSubjectID}" class="card-sml">
                 <div class="col-sm-12" style="color: black; padding-left: 25px; padding-top: 20px;"> 
                     <p style="color: red; font-size: 10px; ">Review Subject</p>
                     <p style="font-size: 25px;">${data.SubjectID}</p>

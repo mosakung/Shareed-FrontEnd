@@ -51,6 +51,7 @@ window.onload = function () {
 
         
         httpPOST('http://localhost:3000/shareed/review-book', userId, body, (res, json) => {
+            window.location('http://localhost:5500/ReviewBook.html?page=1');
        });
     }
 }

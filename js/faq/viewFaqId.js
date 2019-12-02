@@ -5,7 +5,7 @@ const urlParams = new URLSearchParams(window.location.search);
 
 httpIdGET('http://localhost:3000/shareed/faq', urlParams.get("postID"), userId, (state, json) => {
     
-    console.log(json)
+    console.log(json);
     
     var date = json.dateTime.replace("T", " ");
     date = date.substring(0, 19);
