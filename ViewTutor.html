@@ -61,6 +61,33 @@
             var postIDHtml = urlParamsHtml.get("postID");
             document.getElementById("editPost").href = ("http://127.0.0.1:5500/EditReviewTutor.html?postID=" + postIDHtml);
         }
+
+        function callToDelete() {
+            function httpDELETE(url, postId, userId, callback) {
+                const Http = new XMLHttpRequest();
+                url = url.concat('/' + postId + '/' + userId);
+                Http.open("DELETE", url, true);
+                Http.send();
+
+                Http.onreadystatechange = function (temp) {
+
+                    if (this.readyState == 4 && this.status == 250) {
+                        callback(true, Http.responseText);
+                    }
+                }
+            }
+
+            let userId = '100000001';
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const postId = urlParams.get("postID");
+
+            httpDELETE('http://localhost:3000/shareed/review-tutor', postId, userId, (res) => {
+                const text = 'delete are ' + res;
+                alert(text);
+                location.replace("http://127.0.0.1:5500/ReviewTutor.html?page=1 ");
+            })
+        }
     </script>      
 
 <div class="row">
@@ -85,7 +112,7 @@
                 <div class="col-sm-2">
                     <a href="#" onclick="callToEdit()" id="editPost" class="btn btn-primary"
                         title="Edited"><span class="glyphicon glyphicon-pencil"></span></a>
-                    <a href="#" class="btn btn-danger" id="deletePost" title="Deleted"><span
+                    <a href="#" class="btn btn-danger" onclick="callToDelete()" id="deletePost" title="Deleted"><span
                             class="glyphicon glyphicon-trash"></span></a>
                     <a href="#" class="btn btn-info btn-outline-secondary" id="report" title="Report"
                         style="background-color:rgba(119, 117, 117, 0.664);">Report</a>
